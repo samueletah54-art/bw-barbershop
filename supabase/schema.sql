@@ -47,7 +47,7 @@ create table if not exists public.shop_settings (
   deposit_xaf       int  not null default 500,            -- TODO(owner): acompte per booking
   slot_step_min     int  not null default 30,
   lead_min          int  not null default 15,
-  horizon_days      int  not null default 14,
+  horizon_days      int  not null default 30,
   hold_online_min   int  not null default 15,             -- unpaid online booking frees its slot after 15 min
   hold_whatsapp_min int  not null default 120,            -- WhatsApp request holds the slot 2 h
   first_open_date   date not null default '2026-11-16'

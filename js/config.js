@@ -82,7 +82,7 @@ window.BW_CONFIG = {
   DEPOSIT_XAF: 500,                    // TODO(owner): acompte per booking, editable
   SLOT_STEP_MIN: 30,                   // start times every 30 min
   LEAD_MIN: 15,                        // no booking starting in under 15 min
-  HORIZON_DAYS: 14,                    // calendar shows the next 14 days
+  HORIZON_DAYS: 30,                    // calendar shows the next 30 days (keep equal to horizon_days in supabase/schema.sql)
   HOLD_ONLINE_MIN: 15,                 // unpaid online booking frees its slot after 15 min
   HOLD_WHATSAPP_MIN: 120,              // WhatsApp request holds the slot 2 h until the barber answers
 
