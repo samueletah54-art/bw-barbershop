@@ -46,7 +46,7 @@
   /* ---------- Price board: rows slide in one by one, prices count up ---------- */
   var board = $('#board');
   if (board) {
-    gsap.from($$('.row', board), { opacity: 0, x: phone ? -16 : -40, duration: 0.8, ease: 'power3.out', stagger: 0.09, scrollTrigger: { trigger: board, start: 'top 85%', once: true } });
+    gsap.from($$('.row', board), { opacity: 0, x: phone ? -16 : -40, duration: 0.6, ease: 'power3.out', stagger: 0.06, scrollTrigger: { trigger: board, start: 'top 85%', once: true } });
     $$('.row-price .num', board).forEach(function (n) {
       var target = parseInt(n.textContent.replace(/\D/g, ''), 10), o = { v: 0 };
       if (!target) return;
@@ -84,7 +84,7 @@
   var star = $('#star'), photo = $('#star-photo');
   if (fine && star && photo && board) {
     var placeholder = Array.prototype.slice.call(photo.childNodes).map(function (n) { return n.cloneNode(true); }), current = null, shown = false;
-    gsap.set(star, { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 0.6, opacity: 0 });
+    gsap.set(star, { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 0.8, opacity: 0 });
     var sx = gsap.quickTo(star, 'x', { duration: 0.55, ease: 'power3.out' }), sy = gsap.quickTo(star, 'y', { duration: 0.55, ease: 'power3.out' });
     function showFor(row) {
       var src = (C.CUT_PHOTOS || {})[row.getAttribute('data-formule')];
@@ -98,7 +98,7 @@
       if (row !== current) { current = row; showFor(row); }
       if (!shown) { shown = true; gsap.to(star, { opacity: 1, scale: 1, duration: 0.35, ease: 'power3.out', overwrite: 'auto' }); }
     });
-    board.addEventListener('pointerleave', function () { current = null; shown = false; gsap.to(star, { opacity: 0, scale: 0.6, duration: 0.25, ease: 'power3.in', overwrite: 'auto' }); });
+    board.addEventListener('pointerleave', function () { current = null; shown = false; gsap.to(star, { opacity: 0, scale: 0.8, duration: 0.2, ease: 'power3.in', overwrite: 'auto' }); });
   }
 
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });
