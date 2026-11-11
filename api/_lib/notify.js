@@ -19,8 +19,8 @@ export async function notifyBarber(kind, b, formuleName) {
   const subject = {
     paid: `Nouvelle réservation payée : ${b.name}, ${when(b)}`,
     lost: `À REMBOURSER : paiement reçu mais créneau perdu (${b.name})`,
-  }[kind] || 'B&W Barber';
-  const greet = `Bonjour ${b.name}, votre rendez-vous chez B&W Barber est confirmé : ${when(b)}. À bientôt !`;
+  }[kind] || 'BW Barber Shop';
+  const greet = `Bonjour ${b.name}, votre rendez-vous chez BW Barber Shop est confirmé : ${when(b)}. À bientôt !`;
   const lines = kind === 'lost'
     ? [`${b.name} (${phone(b.phone)}) a payé ${b.deposit_xaf} FCFA après l'expiration de sa réservation, et le créneau ${when(b)} est déjà pris.`, 'Remboursez-le depuis le tableau de bord Notch Pay, ou proposez-lui un autre créneau.']
     : [`${b.name}, ${phone(b.phone)}`, `${formuleName || b.formule}, ${when(b)}`, `Acompte reçu : ${b.deposit_xaf} FCFA`, b.note ? `Note : ${b.note}` : '', '', `Prévenir le client sur WhatsApp : https://wa.me/237${b.phone}?text=${encodeURIComponent(greet)}`];
@@ -32,7 +32,7 @@ export async function notifyBarber(kind, b, formuleName) {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from: env('NOTIFY_FROM', 'B&W Barber <onboarding@resend.dev>'), to: [to], subject, text }),
+      body: JSON.stringify({ from: env('NOTIFY_FROM', 'BW Barber Shop <onboarding@resend.dev>'), to: [to], subject, text }),
     });
     if (!res.ok) console.error('[notify] resend', res.status, (await res.text()).slice(0, 200));
     return { sent: res.ok };

@@ -35,7 +35,7 @@ export default async function handler(req, res) {
         reference: `bw-${b.id.slice(0, 8)}-${attempt}`,
         name: b.name,
         phone: `+237${b.phone}`,
-        description: `Acompte B&W Barber ${b.date} ${b.start_time.slice(0, 5)}`,
+        description: `Acompte BW Barber Shop ${b.date} ${b.start_time.slice(0, 5)}`,
         callback: `${site}/#reserver`,
       });
       await patchBooking(b.id, { payment_ref: ref, payment_status: 'initiated', payment_attempts: attempt }, ['pending']);

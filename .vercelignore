@@ -4,3 +4,8 @@ tests/
 scripts/
 supabase/
 HANDOFF.md
+.claude/
+.agents/
+.hallmark/
+skills-lock.json
+package-lock.json

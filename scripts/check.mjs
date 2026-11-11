@@ -19,8 +19,9 @@ const C = ctx.window.BW_CONFIG;
 
 // 1. prices: config vs index.html rows vs JSON-LD vs SQL seed
 const html = read('index.html');
-const menu = html.slice(html.indexOf('<ol class="menu">'), html.indexOf('</ol>', html.indexOf('<ol class="menu">')));
-const rows = [...menu.matchAll(/data-formule="(\w+)"[\s\S]*?<span class="num">([\d&;nbsp\s]+)<\/span>/g)].map((m) => [m[1], Number(m[2].replace(/\D/g, ''))]);
+const menu = html.slice(html.indexOf('<ol class="board"'), html.indexOf('</ol>', html.indexOf('<ol class="board"')));
+const rows = [...menu.matchAll(/data-formule="(\w+)"[\s\S]*?<span class="num"[^>]*>([\d&;nbsp\s]+)<\/span>/g)].map((m) => [m[1], Number(m[2].replace(/\D/g, ''))]);
+const durs = [...menu.matchAll(/data-formule="(\w+)"[\s\S]*?<span class="dur">(\d+)<\/span>/g)].map((m) => [m[1], Number(m[2])]);
 const ld = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
 const ldPrices = ld.makesOffer.map((o) => Number(o.price));
 const sql = read('supabase/schema.sql');
@@ -32,6 +33,7 @@ C.FORMULES.forEach((f, i) => {
   const s = seed.find((x) => x.id === f.id);
   if (!s) bad(`schema.sql has no seed for "${f.id}"`); else { if (s.price !== f.price) bad(`${f.id}: schema.sql price ${s.price} vs config ${f.price}`); if (s.duration !== f.duration) bad(`${f.id}: schema.sql duration ${s.duration} vs config ${f.duration}`); }
 });
+C.FORMULES.forEach((f) => { const d = durs.find((x) => x[0] === f.id); if (!d || d[1] !== f.duration) bad(`${f.id}: the board shows ${d ? d[1] : 'no'} min, config says ${f.duration}`); });
 if (!problems) good('prices and durations agree in config.js, index.html, JSON-LD and schema.sql');
 
 // 2. deposit + hours between config and SQL defaults

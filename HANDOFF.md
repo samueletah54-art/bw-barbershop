@@ -1,13 +1,13 @@
-# B&W Barber · hand-off
+# BW Barber Shop · hand-off
 
-Site for B&W Barber, Emombo Auberge, Yaoundé. Opening Monday 16 November 2026, 9:00.
+Site for BW Barber Shop, Emombo Auberge, Yaoundé. Opening Monday 16 November 2026, 9:00.
 Static pages + two small serverless functions. No framework, no build step, no tracking.
 
 ## What works today (without any account setup)
 
 - One page, in this order: header (logo, menu, FR/EN, **Réserver**), **hero** (thin gold opening strip at the very top; full-screen shop photo under a 60% black layer; huge white left-aligned headline; three price chips; gold Réserver + outline WhatsApp), **01 Tarifs** (the price sheet as a menu board, every row books that formule), **02 Le barbier**, **03 Galerie**, **04 Avis** (hidden until real reviews exist), **05 Réserver**, **06 Infos** (map on request, Itinéraire, click-to-call, hours table, conditions, privacy), footer with the giant B&W lettering.
 - The site is dark (`#0B0B0B`); light sections only where they add contrast (Tarifs, Réserver). Gold `#D4A72C` is used for the opening strip, Réserver buttons and small accents. The hero was redesigned from a written brief (no new screenshot was in the repo); display font Big Shoulders, text font Instrument Sans.
-- Phone: sticky bottom bar with **Réserver**, a WhatsApp icon and a call icon (44 px+ targets). WhatsApp opens with "Bonjour B&W, je veux réserver une coupe." (EN: "Hello B&W, I want to book a cut.").
+- Phone: sticky bottom bar with **Réserver**, a WhatsApp icon and a call icon (44 px+ targets). WhatsApp opens with "Bonjour BW Barber Shop, je veux réserver une coupe." (EN: "Hello BW Barber Shop, I want to book a cut.").
 - Motion: scroll reveals (fade + 16 px rise, staggered), hover states on buttons, chips, menu rows, images. All off under `prefers-reduced-motion`.
 - **Booking in 4 steps** (formule, day and time, details, confirmation). **Right now it runs in WhatsApp mode**: the visitor gets a summary and a one-tap "Envoyer sur WhatsApp" button with the message already written. Nothing is saved and no payment is taken, because no database is connected yet.
 - `/admin`, `404.html`, `robots.txt`, `sitemap.xml` (with hreflang), JSON-LD (`HairSalon` + `BarberShop`, prices, phone, hours), Open Graph image.
@@ -37,7 +37,7 @@ Run `npm run check` any time: it lists them and verifies that prices, durations,
 | 6 | **Landmark near the shop** | `LANDMARK.fr / .en` | empty: hidden |
 | 7 | **One real sentence from Rudiger** | `BARBER_QUOTE.fr / .en` | empty: hidden. Do not invent one, and no years of experience |
 | 8 | **Spelling: Camanda or Camada Jackson?** | `BARBER`, and the text in the "Le barbier" section of `index.html` | "Camanda" |
-| 9 | **The real logo file** (B&W BARBER with the pole) | header in `index.html`, favicon in `images/` | A text stand-in with the gold "&" (the logo file was not in the upload) |
+| 9 | **The real logo file** (BW BARBER SHOP with the pole) | header in `index.html`, favicon in `images/` | A text stand-in with the gold "&" (the logo file was not in the upload) |
 | 10 | Final domain | `canonical`, `og:url`, `og:image`, JSON-LD image in `index.html`; `robots.txt`; `sitemap.xml` | `bw-barbershop.vercel.app` |
 | 11 | Opening hours in the JSON-LD | `index.html` | not included until 1 and 2 are confirmed |
 | 12 | The barber's login email | `supabase/schema.sql`, `admins` table | none |
@@ -94,7 +94,7 @@ How it is protected (tested, 34 checks): the public has no access to any table. 
 | `SUPABASE_SERVICE_ROLE_KEY` | the Supabase service_role key |
 | `SITE_URL` | `https://<the-site>` |
 | `RESEND_API_KEY`, `BARBER_EMAIL` | optional: email on each paid booking |
-| `NOTIFY_FROM` | optional, e.g. `B&W Barber <no-reply@your-domain>`; the default only works for testing |
+| `NOTIFY_FROM` | optional, e.g. `BW Barber Shop <no-reply@your-domain>`; the default only works for testing |
 
 Then set `PAYMENTS_ENABLED: true` in `js/config.js` (this switches step 4 from WhatsApp to MTN/Orange), push, redeploy.
 
@@ -150,3 +150,17 @@ Lighthouse, mobile preset, local server: **Performance 100, Accessibility 100, B
 - The hero photo is a phone video still (1200 px wide) shown full-screen; the 60% black layer hides most of the softness, but a sharp daylight photo from the barber would improve it most. Phones get the portrait photo.
 - Static screenshots cannot show animation, so the motion (reveals, ticker, hovers) is a reasonable reading of the reference, not a copy. A screen recording of the real page would let us match it exactly.
 - On a phone the FR/EN switch sits inside the menu (the reference header has no room for it).
+
+## Final redesign (Standfast-style) · what was done and what is still TODO
+
+**Hallmark** is installed (`.claude/skills/hallmark/`, committed). Its linter passes except 3 gates (54, 63, 67) on the hero label "BARBIER · EMOMBO, YAOUNDÉ", which the owner's brief requires in gold capitals. Hallmark does not allow waivers on those gates, so the label is kept as an owner override (comment at the top of `css/styles.css`).
+
+**Logo**: no files were found in `references/logos/`, so `images/logo.svg` is a typographic placeholder (Anton lettering, gold bar). TODO: drop the real logo into `references/logos/`, then replace `images/logo.svg`, `favicon-32.png`, `apple-touch-icon.png`, `og.jpg`.
+
+**Price board** follows the Standfast layout (name, duration, price, FCFA only). The shop's own 6 formules replace the Standfast service names. Real prices: Enfant 500, Classique 1 000, Soignée 2 000. The other prices in `js/config.js` are estimates. TODO: confirm every price and duration.
+
+**Pinterest mood board** (not published): shaving illustration → gold star frame idea; B&W silhouette in mirror → high-contrast B&W photo treatment; moustache/revolvers → condensed uppercase, tight headings; retro BARBER poster → giant footer lettering; STAY SHARP shaved head → short, direct copy.
+
+**Motion per section** (`js/motion.js`, loaded after page load; off under reduced motion; light on phones): ticker marquee; nav hide/show; hero CSS line reveal + slow zoom + parallax; price rows slide in with count-up; cursor-follow gold star (desktop); gallery clip-path wipe and B&W→colour hover; barber parallax; footer lettering slide; magnetic buttons; phone bar slides in on scroll.
+
+**TODO list**: cut photos in `images/cuts/` + `CUT_PHOTOS`; real reviews; confirmed hours and closing day; barber speciality, years, quote and name spelling; Instagram/Facebook URLs; landmark; enable Vercel Analytics in the dashboard; custom domain; Notch Pay account/keys; Supabase project + SQL + admin email. Hours in JSON-LD are guesses until confirmed.

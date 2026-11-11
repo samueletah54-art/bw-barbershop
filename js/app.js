@@ -1,5 +1,5 @@
 /* =====================================================================
-   B&W BARBER · public site
+   BW BARBER SHOP · public site
    Reads window.BW_CONFIG (js/config.js). No libraries, no tracking.
    Sections: 1 helpers · 2 i18n · 3 database · 4 opening status
              5 booking state · 6 booking steps · 7 payment · 8 boot
@@ -115,9 +115,9 @@
       ics: 'Ajouter à mon calendrier', ics_prov: 'Ajouter à mon calendrier (provisoire)',
       ref: 'Référence', new_booking: 'Nouvelle réservation',
       resumed: 'Nous avons retrouvé votre réservation en cours.',
-      wa_hello: 'Bonjour B&W Barber, je voudrais réserver :',
+      wa_hello: 'Bonjour BW Barber Shop, je voudrais réserver :',
       wa_note: 'Note',
-      cal_title: 'B&W Barber · {f}',
+      cal_title: 'BW Barber Shop · {f}',
       // opening status
       st_future: 'Ouverture {d} à {h}, dans {n} jours', st_tomorrow: 'Ouverture demain à {h}', st_today_before: 'Ouverture aujourd’hui à {h}',
       st_open: 'Ouvert aujourd’hui · {r}', st_open_from: 'Ouvert dès {h}', st_opens_today: 'Ouvre aujourd’hui à {h}',
@@ -174,9 +174,9 @@
       ics: 'Add to my calendar', ics_prov: 'Add to my calendar (provisional)',
       ref: 'Reference', new_booking: 'New booking',
       resumed: 'We found your booking in progress.',
-      wa_hello: 'Hello B&W Barber, I would like to book:',
+      wa_hello: 'Hello BW Barber Shop, I would like to book:',
       wa_note: 'Note',
-      cal_title: 'B&W Barber · {f}',
+      cal_title: 'BW Barber Shop · {f}',
       st_future: 'Opening {d} at {h}, in {n} days', st_tomorrow: 'Opening tomorrow at {h}', st_today_before: 'Opening today at {h}',
       st_open: 'Open today · {r}', st_open_from: 'Open from {h}', st_opens_today: 'Opens today at {h}',
       st_closed_now: 'Closed · reopens {d} at {h}', st_closed_day: 'Closed today · reopens {d} at {h}',
@@ -464,11 +464,11 @@
   function icsUrl() {
     var f = formule(S.formule), s = toMin(S.time), e = s + f.duration;
     function stamp(min) { var p = S.date.split('-'); return new Date(Date.UTC(+p[0], +p[1] - 1, +p[2], 0, min - C.TZ_OFFSET_MIN)).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''); }
-    var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//B&W Barber//FR', 'BEGIN:VEVENT',
+    var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//BW Barber Shop//FR', 'BEGIN:VEVENT',
       'UID:' + ((S.booking && S.booking.id) || (S.date + S.time)) + '@bw-barber', 'DTSTAMP:' + stamp(nowLocal().min).slice(0, 8) + 'T000000Z',
       'DTSTART:' + stamp(s), 'DTEND:' + stamp(e), 'SUMMARY:' + t('cal_title', { f: fName(f) }),
-      'LOCATION:Emombo Auberge\\, Yaoundé', 'DESCRIPTION:' + 'B&W Barber · ' + C.PHONE_E164,
-      'BEGIN:VALARM', 'TRIGGER:-PT60M', 'ACTION:DISPLAY', 'DESCRIPTION:B&W Barber', 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+      'LOCATION:Emombo Auberge\\, Yaoundé', 'DESCRIPTION:' + 'BW Barber Shop · ' + C.PHONE_E164,
+      'BEGIN:VALARM', 'TRIGGER:-PT60M', 'ACTION:DISPLAY', 'DESCRIPTION:BW Barber Shop', 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
     return URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
   }
 
@@ -661,7 +661,7 @@
   function setLang(l) {
     lang = l; root.setAttribute('data-lang', l); root.setAttribute('lang', l);
     $$('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === l)); });
-    $$('[data-wa]').forEach(function (a) { a.href = 'https://wa.me/' + C.WHATSAPP + '?text=' + encodeURIComponent(l === 'fr' ? 'Bonjour B&W, je veux réserver une coupe.' : 'Hello B&W, I want to book a cut.'); });
+    $$('[data-wa]').forEach(function (a) { a.href = 'https://wa.me/' + C.WHATSAPP + '?text=' + encodeURIComponent(l === 'fr' ? 'Bonjour BW Barber Shop, je veux réserver une coupe.' : 'Hello BW Barber Shop, I want to book a cut.'); });
     try { localStorage.setItem('bw-lang', l); } catch (e) {}
     renderStatus(); renderInfo(); if (S) render();
   }

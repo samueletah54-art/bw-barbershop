@@ -18,7 +18,7 @@ const call = async (p, o = {}) => {
   return { ok: r.ok, j };
 };
 
-const init = await call('/payments', { method: 'POST', body: JSON.stringify({ amount: 500, currency: 'XAF', reference: 'bw-smoke-' + Date.now(), description: 'B&W Barber smoke test', customer: { name: 'Test Client', phone: '+237690000000' } }) });
+const init = await call('/payments', { method: 'POST', body: JSON.stringify({ amount: 500, currency: 'XAF', reference: 'bw-smoke-' + Date.now(), description: 'BW Barber Shop smoke test', customer: { name: 'Test Client', phone: '+237690000000' } }) });
 const ref = init.j?.transaction?.reference ?? init.j?.reference;
 console.log('\nreference we will store:', ref);
 if (ref) await call('/payments/' + encodeURIComponent(ref));

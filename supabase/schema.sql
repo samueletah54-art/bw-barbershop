@@ -1,5 +1,5 @@
 -- =====================================================================
--- B&W BARBER · booking database (Supabase / Postgres 15+)
+-- BW BARBER SHOP · booking database (Supabase / Postgres 15+)
 --
 -- How to use: Supabase dashboard → SQL editor → paste this whole file → Run.
 -- Safe to run again: everything is "if not exists" / "or replace".

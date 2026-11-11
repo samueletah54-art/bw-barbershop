@@ -1,5 +1,5 @@
 /* =====================================================================
-   B&W BARBER · /admin
+   BW BARBER SHOP · /admin
    Supabase Auth (email + password) over plain fetch. Every read and write goes
    through Row Level Security: only an email listed in the `admins` table can
    see or change bookings. Customer text is only ever set with textContent.
@@ -89,7 +89,7 @@
     if (b.status === 'paid' || b.status === 'confirmed') { btn('Terminé', 'btn-dark', function () { setStatus(b, 'done'); }); btn('Absent', 'btn-line', function () { setStatus(b, 'no_show'); }); }
     if (b.status === 'pending' || b.status === 'paid' || b.status === 'confirmed') btn('Annuler', 'btn-line', function () { if (window.confirm('Annuler le rendez-vous de ' + b.name + ' ?')) setStatus(b, 'cancelled'); });
     var hello = 'Bonjour ' + b.name + ', ';
-    actions.push(el('a', { class: 'btn btn-line', href: wa(b, b.status === 'confirmed' || b.status === 'paid' ? hello + 'votre rendez-vous chez B&W Barber est confirmé : ' + dayLabel(b.date) + ' à ' + hm(b.start_time) + '. À bientôt !' : hello), target: '_blank', rel: 'noopener', text: 'WhatsApp' }));
+    actions.push(el('a', { class: 'btn btn-line', href: wa(b, b.status === 'confirmed' || b.status === 'paid' ? hello + 'votre rendez-vous chez BW Barber Shop est confirmé : ' + dayLabel(b.date) + ' à ' + hm(b.start_time) + '. À bientôt !' : hello), target: '_blank', rel: 'noopener', text: 'WhatsApp' }));
     actions.push(el('a', { class: 'btn btn-line', href: 'tel:+237' + b.phone, text: 'Appeler' }));
     return el('article', { class: 'bk' }, [
       el('div', { class: 'bk-time' }, [hm(b.start_time), el('small', { text: 'jusqu’à ' + hm(b.end_time) })]),
@@ -105,7 +105,7 @@
   function render(bookings, blocked) {
     // flash the tab title when a new paid booking arrives while the page is open
     var paidNow = bookings.filter(function (b) { return b.status === 'paid'; }).map(function (b) { return b.id; });
-    if (lastPaidIds && paidNow.some(function (id) { return lastPaidIds.indexOf(id) < 0; })) document.title = '(Nouveau) Réservations · B&W Barber';
+    if (lastPaidIds && paidNow.some(function (id) { return lastPaidIds.indexOf(id) < 0; })) document.title = '(Nouveau) Réservations · BW Barber Shop';
     lastPaidIds = paidNow;
 
     var list = $('#list'); list.textContent = '';
@@ -133,7 +133,7 @@
     $('#who').textContent = (session && session.user && session.user.email) || '';
     return guarded(function () { return sb('/rest/v1/rpc/is_admin', { method: 'POST', body: {} }); }).then(function (isAdmin) {
       if (!isAdmin) { clearSession(); show('login'); err('#login-err', 'Ce compte n’a pas accès aux réservations.'); return; }
-      show('dash'); $('#block-date').min = today(); document.title = 'Réservations · B&W Barber';
+      show('dash'); $('#block-date').min = today(); document.title = 'Réservations · BW Barber Shop';
       return load().then(function () { if (timer) clearInterval(timer); timer = setInterval(load, 30000); });
     });
   }

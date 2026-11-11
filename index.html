@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>B&amp;W Barber · Coiffeur à Emombo, Yaoundé</title>
-  <meta name="description" content="B&W Barber, coiffeur à Emombo Auberge, Yaoundé. Dégradés, coupes afro, coupe enfant dès 500 FCFA. Réservez en ligne. Ouverture le lundi 16 novembre 2026 à 9h.">
+  <title>BW Barber Shop · Coiffeur à Emombo, Yaoundé</title>
+  <meta name="description" content="BW Barber Shop, coiffeur à Emombo Auberge, Yaoundé. Dégradés, coupes afro, coupe enfant dès 500 FCFA. Réservez en ligne. Ouverture le lundi 16 novembre 2026 à 9h.">
   <meta name="theme-color" content="#0b0b0b">
   <!-- EN title + description are swapped in by js/ui.js when the visitor picks EN:
-       "B&W Barber · Barber in Emombo, Yaoundé" -->
+       "BW Barber Shop · Barber in Emombo, Yaoundé" -->
 
   <!-- TODO(deploy): when a custom domain is added, update canonical, hreflang, og:url, og:image, JSON-LD, sitemap.xml, robots.txt -->
   <link rel="canonical" href="https://bw-barbershop.vercel.app/">
@@ -21,35 +21,36 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_CM">
   <meta property="og:locale:alternate" content="en_GB">
-  <meta property="og:site_name" content="B&W Barber">
-  <meta property="og:title" content="B&W Barber · Coiffeur à Emombo, Yaoundé">
+  <meta property="og:site_name" content="BW Barber Shop">
+  <meta property="og:title" content="BW Barber Shop · Coiffeur à Emombo, Yaoundé">
   <meta property="og:description" content="Dégradés, coupes afro et coupe enfant. Prix affichés, réservation en ligne. Ouverture lundi 16 novembre, 9h.">
   <meta property="og:url" content="https://bw-barbershop.vercel.app/">
   <meta property="og:image" content="https://bw-barbershop.vercel.app/images/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="B&W Barber : le salon d’Emombo Auberge, mur noir, mur blanc, deux fauteuils">
+  <meta property="og:image:alt" content="BW Barber Shop, Emombo, Yaoundé : Dégradé propre. Sans attente.">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="preload" href="fonts/big-shoulders.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="js/early.js"></script>
+  <link rel="preload" href="fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" type="image/avif" href="images/interior-wide-800.avif" imagesrcset="images/interior-wide-480.avif 480w, images/interior-wide-800.avif 800w, images/interior-wide-1200.avif 1200w" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">
   <link rel="preload" as="image" type="image/avif" href="images/interior-tall-608.avif" imagesrcset="images/interior-tall-400.avif 400w, images/interior-tall-608.avif 608w" imagesizes="100vw" media="(max-width: 767px)" fetchpriority="high">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/site.css">
 
   <!-- Structured data. TODO(owner): hours below are the defaults in js/config.js (closing time and days are NOT confirmed yet). -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": ["HairSalon", "BarberShop"],
-    "name": "B&W Barber",
+    "name": "BW Barber Shop",
     "description": "Coiffeur à Emombo Auberge, Yaoundé : dégradés, coupes afro, coupe enfant.",
     "url": "https://bw-barbershop.vercel.app/",
     "image": "https://bw-barbershop.vercel.app/images/interior-wide-1200.jpg",
+    "logo": "https://bw-barbershop.vercel.app/images/logo.svg",
     "telephone": "+237690868831",
-    "priceRange": "500–5000 XAF",
+    "priceRange": "500–5000 FCFA",
     "currenciesAccepted": "XAF",
     "paymentAccepted": "MTN Mobile Money, Orange Money",
     "areaServed": "Yaoundé",
@@ -78,27 +79,44 @@
   </script>
 </head>
 <body>
-  <!-- One icon family: 24px grid, 2px stroke, square caps -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <!-- One icon family: 24px grid, 2px stroke, square joins. The logo lockup is set from the Anton letterforms. -->
+  <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <symbol id="logo" viewBox="0 0 163.7 44"><path fill="currentColor" d="M2 44V0H13.9Q18.7 0 20.9 2.3Q23.1 4.7 23.1 10V12Q23.1 15.1 21.9 17Q20.8 18.9 18.6 19.5Q21.5 20.3 22.5 23Q23.6 25.8 23.6 29.8Q23.6 34 22.8 37.2Q22 40.5 19.9 42.2Q17.8 44 13.9 44ZM10.6 16.6H12.4Q13.6 16.6 13.9 15.6Q14.3 14.7 14.3 13.3V8.9Q14.3 6.8 12.4 6.8H10.6ZM11.4 36.2Q14.9 36.2 14.9 33V27.5Q14.9 25.6 14.3 24.5Q13.7 23.4 12.2 23.4H10.6V36.2Q11.1 36.2 11.4 36.2Z M30.8 44 26.1 0H34.7L37.1 27.8L39.6 0H47.8L50.1 27.8L52.5 0H61.2L56.4 44H45.8L43.6 22.8L41.5 44Z M86.6 19V0H91.7Q93.8 0 94.7 1Q95.7 2 95.7 4.3V5.2Q95.7 6.5 95.2 7.3Q94.7 8.2 93.7 8.4Q95 8.8 95.4 9.9Q95.9 11.1 95.9 12.9Q95.9 14.7 95.5 16.1Q95.2 17.5 94.3 18.2Q93.4 19 91.7 19ZM90.3 7.2H91Q91.6 7.2 91.7 6.7Q91.9 6.3 91.9 5.8V3.9Q91.9 2.9 91.1 2.9H90.3ZM90.6 15.7Q92.1 15.7 92.1 14.2V11.9Q92.1 11.1 91.9 10.6Q91.6 10.1 91 10.1H90.3V15.6Q90.5 15.7 90.6 15.7Z M99.3 19 101.1 0H107.6L109.4 19H105.8L105.5 15.9H103.2L103 19ZM103.5 12.9H105.2L104.4 3.2H104.2Z M113.2 19V0H119Q120.5 0 121.2 0.7Q122 1.3 122.2 2.5Q122.5 3.7 122.5 5.3Q122.5 6.9 122.1 7.8Q121.7 8.7 120.6 9.1Q121.5 9.3 121.8 10Q122.2 10.7 122.2 11.8V19H118.5V11.6Q118.5 10.7 118.1 10.5Q117.8 10.3 117 10.3V19ZM117 7H118Q118.8 7 118.8 5.3Q118.8 4.2 118.6 3.9Q118.4 3.5 117.9 3.5H117Z M126.4 19V0H131.5Q133.6 0 134.5 1Q135.5 2 135.5 4.3V5.2Q135.5 6.5 135 7.3Q134.5 8.2 133.5 8.4Q134.8 8.8 135.3 9.9Q135.7 11.1 135.7 12.9Q135.7 14.7 135.4 16.1Q135 17.5 134.1 18.2Q133.2 19 131.5 19ZM130.1 7.2H130.9Q131.4 7.2 131.5 6.7Q131.7 6.3 131.7 5.8V3.9Q131.7 2.9 130.9 2.9H130.1ZM130.5 15.7Q131.9 15.7 131.9 14.2V11.9Q131.9 11.1 131.7 10.6Q131.5 10.1 130.8 10.1H130.1V15.6Q130.3 15.7 130.5 15.7Z M139.6 19V0H147.2V3.7H143.5V7.4H147.1V10.9H143.5V15.3H147.5V19Z M151.4 19V0H157.2Q158.7 0 159.4 0.7Q160.2 1.3 160.4 2.5Q160.7 3.7 160.7 5.3Q160.7 6.9 160.3 7.8Q159.9 8.7 158.8 9.1Q159.7 9.3 160 10Q160.4 10.7 160.4 11.8V19H156.7V11.6Q156.7 10.7 156.3 10.5Q156 10.3 155.2 10.3V19ZM155.2 7H156.2Q156.9 7 156.9 5.3Q156.9 4.2 156.8 3.9Q156.6 3.5 156.1 3.5H155.2Z M91.1 44.2Q88.5 44.2 87.3 42.9Q86.2 41.6 86.2 38.8V36.9H89.9V39.3Q89.9 39.9 90.1 40.3Q90.3 40.7 90.8 40.7Q91.3 40.7 91.5 40.4Q91.7 40.1 91.7 39.4Q91.7 38.5 91.6 37.9Q91.4 37.3 91 36.8Q90.5 36.3 89.8 35.5L88.1 33.9Q86.2 32.1 86.2 29.8Q86.2 27.4 87.3 26.1Q88.4 24.8 90.6 24.8Q93.2 24.8 94.3 26.2Q95.4 27.6 95.4 30.5H91.5V29.1Q91.5 28.8 91.3 28.5Q91.1 28.3 90.7 28.3Q90.2 28.3 90 28.6Q89.8 28.8 89.8 29.2Q89.8 29.6 90 30.1Q90.2 30.6 90.9 31.2L93.1 33.3Q93.7 33.9 94.3 34.6Q94.8 35.3 95.2 36.2Q95.5 37.1 95.5 38.5Q95.5 41.1 94.5 42.7Q93.5 44.2 91.1 44.2Z M99.4 44V25H103.2V31.8H105V25H108.8V44H105V35.4H103.2V44Z M117.6 44.2Q115.4 44.2 114.2 42.8Q113 41.4 113 38.8V29.8Q113 27.4 114.1 26.1Q115.3 24.8 117.6 24.8Q119.9 24.8 121.1 26.1Q122.3 27.4 122.3 29.8V38.8Q122.3 41.4 121.1 42.8Q119.9 44.2 117.6 44.2ZM117.7 40.7Q118.5 40.7 118.5 39V29.7Q118.5 28.3 117.7 28.3Q116.7 28.3 116.7 29.8V39Q116.7 39.9 117 40.3Q117.2 40.7 117.7 40.7Z M126.5 44V25H131.5Q133.1 25 134 25.7Q135 26.4 135.4 27.7Q135.8 29 135.8 30.8Q135.8 32.5 135.4 33.8Q135.1 35.1 134.2 35.8Q133.4 36.5 131.8 36.5H130.3V44ZM130.3 33.1H130.5Q131.5 33.1 131.8 32.5Q132 31.9 132 30.7Q132 29.6 131.8 29.1Q131.5 28.5 130.7 28.5H130.3Z"/><rect x="72.7" y="0" width="3" height="44" fill="var(--color-accent)"/></symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.7-5A9 9 0 1 1 8.2 19.4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.5c.2 3.4 2.6 5.9 6.3 6.6l1.2-1.6-2.1-1-.9.8c-1-.4-1.9-1.3-2.4-2.4l.8-.9-1-2.1z" fill="currentColor"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><rect x="16.4" y="6" width="2" height="2" fill="currentColor"/></symbol>
     <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M3 12h18M14 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="miter"/></symbol>
   </svg>
 
   <a class="skip" href="#main"><span lang="fr">Aller au contenu</span><span lang="en">Skip to content</span></a>
 
-  <!-- ============ OPENING STRIP (thin, gold, very top of the page) ============ -->
-  <div class="topstrip" id="status" role="status"><span id="status-text"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span></div>
-
-  <!-- ============ HEADER ============ -->
+  <!-- ============ 1 + 2 · TOP STRIP AND NAV (one fixed block, hides on scroll down) ============ -->
   <header class="site-header" id="site-header">
+    <div class="topstrip" id="status" role="status">
+      <div class="ticker">
+        <div class="ticker-set">
+          <span id="status-text"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
+          <span class="tk" aria-hidden="true"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
+          <span class="tk" aria-hidden="true"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
+          <span class="tk" aria-hidden="true"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
+          <span class="tk" aria-hidden="true"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
+          <span class="tk" aria-hidden="true"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
+        </div>
+        <div class="ticker-set" aria-hidden="true">
+          <span class="tk"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
+          <span class="tk"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
+          <span class="tk"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
+          <span class="tk"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
+          <span class="tk"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
+          <span class="tk"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
+        </div>
+      </div>
+    </div>
     <div class="nav-bar">
-      <!-- TODO(owner): replace this text logo with the real logo file once received, e.g.
-           <a class="logo" href="#top"><img src="images/logo.svg" width="120" height="36" alt="B&W Barber"></a> -->
-      <a class="logo" href="#top">B<span class="amp">&amp;</span>W<small>Barber</small></a>
+      <!-- TODO(owner): no logo file arrived. This is a typographic lockup set from the Anton letterforms; swap it for the real logo when it does. -->
+      <a class="logo" href="#top" aria-label="BW Barber Shop"><svg viewBox="0 0 163.7 44" aria-hidden="true"><use href="#logo"/></svg></a>
       <nav class="nav-links" aria-label="Menu">
         <a href="#tarifs"><span lang="fr">Tarifs</span><span lang="en">Prices</span></a>
         <a href="#barbier"><span lang="fr">Le barbier</span><span lang="en">The barber</span></a>
@@ -113,7 +131,7 @@
         </div>
         <a class="btn btn-gold btn-sm nav-cta" href="#reserver" data-book><span lang="fr">Réserver</span><span lang="en">Book</span></a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">
-          <span class="sr"><span lang="fr">Menu</span><span lang="en">Menu</span></span>
+          <span class="sr">Menu</span>
           <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
         </button>
       </div>
@@ -135,7 +153,7 @@
   </header>
 
   <main id="main">
-    <!-- ============ HERO: the shop, full-bleed, under a 60% black layer ============ -->
+    <!-- ============ 3 · HERO: the shop, full screen, black and white, under a 60% black layer ============ -->
     <section class="hero" id="top" aria-labelledby="hero-title">
       <picture class="hero-bg">
         <source media="(max-width: 767px)" type="image/avif" srcset="images/interior-tall-400.avif 400w, images/interior-tall-608.avif 608w" sizes="100vw">
@@ -143,192 +161,177 @@
         <source type="image/avif" srcset="images/interior-wide-480.avif 480w, images/interior-wide-800.avif 800w, images/interior-wide-1200.avif 1200w" sizes="100vw">
         <source type="image/webp" srcset="images/interior-wide-480.webp 480w, images/interior-wide-800.webp 800w, images/interior-wide-1200.webp 1200w" sizes="100vw">
         <img src="images/interior-wide-1200.jpg" width="1200" height="630" decoding="async" fetchpriority="high"
-             alt="Le salon B&W Barber : deux fauteuils de barbier noirs devant un mur noir, mur blanc, plafond en bois, carrelage crème">
+             alt="Le salon BW Barber Shop : deux fauteuils de barbier devant un mur noir, mur blanc, plafond en bois">
       </picture>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="wrap hero-inner">
-        <h1 class="hero-title display" id="hero-title">
-          <span class="sr">B&amp;W Barber · </span>
-          <span lang="fr">Coiffeur à Emombo, Yaoundé.</span>
-          <span lang="en">Barber in Emombo, Yaoundé.</span>
+        <p class="hero-label"><span lang="fr">Barbier · Emombo, Yaoundé</span><span lang="en">Barber · Emombo, Yaoundé</span></p>
+        <h1 class="hero-title" id="hero-title">
+          <span class="sr">BW Barber Shop · </span>
+          <span lang="fr"><span class="line"><span>Dégradé propre.</span></span><span class="line"><span>Sans attente.</span></span></span>
+          <span lang="en"><span class="line"><span>Clean fades.</span></span><span class="line"><span>No waiting.</span></span></span>
         </h1>
         <p class="hero-lead">
           <span lang="fr">Dégradés nets, coupes afro, coupe enfant à partir de 500 FCFA.</span>
           <span lang="en">Clean fades, afro cuts, children’s cuts from 500 FCFA.</span>
         </p>
-        <ul class="chips" aria-label="Prix / Prices">
-          <li><a class="chip" href="#reserver" data-formule="enfant"><span lang="fr">Enfant</span><span lang="en">Child</span> <b>500</b></a></li>
-          <li><a class="chip" href="#reserver" data-formule="classique"><span lang="fr">Classique</span><span lang="en">Classic</span> <b>1&nbsp;000</b></a></li>
-          <li><a class="chip" href="#reserver" data-formule="soignee"><span lang="fr">Soignée</span><span lang="en">Neat</span> <b>2&nbsp;000</b></a></li>
-        </ul>
         <div class="actions">
           <a class="btn btn-gold" href="#reserver" data-book><span lang="fr">Réserver</span><span lang="en">Book</span></a>
-          <a class="btn btn-ghost-light" data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831?text=Bonjour%20B%26W%2C%20je%20veux%20r%C3%A9server%20une%20coupe."><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+          <a class="btn btn-ghost-light" data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20une%20coupe."><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
         </div>
       </div>
     </section>
 
-    <!-- ============ 01 TARIFS ============ -->
-    <section class="sec on-white" id="tarifs" data-sec aria-labelledby="tarifs-title">
+    <!-- ============ 4 · TARIFS: the price board (layout from the Standfast board, our six real services) ============ -->
+    <section class="sec" id="tarifs" data-sec aria-labelledby="tarifs-title">
       <div class="wrap">
-        <div class="sec-head" data-reveal>
-          <span class="sec-no display" aria-hidden="true">01</span>
-          <h2 class="display" id="tarifs-title"><span lang="fr">Les prix, sans surprise.</span><span lang="en">Prices, no surprises.</span></h2>
-          <p><span lang="fr">Votre style, notre savoir-faire. Voici la grille officielle du salon.</span><span lang="en">Your style, our know-how. This is the shop’s official price sheet.</span></p>
+        <div class="board-head" data-reveal>
+          <h2 class="sec-title" id="tarifs-title"><span lang="fr">Les prix,<br>sans surprise.</span><span lang="en">Prices,<br>no surprises.</span></h2>
+          <p class="sec-lead"><span lang="fr">Votre style, notre savoir-faire. Voici la grille officielle du salon.</span><span lang="en">Your style, our know-how. This is the shop’s official price sheet.</span></p>
         </div>
 
-        <ol class="menu">
-          <li class="menu-row" data-reveal style="--i:0">
-            <a class="menu-link" href="#reserver" data-formule="classique">
-              <span class="mr-n display" aria-hidden="true">1</span>
-              <span class="mr-main"><span class="mr-name">Classique</span><span class="mr-inc"><span lang="fr">Coupe simple + finition</span><span lang="en">Simple cut + finish</span></span></span>
-              <span class="mr-dots" aria-hidden="true"></span>
-              <span class="mr-price"><span class="num">1&nbsp;000</span> <abbr title="Francs CFA">FCFA</abbr></span>
-              <span class="mr-go"><span class="sr"><span lang="fr">Réserver</span><span lang="en">Book</span> <span lang="fr">la formule Classique</span><span lang="en">the Classic</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-            </a>
-          </li>
-          <li class="menu-row" data-reveal style="--i:1">
-            <a class="menu-link" href="#reserver" data-formule="soignee">
-              <span class="mr-n display" aria-hidden="true">2</span>
-              <span class="mr-main"><span class="mr-name"><span lang="fr">Soignée</span><span lang="en">Neat</span></span><span class="mr-inc"><span lang="fr">Coupe + black</span><span lang="en">Cut + black</span></span></span>
-              <span class="mr-dots" aria-hidden="true"></span>
-              <span class="mr-price"><span class="num">2&nbsp;000</span> <abbr title="Francs CFA">FCFA</abbr></span>
-              <span class="mr-go"><span class="sr"><span lang="fr">Réserver</span><span lang="en">Book</span> <span lang="fr">la formule Soignée</span><span lang="en">the Neat</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-            </a>
-          </li>
-          <li class="menu-row" data-reveal style="--i:2">
-            <a class="menu-link" href="#reserver" data-formule="premium">
-              <span class="mr-n display" aria-hidden="true">3</span>
-              <span class="mr-main"><span class="mr-name">Premium</span><span class="mr-inc"><span lang="fr">Coupe + black + soin de visage</span><span lang="en">Cut + black + facial care</span></span></span>
-              <span class="mr-dots" aria-hidden="true"></span>
-              <span class="mr-price"><span class="num">3&nbsp;000</span> <abbr title="Francs CFA">FCFA</abbr></span>
-              <span class="mr-go"><span class="sr"><span lang="fr">Réserver</span><span lang="en">Book</span> <span lang="fr">la formule Premium</span><span lang="en">the Premium</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-            </a>
-          </li>
-          <li class="menu-row" data-reveal style="--i:3">
-            <a class="menu-link" href="#reserver" data-formule="couleur">
-              <span class="mr-n display" aria-hidden="true">4</span>
-              <span class="mr-main"><span class="mr-name"><span lang="fr">Couleur</span><span lang="en">Colour</span></span><span class="mr-inc"><span lang="fr">Coupe + teinture</span><span lang="en">Cut + dye</span></span></span>
-              <span class="mr-dots" aria-hidden="true"></span>
-              <span class="mr-price"><span class="num">5&nbsp;000</span> <abbr title="Francs CFA">FCFA</abbr></span>
-              <span class="mr-go"><span class="sr"><span lang="fr">Réserver</span><span lang="en">Book</span> <span lang="fr">la formule Couleur</span><span lang="en">the Colour</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-            </a>
-          </li>
-          <li class="menu-row" data-reveal style="--i:4">
-            <a class="menu-link" href="#reserver" data-formule="pedicure">
-              <span class="mr-n display" aria-hidden="true">5</span>
-              <span class="mr-main"><span class="mr-name"><span lang="fr">Pédicure</span><span lang="en">Pedicure</span></span><span class="mr-inc"><span lang="fr">Pédicure</span><span lang="en">Pedicure</span></span></span>
-              <span class="mr-dots" aria-hidden="true"></span>
-              <span class="mr-price"><span class="num">2&nbsp;500</span> <abbr title="Francs CFA">FCFA</abbr></span>
-              <span class="mr-go"><span class="sr"><span lang="fr">Réserver</span><span lang="en">Book</span> <span lang="fr">la pédicure</span><span lang="en">the pedicure</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-            </a>
-          </li>
-          <li class="menu-row" data-reveal style="--i:5">
-            <a class="menu-link" href="#reserver" data-formule="enfant">
-              <span class="mr-n display" aria-hidden="true"></span>
-              <span class="mr-main"><span class="mr-name"><span lang="fr">Enfant</span><span lang="en">Child</span></span><span class="mr-inc"><span lang="fr">Coupe enfant + finition</span><span lang="en">Child’s cut + finish</span></span></span>
-              <span class="mr-dots" aria-hidden="true"></span>
-              <span class="mr-price"><span class="num">500</span> <abbr title="Francs CFA">FCFA</abbr></span>
-              <span class="mr-go"><span class="sr"><span lang="fr">Réserver</span><span lang="en">Book</span> <span lang="fr">la coupe enfant</span><span lang="en">the child’s cut</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-            </a>
-          </li>
-        </ol>
+        <div class="board-grid">
+          <div>
+            <!-- Each row opens the booking with that service chosen. Hover: the cut's photo in a gold star (photos: images/cuts/, set in BW_CONFIG.CUT_PHOTOS). -->
+            <ol class="board" id="board">
+              <li><a class="row" href="#reserver" data-formule="classique">
+                <span class="row-thumb" aria-hidden="true"></span>
+                <span class="row-text"><span class="row-name">Classique</span><span class="row-meta"><span class="dur">30</span> min</span></span>
+                <span class="row-price"><span class="sr">1 000 FCFA</span><span class="num" aria-hidden="true">1&nbsp;000</span><small aria-hidden="true">FCFA</small></span>
+                <span class="row-go"><span lang="fr">Réserver</span><span lang="en">Book</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+              </a></li>
+              <li><a class="row" href="#reserver" data-formule="soignee">
+                <span class="row-thumb" aria-hidden="true"></span>
+                <span class="row-text"><span class="row-name"><span lang="fr">Soignée</span><span lang="en">Neat</span></span><span class="row-meta"><span class="dur">45</span> min</span></span>
+                <span class="row-price"><span class="sr">2 000 FCFA</span><span class="num" aria-hidden="true">2&nbsp;000</span><small aria-hidden="true">FCFA</small></span>
+                <span class="row-go"><span lang="fr">Réserver</span><span lang="en">Book</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+              </a></li>
+              <li><a class="row" href="#reserver" data-formule="premium">
+                <span class="row-thumb" aria-hidden="true"></span>
+                <span class="row-text"><span class="row-name">Premium</span><span class="row-meta"><span class="dur">60</span> min</span></span>
+                <span class="row-price"><span class="sr">3 000 FCFA</span><span class="num" aria-hidden="true">3&nbsp;000</span><small aria-hidden="true">FCFA</small></span>
+                <span class="row-go"><span lang="fr">Réserver</span><span lang="en">Book</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+              </a></li>
+              <li><a class="row" href="#reserver" data-formule="couleur">
+                <span class="row-thumb" aria-hidden="true"></span>
+                <span class="row-text"><span class="row-name"><span lang="fr">Couleur</span><span lang="en">Colour</span></span><span class="row-meta"><span class="dur">90</span> min</span></span>
+                <span class="row-price"><span class="sr">5 000 FCFA</span><span class="num" aria-hidden="true">5&nbsp;000</span><small aria-hidden="true">FCFA</small></span>
+                <span class="row-go"><span lang="fr">Réserver</span><span lang="en">Book</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+              </a></li>
+              <li><a class="row" href="#reserver" data-formule="pedicure">
+                <span class="row-thumb" aria-hidden="true"></span>
+                <span class="row-text"><span class="row-name"><span lang="fr">Pédicure</span><span lang="en">Pedicure</span></span><span class="row-meta"><span class="dur">45</span> min</span></span>
+                <span class="row-price"><span class="sr">2 500 FCFA</span><span class="num" aria-hidden="true">2&nbsp;500</span><small aria-hidden="true">FCFA</small></span>
+                <span class="row-go"><span lang="fr">Réserver</span><span lang="en">Book</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+              </a></li>
+              <li><a class="row" href="#reserver" data-formule="enfant">
+                <span class="row-thumb" aria-hidden="true"></span>
+                <span class="row-text"><span class="row-name"><span lang="fr">Enfant</span><span lang="en">Child</span></span><span class="row-meta"><span class="dur">20</span> min</span></span>
+                <span class="row-price"><span class="sr">500 FCFA</span><span class="num" aria-hidden="true">500</span><small aria-hidden="true">FCFA</small></span>
+                <span class="row-go"><span lang="fr">Réserver</span><span lang="en">Book</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+              </a></li>
+            </ol>
+            <div class="board-actions">
+              <a class="btn btn-ghost-light" href="#reserver" data-book><span lang="fr">Voir tous les services</span><span lang="en">See all services</span></a>
+              <a class="btn btn-gold" href="#reserver" data-book><span lang="fr">Réserver</span><span lang="en">Book</span></a>
+            </div>
+          </div>
 
-        <p class="conditions">
-          <span lang="fr">Prix en FCFA. Dites au barbier le service voulu avant le début de la coupe.</span>
-          <span lang="en">Prices in FCFA. Tell the barber which service you want before the cut starts.</span>
-        </p>
+          <aside class="board-aside" data-reveal>
+            <div>
+              <h3><span lang="fr">Horaires</span><span lang="en">Hours</span></h3>
+              <table class="hours">
+                <caption class="sr"><span lang="fr">Horaires d’ouverture</span><span lang="en">Opening hours</span></caption>
+                <tbody>
+                  <tr data-dow="1"><th scope="row"><span lang="fr">Lundi</span><span lang="en">Monday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
+                  <tr data-dow="2"><th scope="row"><span lang="fr">Mardi</span><span lang="en">Tuesday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
+                  <tr data-dow="3"><th scope="row"><span lang="fr">Mercredi</span><span lang="en">Wednesday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
+                  <tr data-dow="4"><th scope="row"><span lang="fr">Jeudi</span><span lang="en">Thursday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
+                  <tr data-dow="5"><th scope="row"><span lang="fr">Vendredi</span><span lang="en">Friday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
+                  <tr data-dow="6"><th scope="row"><span lang="fr">Samedi</span><span lang="en">Saturday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
+                  <tr data-dow="7"><th scope="row"><span lang="fr">Dimanche</span><span lang="en">Sunday</span></th><td><span lang="fr">À confirmer</span><span lang="en">To be confirmed</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note">
+              <h3><span lang="fr">Prix en FCFA.</span><span lang="en">Prices in FCFA.</span></h3>
+              <p><span lang="fr">Dites au barbier le service voulu avant le début de la coupe.</span><span lang="en">Tell the barber which service you want before the cut starts.</span></p>
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
 
-    <!-- ============ 02 LE BARBIER ============ -->
-    <section class="sec on-black" id="barbier" data-sec aria-labelledby="barbier-title">
-      <div class="wrap bar">
-        <figure class="bar-photo" data-reveal>
-          <div class="zoom">
+    <!-- ============ 5 · LE BARBIER ============ -->
+    <section class="sec" id="barbier" data-sec aria-labelledby="barbier-title">
+      <div class="wrap barber">
+        <figure class="barber-photo" data-reveal>
+          <div class="frame" id="barber-frame">
             <picture>
-              <source type="image/avif" srcset="images/barber-at-work-400.avif 400w, images/barber-at-work-602.avif 602w" sizes="(min-width: 768px) 440px, calc(100vw - 48px)">
-              <source type="image/webp" srcset="images/barber-at-work-400.webp 400w, images/barber-at-work-602.webp 602w" sizes="(min-width: 768px) 440px, calc(100vw - 48px)">
+              <source type="image/avif" srcset="images/barber-at-work-400.avif 400w, images/barber-at-work-602.avif 602w" sizes="(min-width: 1024px) 480px, calc(100vw - 32px)">
+              <source type="image/webp" srcset="images/barber-at-work-400.webp 400w, images/barber-at-work-602.webp 602w" sizes="(min-width: 1024px) 480px, calc(100vw - 32px)">
               <img src="images/barber-at-work-602.jpg" width="602" height="1069" loading="lazy" decoding="async"
                    alt="Le barbier du salon trace le contour d’un client barbu, sous le plafond en bois">
             </picture>
           </div>
           <figcaption class="caption"><span lang="fr">Le contour, à la main.</span><span lang="en">The line-up, by hand.</span></figcaption>
         </figure>
-        <div class="bar-text" data-reveal style="--i:1">
-          <span class="sec-no display" aria-hidden="true">02</span>
-          <h2 class="display" id="barbier-title">Rudiger</h2>
+        <div class="barber-text" data-reveal>
+          <h2 id="barbier-title">Rudiger</h2>
           <p class="who"><span lang="fr">Camanda Jackson, connu sous le nom de Rudiger, est le barbier du salon d’Emombo Auberge.</span><span lang="en">Camanda Jackson, known as Rudiger, is the barber at the Emombo Auberge shop.</span></p>
-          <!-- TODO(owner): one real sentence from Rudiger goes in BW_CONFIG.BARBER_QUOTE. It appears here automatically. Do not invent one. -->
+          <!-- TODO(owner): speciality, years of experience, and one real sentence from Rudiger go in BW_CONFIG.BARBER (speciality, years) and BARBER_QUOTE. They appear here when filled. Never invent them. -->
+          <dl class="facts" id="barber-facts" hidden></dl>
           <blockquote class="quote" id="barber-quote" hidden></blockquote>
-          <p><a class="btn btn-gold" href="#reserver" data-book><span lang="fr">Réserver chez Rudiger</span><span lang="en">Book with Rudiger</span></a></p>
+          <p><a class="btn btn-gold" href="#reserver" data-book><span lang="fr">Réserver avec lui</span><span lang="en">Book with him</span></a></p>
         </div>
       </div>
     </section>
 
-    <!-- ============ 03 GALERIE ============ -->
-    <section class="sec on-black" id="galerie" data-sec aria-labelledby="galerie-title">
+    <!-- ============ 6 · GALERIE: uneven grid, black and white, colour on hover, click to enlarge ============ -->
+    <section class="sec" id="galerie" data-sec aria-labelledby="galerie-title">
       <div class="wrap">
-        <div class="sec-head" data-reveal>
-          <span class="sec-no display" aria-hidden="true">03</span>
-          <h2 class="display" id="galerie-title"><span lang="fr">Le salon, en vrai.</span><span lang="en">The shop, for real.</span></h2>
-          <p><span lang="fr">Noir, blanc, et le bois au plafond. Un salon neuf et climatisé, avec de vrais fauteuils de barbier et un coin pour attendre. Des photos prises au salon, sans retouche.</span><span lang="en">Black, white, and wood overhead. A new, air-conditioned shop with proper barber chairs and a place to wait. Photos taken in the shop, untouched.</span></p>
+        <div data-reveal>
+          <h2 class="sec-title" id="galerie-title"><span lang="fr">Le salon,<br>en vrai.</span><span lang="en">The shop,<br>for real.</span></h2>
+          <p class="sec-lead"><span lang="fr">Noir, blanc, et le bois au plafond. Un salon neuf et climatisé, avec de vrais fauteuils de barbier et un coin pour attendre.</span><span lang="en">Black, white, and wood overhead. A new, air-conditioned shop with proper barber chairs and a place to wait.</span></p>
         </div>
-        <ul class="shots">
-          <li data-reveal style="--i:0">
-            <figure>
-              <div class="zoom">
-                <picture>
-                  <source type="image/avif" srcset="images/interior-tall-400.avif 400w, images/interior-tall-608.avif 608w" sizes="(min-width: 768px) 360px, calc(100vw - 48px)">
-                  <source type="image/webp" srcset="images/interior-tall-400.webp 400w, images/interior-tall-608.webp 608w" sizes="(min-width: 768px) 360px, calc(100vw - 48px)">
-                  <img src="images/interior-tall-608.jpg" width="608" height="1080" loading="lazy" decoding="async"
-                       alt="Vue du salon dans la longueur : plafond en bois verni, mur blanc à gauche, mur noir et miroirs à droite, deux fauteuils">
-                </picture>
-              </div>
-              <figcaption class="caption"><span lang="fr">Du plafond en bois au carrelage.</span><span lang="en">From wooden ceiling to tiled floor.</span></figcaption>
-            </figure>
-          </li>
-          <li data-reveal style="--i:1">
-            <figure>
-              <div class="zoom">
-                <picture>
-                  <source type="image/avif" srcset="images/barber-smile-340.avif 340w, images/barber-smile-499.avif 499w" sizes="(min-width: 768px) 360px, calc(100vw - 48px)">
-                  <source type="image/webp" srcset="images/barber-smile-340.webp 340w, images/barber-smile-499.webp 499w" sizes="(min-width: 768px) 360px, calc(100vw - 48px)">
-                  <img src="images/barber-smile-499.jpg" width="499" height="888" loading="lazy" decoding="async"
-                       alt="Un jeune client sourit pendant que le barbier passe la tondeuse">
-                </picture>
-              </div>
-              <figcaption class="caption"><span lang="fr">On repart avec le sourire.</span><span lang="en">Leaving with a smile.</span></figcaption>
-            </figure>
-          </li>
-          <li class="shot-empty" data-reveal style="--i:2">
-            <!-- TODO(owner): 6 to 10 close-ups of finished cuts (side + back), the shop front with its sign, a portrait of Rudiger. Daylight, iPhone camera in photo mode, not video. -->
-            <p><span lang="fr">Les coupes terminées arrivent ici, dès les premières semaines d’ouverture.</span><span lang="en">Finished cuts will appear here in the first weeks after opening.</span></p>
-          </li>
-        </ul>
+        <div class="gallery" id="gallery">
+          <button class="shot g1 shot-wipe" type="button" data-full="images/interior-tall-608.jpg" data-alt="Vue du salon dans la longueur : plafond en bois verni, mur blanc à gauche, mur noir et miroirs à droite, deux fauteuils" aria-label="Agrandir la photo : le salon dans la longueur">
+            <span class="bw"><picture><source type="image/avif" srcset="images/interior-tall-400.avif 400w, images/interior-tall-608.avif 608w" sizes="(min-width: 1024px) 420px, 50vw"><source type="image/webp" srcset="images/interior-tall-400.webp 400w, images/interior-tall-608.webp 608w" sizes="(min-width: 1024px) 420px, 50vw"><img src="images/interior-tall-608.jpg" width="608" height="1080" loading="lazy" decoding="async" alt=""></picture></span>
+            <span class="colour" aria-hidden="true"><picture><source type="image/avif" srcset="images/interior-tall-400.avif 400w, images/interior-tall-608.avif 608w" sizes="(min-width: 1024px) 420px, 50vw"><source type="image/webp" srcset="images/interior-tall-400.webp 400w, images/interior-tall-608.webp 608w" sizes="(min-width: 1024px) 420px, 50vw"><img src="images/interior-tall-608.jpg" width="608" height="1080" loading="lazy" decoding="async" alt=""></picture></span>
+          </button>
+          <button class="shot g2 shot-wipe" type="button" data-full="images/interior-wide-1200.jpg" data-alt="Deux fauteuils de barbier noirs devant un mur noir, miroirs, carrelage crème" aria-label="Agrandir la photo : les deux fauteuils">
+            <span class="bw"><picture><source type="image/avif" srcset="images/interior-wide-480.avif 480w, images/interior-wide-800.avif 800w" sizes="(min-width: 1024px) 640px, 100vw"><source type="image/webp" srcset="images/interior-wide-480.webp 480w, images/interior-wide-800.webp 800w" sizes="(min-width: 1024px) 640px, 100vw"><img src="images/interior-wide-800.jpg" width="1200" height="630" loading="lazy" decoding="async" alt=""></picture></span>
+            <span class="colour" aria-hidden="true"><picture><source type="image/avif" srcset="images/interior-wide-480.avif 480w, images/interior-wide-800.avif 800w" sizes="(min-width: 1024px) 640px, 100vw"><source type="image/webp" srcset="images/interior-wide-480.webp 480w, images/interior-wide-800.webp 800w" sizes="(min-width: 1024px) 640px, 100vw"><img src="images/interior-wide-800.jpg" width="1200" height="630" loading="lazy" decoding="async" alt=""></picture></span>
+          </button>
+          <button class="shot g3 shot-wipe" type="button" data-full="images/barber-smile-499.jpg" data-alt="Un jeune client sourit pendant que le barbier passe la tondeuse" aria-label="Agrandir la photo : un client sourit">
+            <span class="bw"><picture><source type="image/avif" srcset="images/barber-smile-340.avif 340w, images/barber-smile-499.avif 499w" sizes="(min-width: 1024px) 300px, 50vw"><source type="image/webp" srcset="images/barber-smile-340.webp 340w, images/barber-smile-499.webp 499w" sizes="(min-width: 1024px) 300px, 50vw"><img src="images/barber-smile-499.jpg" width="499" height="888" loading="lazy" decoding="async" alt=""></picture></span>
+            <span class="colour" aria-hidden="true"><picture><source type="image/avif" srcset="images/barber-smile-340.avif 340w, images/barber-smile-499.avif 499w" sizes="(min-width: 1024px) 300px, 50vw"><source type="image/webp" srcset="images/barber-smile-340.webp 340w, images/barber-smile-499.webp 499w" sizes="(min-width: 1024px) 300px, 50vw"><img src="images/barber-smile-499.jpg" width="499" height="888" loading="lazy" decoding="async" alt=""></picture></span>
+          </button>
+          <button class="shot g4 shot-wipe" type="button" data-full="images/barber-at-work-602.jpg" data-alt="Le barbier trace le contour d’un client barbu" aria-label="Agrandir la photo : le contour à la main">
+            <span class="bw"><picture><source type="image/avif" srcset="images/barber-at-work-400.avif 400w" sizes="(min-width: 1024px) 200px, 50vw"><source type="image/webp" srcset="images/barber-at-work-400.webp 400w" sizes="(min-width: 1024px) 200px, 50vw"><img src="images/barber-at-work-400.jpg" width="400" height="710" loading="lazy" decoding="async" alt=""></picture></span>
+            <span class="colour" aria-hidden="true"><picture><source type="image/avif" srcset="images/barber-at-work-400.avif 400w" sizes="(min-width: 1024px) 200px, 50vw"><source type="image/webp" srcset="images/barber-at-work-400.webp 400w" sizes="(min-width: 1024px) 200px, 50vw"><img src="images/barber-at-work-400.jpg" width="400" height="710" loading="lazy" decoding="async" alt=""></picture></span>
+          </button>
+          <!-- TODO(owner): 6 to 10 close-ups of finished cuts (side and back), the shop front with its sign, a portrait of Rudiger. Daylight, camera in photo mode, not video. -->
+          <div class="shot g5 shot-wipe"><p><span lang="fr">Les coupes terminées arrivent ici, dès les premières semaines d’ouverture.</span><span lang="en">Finished cuts will appear here in the first weeks after opening.</span></p></div>
+        </div>
       </div>
     </section>
 
-    <!-- ============ 04 AVIS (hidden until real reviews exist) ============ -->
-    <section class="sec on-black" id="avis" data-sec aria-labelledby="avis-title" hidden>
+    <!-- ============ 7 · AVIS (hidden until real reviews exist; see BW_CONFIG.REVIEWS and ?preview=avis) ============ -->
+    <section class="sec" id="avis" data-sec aria-labelledby="avis-title" hidden>
       <div class="wrap">
-        <div class="sec-head" data-reveal>
-          <span class="sec-no display" aria-hidden="true">04</span>
-          <h2 class="display" id="avis-title"><span lang="fr">Avis</span><span lang="en">Reviews</span></h2>
-          <p id="avis-note"></p>
+        <div data-reveal>
+          <h2 class="sec-title" id="avis-title"><span lang="fr">Avis</span><span lang="en">Reviews</span></h2>
+          <p class="sec-lead" id="avis-note"></p>
         </div>
         <ul class="reviews" id="reviews"></ul>
       </div>
     </section>
 
-    <!-- ============ 05 RESERVATION (logic lives in js/app.js) ============ -->
-    <section class="sec on-white booking" id="reserver" data-sec aria-labelledby="book-title">
+    <!-- ============ RESERVATION (the one light surface; logic lives in js/app.js) ============ -->
+    <section class="sec on-light booking" id="reserver" data-sec aria-labelledby="book-title">
       <div class="wrap">
-        <div class="sec-head" data-reveal>
-          <span class="sec-no display" aria-hidden="true">05</span>
-          <h2 class="display" id="book-title"><span lang="fr">Réserver.</span><span lang="en">Book.</span></h2>
-          <p id="book-intro"><span lang="fr">Quatre étapes, depuis votre téléphone.</span><span lang="en">Four steps, from your phone.</span></p>
-        </div>
+        <h2 class="sec-title" id="book-title" data-reveal><span lang="fr">Réserver.</span><span lang="en">Book.</span></h2>
         <div id="booking" class="booking-box">
           <noscript>
             <p class="notice"><span lang="fr">La réservation en ligne a besoin de JavaScript. Écrivez-nous plutôt sur WhatsApp :</span><span lang="en">Online booking needs JavaScript. Message us on WhatsApp instead:</span>
@@ -338,72 +341,43 @@
       </div>
     </section>
 
-    <!-- ============ 06 INFOS PRATIQUES ============ -->
-    <section class="sec on-black" id="infos" data-sec aria-labelledby="infos-title">
+    <!-- ============ 8 · INFOS ============ -->
+    <section class="sec" id="infos" data-sec aria-labelledby="infos-title">
       <div class="wrap">
-        <div class="sec-head" data-reveal>
-          <span class="sec-no display" aria-hidden="true">06</span>
-          <h2 class="display" id="infos-title"><span lang="fr">Passez nous voir.</span><span lang="en">Come through.</span></h2>
-        </div>
-
         <div class="visit">
-          <div class="visit-map" data-reveal>
+          <div data-reveal>
+            <h2 class="sec-title" id="infos-title"><span lang="fr">Passez<br>nous voir.</span><span lang="en">Come<br>through.</span></h2>
+            <p class="addr">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Emombo+Auberge+Yaound%C3%A9" target="_blank" rel="noopener">Emombo Auberge, Yaoundé</a>
+              <small id="landmark" hidden></small>
+            </p>
+            <a class="tel" href="tel:+237690868831">+237 690 86 88 31</a>
+            <div class="actions">
+              <a class="btn btn-gold" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Emombo+Auberge+Yaound%C3%A9"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span lang="fr">Itinéraire</span><span lang="en">Directions</span></a>
+              <a class="btn btn-ghost-light" href="tel:+237690868831"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span lang="fr">Appeler</span><span lang="en">Call</span></a>
+              <a class="btn btn-ghost-light" data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20une%20coupe."><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+            </div>
+            <h3 class="sr"><span lang="fr">Horaires</span><span lang="en">Hours</span></h3>
+            <p id="hours-dd" class="muted"><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></p>
+            <table class="hours" id="hours-table">
+              <caption class="sr"><span lang="fr">Horaires d’ouverture</span><span lang="en">Opening hours</span></caption>
+              <tbody>
+                <tr data-dow="1"><th scope="row"><span lang="fr">Lundi</span><span lang="en">Monday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
+                <tr data-dow="2"><th scope="row"><span lang="fr">Mardi</span><span lang="en">Tuesday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
+                <tr data-dow="3"><th scope="row"><span lang="fr">Mercredi</span><span lang="en">Wednesday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
+                <tr data-dow="4"><th scope="row"><span lang="fr">Jeudi</span><span lang="en">Thursday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
+                <tr data-dow="5"><th scope="row"><span lang="fr">Vendredi</span><span lang="en">Friday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
+                <tr data-dow="6"><th scope="row"><span lang="fr">Samedi</span><span lang="en">Saturday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
+                <tr data-dow="7"><th scope="row"><span lang="fr">Dimanche</span><span lang="en">Sunday</span></th><td><span lang="fr">À confirmer</span><span lang="en">To be confirmed</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div data-reveal>
             <div class="map" id="map" data-src="https://www.google.com/maps?q=Emombo+Auberge+Yaound%C3%A9&amp;output=embed&amp;hl=fr">
-              <button class="map-load" type="button" id="map-load">
-                <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>
-                <span lang="fr">Afficher la carte</span><span lang="en">Show the map</span>
-              </button>
+              <button class="map-load" type="button" id="map-load"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span lang="fr">Afficher la carte</span><span lang="en">Show the map</span></button>
               <p class="map-note"><span lang="fr">La carte Google ne se charge que si vous la demandez.</span><span lang="en">The Google map only loads if you ask for it.</span></p>
             </div>
-            <a class="btn btn-gold" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Emombo+Auberge+Yaound%C3%A9"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span lang="fr">Itinéraire</span><span lang="en">Directions</span></a>
           </div>
-
-          <dl class="info" data-reveal style="--i:1">
-            <div>
-              <dt><span lang="fr">Adresse</span><span lang="en">Address</span></dt>
-              <dd>
-                <a href="https://www.google.com/maps/search/?api=1&amp;query=Emombo+Auberge+Yaound%C3%A9" target="_blank" rel="noopener">Emombo Auberge, Yaoundé</a>
-                <small id="landmark" hidden></small>
-              </dd>
-            </div>
-            <div>
-              <dt><span lang="fr">Téléphone et WhatsApp</span><span lang="en">Phone and WhatsApp</span></dt>
-              <dd>
-                <a class="tel" href="tel:+237690868831">+237 690 86 88 31</a>
-                <span class="links">
-                  <a class="btn btn-ghost btn-sm" href="tel:+237690868831"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span lang="fr">Appeler</span><span lang="en">Call</span></a>
-                  <a class="btn btn-ghost btn-sm" data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831?text=Bonjour%20B%26W%2C%20je%20veux%20r%C3%A9server%20une%20coupe."><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
-                </span>
-              </dd>
-            </div>
-            <div>
-              <dt><span lang="fr">Horaires</span><span lang="en">Hours</span></dt>
-              <dd>
-                <span id="hours-dd"><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></span>
-                <table class="hours" id="hours-table">
-                  <caption class="sr"><span lang="fr">Horaires d’ouverture</span><span lang="en">Opening hours</span></caption>
-                  <tbody>
-                    <tr data-dow="1"><th scope="row"><span lang="fr">Lundi</span><span lang="en">Monday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                    <tr data-dow="2"><th scope="row"><span lang="fr">Mardi</span><span lang="en">Tuesday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                    <tr data-dow="3"><th scope="row"><span lang="fr">Mercredi</span><span lang="en">Wednesday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                    <tr data-dow="4"><th scope="row"><span lang="fr">Jeudi</span><span lang="en">Thursday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                    <tr data-dow="5"><th scope="row"><span lang="fr">Vendredi</span><span lang="en">Friday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                    <tr data-dow="6"><th scope="row"><span lang="fr">Samedi</span><span lang="en">Saturday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                    <tr data-dow="7"><th scope="row"><span lang="fr">Dimanche</span><span lang="en">Sunday</span></th><td><span lang="fr">À confirmer</span><span lang="en">To be confirmed</span></td></tr>
-                  </tbody>
-                </table>
-              </dd>
-            </div>
-            <div id="socials" hidden>
-              <dt><span lang="fr">Réseaux</span><span lang="en">Social</span></dt>
-              <dd>
-                <span class="links">
-                  <a class="btn btn-ghost btn-sm" id="soc-ig" target="_blank" rel="noopener" href="#" hidden><svg class="ico" aria-hidden="true"><use href="#i-ig"/></svg>Instagram</a>
-                  <a class="btn btn-ghost btn-sm" id="soc-fb" target="_blank" rel="noopener" href="#" hidden><svg class="ico" aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a>
-                </span>
-              </dd>
-            </div>
-          </dl>
         </div>
 
         <div class="fine" data-reveal>
@@ -424,12 +398,20 @@
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer on-black">
+  <!-- ============ 9 · FOOTER ============ -->
+  <footer class="footer">
     <div class="wrap foot-grid">
       <div>
-        <p class="foot-name display">B&amp;W Barber</p>
-        <p class="muted">Emombo Auberge, Yaoundé<br><a href="tel:+237690868831">+237 690 86 88 31</a></p>
+        <p class="foot-name" aria-label="BW Barber Shop">BW Barber Shop</p>
+        <p class="muted">Emombo Auberge, Yaoundé</p>
+        <div class="links">
+          <a href="tel:+237690868831">+237 690 86 88 31</a>
+          <a data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20une%20coupe.">WhatsApp</a>
+          <!-- TODO(owner): Instagram and Facebook URLs go in BW_CONFIG.SOCIAL. The links appear here when filled. -->
+          <a id="soc-ig" target="_blank" rel="noopener" href="#" hidden>Instagram</a>
+          <a id="soc-fb" target="_blank" rel="noopener" href="#" hidden>Facebook</a>
+        </div>
+        <span id="socials" hidden></span>
       </div>
       <nav aria-label="Pied de page / Footer">
         <a href="#tarifs"><span lang="fr">Tarifs</span><span lang="en">Prices</span></a>
@@ -438,17 +420,30 @@
         <a href="#reserver"><span lang="fr">Réserver</span><span lang="en">Book</span></a>
         <a href="#confidentialite"><span lang="fr">Vos données</span><span lang="en">Your data</span></a>
       </nav>
-      <p class="muted foot-credit"><span lang="fr">Site :</span><span lang="en">Site:</span> Samuel ETAH<br>© 2026 B&amp;W Barber</p>
+      <p class="muted foot-credit">© 2026 BW Barber Shop<br><span lang="fr">Site :</span><span lang="en">Site:</span> Samuel ETAH</p>
     </div>
-    <div class="foot-mark" aria-hidden="true"><span>B</span><span class="amp">&amp;</span><span>W</span></div>
+    <div class="foot-mark" aria-hidden="true"><span id="foot-mark">BW Barber Shop</span></div>
   </footer>
 
   <!-- Phone only: Réserver + WhatsApp + call, always under the thumb -->
   <nav class="callbar on-black" aria-label="Actions rapides / Quick actions">
     <a class="btn btn-gold cb-book" href="#reserver" data-book><span lang="fr">Réserver</span><span lang="en">Book</span></a>
-    <a class="btn btn-ghost cb-ico" data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831?text=Bonjour%20B%26W%2C%20je%20veux%20r%C3%A9server%20une%20coupe."><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span class="sr">WhatsApp</span></a>
+    <a class="btn btn-ghost cb-ico" data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20une%20coupe."><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span class="sr">WhatsApp</span></a>
     <a class="btn btn-ghost cb-ico" href="tel:+237690868831"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span class="sr"><span lang="fr">Appeler</span><span lang="en">Call</span></span></a>
   </nav>
+
+  <!-- Gallery lightbox -->
+  <dialog class="lightbox" id="lightbox" aria-label="Photo">
+    <img id="lb-img" src="images/interior-tall-608.jpg" alt="" width="608" height="1080" loading="lazy">
+    <div class="lb-bar">
+      <button type="button" id="lb-prev" aria-label="Précédente / Previous"><svg class="ico flip" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      <button type="button" id="lb-close"><span lang="fr">Fermer</span><span lang="en">Close</span></button>
+      <button type="button" id="lb-next" aria-label="Suivante / Next"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </div>
+  </dialog>
+
+  <!-- The cursor-follow star (price board). Decorative. -->
+  <div class="star" id="star" aria-hidden="true"><div class="star-photo" id="star-photo"><span lang="fr">Photo bientôt</span><span lang="en">Photo soon</span></div></div>
 
   <script src="js/config.js"></script>
   <script src="js/app.js"></script>

@@ -7,7 +7,7 @@
 window.BW_CONFIG = {
 
   /* ---------- Confirmed facts ---------- */
-  NAME: 'B&W Barber',
+  NAME: 'BW Barber Shop',
   PLACE: 'Emombo Auberge',
   CITY: 'Yaoundé',
   PHONE_E164: '+237690868831',
@@ -36,6 +36,10 @@ window.BW_CONFIG = {
   // Preview the empty layout without publishing it: open the site with ?preview=avis
   REVIEWS: [],                         // TODO(owner)
 
+  // Photos of each cut, shown inside the gold star when a price row is hovered (and as a thumbnail on phones).
+  // Drop files in images/cuts/ and list them here, e.g. { classique: 'images/cuts/classique.jpg' }. Empty = the star shows "Photo bientôt".
+  CUT_PHOTOS: {},                      // TODO(owner): one finished-cut photo per service
+
   // Exact landmark near the shop ("en face de…", "derrière…"). Empty = hidden.
   LANDMARK: { fr: '', en: '' },        // TODO(owner)
 
@@ -44,7 +48,7 @@ window.BW_CONFIG = {
   BARBER_QUOTE: { fr: '', en: '' },    // TODO(owner)
 
   // Confirm the spelling on his ID: "Camanda" or "Camada".
-  BARBER: { legalName: 'Camanda Jackson', nickname: 'Rudiger' },   // TODO(owner)
+  BARBER: { legalName: 'Camanda Jackson', nickname: 'Rudiger', speciality: '', years: '' },   // TODO(owner): speciality (e.g. 'Dégradés') and years of experience. Empty = hidden. Never guess.
 
   /* ---------- Price sheet (FCFA), straight from the official sheet ----------
      Durations are DEFAULTS. TODO(owner): confirm each one.
