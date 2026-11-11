@@ -16,7 +16,7 @@
 }
 
 :root {
-  --ink: #0c0c0b;
+  --ink: #0b0b0b;   /* the dark of the whole site */
   --paper: #ffffff;
   --gold: #d4a72c;
   --gold-hover: #e0b53d;

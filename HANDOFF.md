@@ -5,8 +5,8 @@ Static pages + two small serverless functions. No framework, no build step, no t
 
 ## What works today (without any account setup)
 
-- One page, in this order: header (logo, menu, FR/EN, **Réserver**), **hero** (opening banner, headline, a booking card with formule chips, WhatsApp, a framed photo of the salon, a ticker of the real prices), **01 Tarifs** (the price sheet as a menu board, every row books that formule), **02 Le barbier**, **03 Galerie**, **04 Avis** (hidden until real reviews exist), **05 Réserver**, **06 Infos** (map on request, Itinéraire, click-to-call, hours table, conditions, privacy), footer with the giant B&W lettering.
-- Layout follows the reference in the repo root (Land-book: Relume hero): centred stack, prompt-style card, framed hero image, ticker row. Colours are black, white and gold `#D4A72C`; display font Big Shoulders, text font Instrument Sans.
+- One page, in this order: header (logo, menu, FR/EN, **Réserver**), **hero** (thin gold opening strip at the very top; full-screen shop photo under a 60% black layer; huge white left-aligned headline; three price chips; gold Réserver + outline WhatsApp), **01 Tarifs** (the price sheet as a menu board, every row books that formule), **02 Le barbier**, **03 Galerie**, **04 Avis** (hidden until real reviews exist), **05 Réserver**, **06 Infos** (map on request, Itinéraire, click-to-call, hours table, conditions, privacy), footer with the giant B&W lettering.
+- The site is dark (`#0B0B0B`); light sections only where they add contrast (Tarifs, Réserver). Gold `#D4A72C` is used for the opening strip, Réserver buttons and small accents. The hero was redesigned from a written brief (no new screenshot was in the repo); display font Big Shoulders, text font Instrument Sans.
 - Phone: sticky bottom bar with **Réserver**, a WhatsApp icon and a call icon (44 px+ targets). WhatsApp opens with "Bonjour B&W, je veux réserver une coupe." (EN: "Hello B&W, I want to book a cut.").
 - Motion: scroll reveals (fade + 16 px rise, staggered), hover states on buttons, chips, menu rows, images. All off under `prefers-reduced-motion`.
 - **Booking in 4 steps** (formule, day and time, details, confirmation). **Right now it runs in WhatsApp mode**: the visitor gets a summary and a one-tap "Envoyer sur WhatsApp" button with the message already written. Nothing is saved and no payment is taken, because no database is connected yet.
@@ -147,6 +147,6 @@ Lighthouse, mobile preset, local server: **Performance 100, Accessibility 100, B
 - Photos are low-resolution stills.
 - A visitor who closes the tab during a payment can resume for the rest of the 15-minute hold in the same browser only.
 - The English version is the same URL (`/?lang=en`), switched by script: the English title and description appear after the switch, but search engines index the French HTML. Separate `/en/` pages would be the next step if English search matters.
-- The reference (Relume) is a software landing page, so some parts were adapted: its 3D cubes became flat gold tile blocks, its logo row became a ticker of the shop's real prices (we have no client logos and invent none), its product mock-up became a framed salon photo.
+- The hero photo is a phone video still (1200 px wide) shown full-screen; the 60% black layer hides most of the softness, but a sharp daylight photo from the barber would improve it most. Phones get the portrait photo.
 - Static screenshots cannot show animation, so the motion (reveals, ticker, hovers) is a reasonable reading of the reference, not a copy. A screen recording of the real page would let us match it exactly.
 - On a phone the FR/EN switch sits inside the menu (the reference header has no room for it).

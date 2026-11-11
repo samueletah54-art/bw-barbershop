@@ -14,6 +14,7 @@ abbr { text-decoration: none; }
 .ui [data-reveal].is-in { opacity: 1; transform: none; }
 
 /* ---------- Section frame ---------- */
+.sec.on-black + .sec.on-black { border-top: 1px solid var(--line); }
 .sec { padding: var(--s9) 0; }
 .sec-head { display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr); gap: var(--s6); align-items: end; margin-bottom: var(--s8); }
 .sec-head h2 { font-size: var(--t-h2); }
@@ -60,7 +61,7 @@ abbr { text-decoration: none; }
 /* ---------- 03 Galerie ---------- */
 .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); align-items: start; }
 .shots img { aspect-ratio: 3 / 4; object-fit: cover; }
-.shot-empty { display: flex; align-items: flex-end; aspect-ratio: 3 / 4; border: 1px dashed var(--grey-on-paper); padding: var(--s5); color: var(--fg2); }
+.shot-empty { display: flex; align-items: flex-end; aspect-ratio: 3 / 4; border: 1px dashed var(--fg2); padding: var(--s5); color: var(--fg2); }
 .shot-empty p { max-width: 22ch; }
 
 /* ---------- 04 Avis ---------- */
