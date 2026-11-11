@@ -28,6 +28,14 @@ window.BW_CONFIG = {
     days: [1, 2, 3, 4, 5, 6],          // TODO(owner): confirm days. 1 = Monday … 7 = Sunday
   },
 
+  // Social pages. Empty = the link is hidden. TODO(owner): add the real URLs.
+  SOCIAL: { instagram: '', facebook: '' },   // e.g. 'https://www.instagram.com/…'
+
+  // Customer reviews. Empty = the whole "Avis" section stays hidden (nothing is invented).
+  // Add REAL ones only, with the customer's permission: { name: 'Prénom N.', fr: '…', en: '…' }.
+  // Preview the empty layout without publishing it: open the site with ?preview=avis
+  REVIEWS: [],                         // TODO(owner)
+
   // Exact landmark near the shop ("en face de…", "derrière…"). Empty = hidden.
   LANDMARK: { fr: '', en: '' },        // TODO(owner)
 

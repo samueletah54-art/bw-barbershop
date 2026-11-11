@@ -19,7 +19,8 @@ const C = ctx.window.BW_CONFIG;
 
 // 1. prices: config vs index.html rows vs JSON-LD vs SQL seed
 const html = read('index.html');
-const rows = [...html.matchAll(/<span class="num">([\d&;nbsp\s]+)<\/span>[\s\S]*?data-formule="(\w+)"/g)].map((m) => [m[2], Number(m[1].replace(/\D/g, ''))]);
+const menu = html.slice(html.indexOf('<ol class="menu">'), html.indexOf('</ol>', html.indexOf('<ol class="menu">')));
+const rows = [...menu.matchAll(/data-formule="(\w+)"[\s\S]*?<span class="num">([\d&;nbsp\s]+)<\/span>/g)].map((m) => [m[1], Number(m[2].replace(/\D/g, ''))]);
 const ld = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
 const ldPrices = ld.makesOffer.map((o) => Number(o.price));
 const sql = read('supabase/schema.sql');
@@ -43,7 +44,7 @@ if (num(/open_min\s+int\s+not null default (\d+)/) !== toMin(C.HOURS.open) || nu
 const refs = new Set();
 for (const f of ['index.html', '404.html', 'admin/index.html']) {
   for (const m of read(f).replace(/<!--[\s\S]*?-->/g, '').matchAll(/(?:src|href|srcset|imagesrcset)="([^"#?]+)"/g)) {
-    for (const part of m[1].split(',')) { const u = part.trim().split(/\s+/)[0]; if (u && !/^(https?:|mailto:|tel:|data:)/.test(u)) refs.add(path.join(path.dirname(f), u.replace(/^\//, f.startsWith('admin') || u.startsWith('/') ? '' : ''))); }
+    for (const part of m[1].split(',')) { const u = part.trim().split(/\s+/)[0]; if (u && !/^(https?:|mailto:|tel:|data:|\/_vercel\/)/.test(u)) refs.add(path.join(path.dirname(f), u.replace(/^\//, f.startsWith('admin') || u.startsWith('/') ? '' : ''))); }
   }
 }
 let missing = 0;

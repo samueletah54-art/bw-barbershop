@@ -5,11 +5,13 @@ Static pages + two small serverless functions. No framework, no build step, no t
 
 ## What works today (without any account setup)
 
-- One page: header with a permanent **Réserver** button, hero, **Tarifs** (the 6 formules from the price sheet), **Le barbier**, **Galerie**, **Réservation**, **Infos pratiques**, footer. FR by default, EN toggle.
-- Phone: fixed bottom bar with Réserver + WhatsApp (it hides while the booking form is on screen).
-- **Booking in 4 steps**, from a price row or the header: formule, day and time (next 14 days), name and phone, confirmation.
-  **Right now it runs in WhatsApp mode**: the visitor gets a summary and a one-tap "Envoyer sur WhatsApp" button with the message already written. Nothing is saved and no payment is taken, because no database is connected yet.
-- `/admin`, `404.html`, `robots.txt`, `sitemap.xml`, JSON-LD (`BarberShop` with the 6 prices), Open Graph image.
+- One page, in this order: header (logo, menu, FR/EN, **Réserver**), **hero** (opening banner, headline, a booking card with formule chips, WhatsApp, a framed photo of the salon, a ticker of the real prices), **01 Tarifs** (the price sheet as a menu board, every row books that formule), **02 Le barbier**, **03 Galerie**, **04 Avis** (hidden until real reviews exist), **05 Réserver**, **06 Infos** (map on request, Itinéraire, click-to-call, hours table, conditions, privacy), footer with the giant B&W lettering.
+- Layout follows the reference in the repo root (Land-book: Relume hero): centred stack, prompt-style card, framed hero image, ticker row. Colours are black, white and gold `#D4A72C`; display font Big Shoulders, text font Instrument Sans.
+- Phone: sticky bottom bar with **Réserver**, a WhatsApp icon and a call icon (44 px+ targets). WhatsApp opens with "Bonjour B&W, je veux réserver une coupe." (EN: "Hello B&W, I want to book a cut.").
+- Motion: scroll reveals (fade + 16 px rise, staggered), hover states on buttons, chips, menu rows, images. All off under `prefers-reduced-motion`.
+- **Booking in 4 steps** (formule, day and time, details, confirmation). **Right now it runs in WhatsApp mode**: the visitor gets a summary and a one-tap "Envoyer sur WhatsApp" button with the message already written. Nothing is saved and no payment is taken, because no database is connected yet.
+- `/admin`, `404.html`, `robots.txt`, `sitemap.xml` (with hreflang), JSON-LD (`HairSalon` + `BarberShop`, prices, phone, hours), Open Graph image.
+- Useful URLs: `/?lang=en` opens the English version (this is the hreflang target). `/?preview=avis` shows the empty layout of the reviews section so you can see it without publishing anything.
 
 ## What needs an account (nothing below is done yet)
 
@@ -39,6 +41,12 @@ Run `npm run check` any time: it lists them and verifies that prices, durations,
 | 10 | Final domain | `canonical`, `og:url`, `og:image`, JSON-LD image in `index.html`; `robots.txt`; `sitemap.xml` | `bw-barbershop.vercel.app` |
 | 11 | Opening hours in the JSON-LD | `index.html` | not included until 1 and 2 are confirmed |
 | 12 | The barber's login email | `supabase/schema.sql`, `admins` table | none |
+| 13 | **Real customer reviews** (with the customer's permission) | `REVIEWS` in `js/config.js`: `{ name: 'Prénom N.', fr: '…', en: '…' }`, up to 3 | empty: the whole Avis section and its menu links stay hidden. Nothing is invented |
+| 14 | **Instagram and Facebook URLs** | `SOCIAL.instagram`, `SOCIAL.facebook` in `js/config.js` (must start with `https://`) | empty: the links are hidden |
+| 15 | **Enable Vercel Analytics** (one click) | Vercel dashboard, project, Analytics tab, Enable | the page already loads `/_vercel/insights/script.js`; until enabled it returns 404 (a harmless console message, and it costs 4 points of the Best Practices score) |
+| 16 | **Phone number** | confirmed: +237 690 86 88 31 (call and WhatsApp). Nothing to do. If the shop adds a landline, change `tel:` links in `index.html`, `PHONE_E164` in `js/config.js` and `telephone` in the JSON-LD | |
+| 17 | **Hours table and JSON-LD hours** | `HOURS` in `js/config.js` (the table follows it once `confirmed: true`), and `openingHoursSpecification` in the JSON-LD in `index.html` | table shows "Dès 9h" and Sunday "À confirmer"; JSON-LD says Mon to Sat, 09:00 to 19:00 (a guess: fix it with TODOs 1 to 3) |
+| 18 | The exact **landmark** shows under the address in Infos | `LANDMARK` | hidden |
 
 When you change hours, deposit or durations after the database is live, change them in the Supabase table `shop_settings` / `formules` too (the site reads the database first when it is connected).
 
@@ -118,12 +126,18 @@ Sign in with his email and password. He sees today's and upcoming bookings by da
 
 In Yaoundé, people find a barber on Google Maps before anywhere else. Create the shop's Google Business Profile (business.google.com), category "Barber shop", the Emombo Auberge address, phone +237 690 86 88 31, the opening hours once known, the photos above, and the website link. Add the same link in the Instagram and Facebook bios.
 
+## Images and speed
+
+Every photo ships as AVIF, WebP and JPG with `srcset`, explicit width and height, `decoding="async"`, and lazy loading below the fold (the hero photo is preloaded on screens 768 px and wider). The whole set is about 140 KB in AVIF. Fonts are self-hosted subsets, with the display font preloaded. The map is a button: Google's map (and its cookies) loads only if the visitor asks for it.
+
+Lighthouse, mobile preset, local server: **Performance 100, Accessibility 100, Best Practices 96, SEO 100** (LCP 1.2 s, TBT 10 ms, CLS 0.02). Run it again on the live URL once Analytics is enabled.
+
 ## Tests and checks in this repo
 
 - `npm run check`: consistency of prices, hours, deposit, files, image sizes; lists TODOs.
 - `npm test`: 12 tests on the payment functions with Supabase and Notch Pay faked (signature, re-fetch, amounts, duplicates, late payment, lost slot).
 - The SQL was run in a real Postgres engine with Supabase's roles faked: 34 checks (anonymous cannot read or write tables, validation, double booking, expiry, rate limit, blocked days, admin vs non-admin).
-- The booking flow and `/admin` were driven in a real browser with the backend faked: all passing.
+- The booking flow (31 checks) and `/admin` were driven in a real browser with the backend faked: all passing. axe-core found 0 accessibility violations on 10 views (desktop, tablet, phone, English, booking steps, open mobile menu, reviews preview, 404, admin). No horizontal overflow from 320 px to 1920 px.
 - Not tested: a real Supabase project, real Notch Pay, a real phone on 3G.
 
 ## Known limits
@@ -132,4 +146,7 @@ In Yaoundé, people find a barber on Google Maps before anywhere else. Create th
 - The logo is a text stand-in.
 - Photos are low-resolution stills.
 - A visitor who closes the tab during a payment can resume for the rest of the 15-minute hold in the same browser only.
-- Opening-hours JSON-LD is absent on purpose until confirmed.
+- The English version is the same URL (`/?lang=en`), switched by script: the English title and description appear after the switch, but search engines index the French HTML. Separate `/en/` pages would be the next step if English search matters.
+- The reference (Relume) is a software landing page, so some parts were adapted: its 3D cubes became flat gold tile blocks, its logo row became a ticker of the shop's real prices (we have no client logos and invent none), its product mock-up became a framed salon photo.
+- Static screenshots cannot show animation, so the motion (reveals, ticker, hovers) is a reasonable reading of the reference, not a copy. A screen recording of the real page would let us match it exactly.
+- On a phone the FR/EN switch sits inside the menu (the reference header has no room for it).

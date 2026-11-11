@@ -661,7 +661,7 @@
   function setLang(l) {
     lang = l; root.setAttribute('data-lang', l); root.setAttribute('lang', l);
     $$('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === l)); });
-    $$('[data-wa]').forEach(function (a) { a.href = 'https://wa.me/' + C.WHATSAPP + '?text=' + encodeURIComponent(l === 'fr' ? 'Bonjour B&W Barber, ' : 'Hello B&W Barber, '); });
+    $$('[data-wa]').forEach(function (a) { a.href = 'https://wa.me/' + C.WHATSAPP + '?text=' + encodeURIComponent(l === 'fr' ? 'Bonjour B&W, je veux réserver une coupe.' : 'Hello B&W, I want to book a cut.'); });
     try { localStorage.setItem('bw-lang', l); } catch (e) {}
     renderStatus(); renderInfo(); if (S) render();
   }

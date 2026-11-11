@@ -1,0 +1,125 @@
+/* =====================================================================
+   HEADER + HERO
+   Layout follows the reference (Land-book: Relume): centered stack of
+   eyebrow, headline, lead, prompt-style card, link; a framed hero image;
+   a ticker row under it. Our content, our colours: black, white, gold.
+   ===================================================================== */
+
+/* ---------- Header ---------- */
+.site-header {
+  --bg: #fff; --fg: var(--ink); --fg2: var(--grey-on-paper); --line: var(--line-on-paper); --focus: var(--ink);
+  position: sticky; top: 0; z-index: 50; background: #fff; color: var(--ink);
+  border-bottom: 1px solid transparent; transition: border-color 200ms var(--ease);
+}
+.site-header.is-scrolled { border-bottom-color: var(--line-on-paper); }
+.nav-bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--s5); height: var(--header-h); padding: 0 var(--gutter); max-width: 1440px; margin: 0 auto; }
+.nav-links { display: flex; gap: var(--s6); }
+.nav-links a, .nav-panel nav a { position: relative; text-decoration: none; font-size: var(--t-small); font-weight: 600; padding: var(--s3) 0; }
+.nav-links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 240ms var(--ease); }
+.nav-links a:hover::after, .nav-links a:focus-visible::after { transform: scaleX(1); }
+.nav-actions { justify-self: end; display: flex; align-items: center; gap: var(--s3); }
+.nav-toggle { display: none; position: relative; width: 44px; height: 44px; padding: 0; background: none; border: 1px solid var(--ink); border-radius: var(--radius); cursor: pointer; }
+.nav-toggle .bars { position: absolute; left: 12px; right: 12px; top: 14px; bottom: 14px; }
+.nav-toggle i { position: absolute; left: 0; right: 0; height: 2px; background: var(--ink); transition: transform 240ms var(--ease), opacity 160ms; }
+.nav-toggle i:nth-child(1) { top: 0; } .nav-toggle i:nth-child(2) { top: 7px; } .nav-toggle i:nth-child(3) { top: 14px; }
+.nav-toggle[aria-expanded="true"] i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] i:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-panel { position: absolute; left: 0; right: 0; top: 100%; background: #fff; border-bottom: 1px solid var(--line-on-paper); padding: var(--s4) var(--gutter) var(--s6); display: grid; gap: var(--s5); }
+.nav-panel nav { display: grid; }
+.nav-panel nav a { font-family: var(--display); font-weight: 800; font-size: 2rem; line-height: 1; padding: var(--s3) 0; border-bottom: 1px solid var(--line-on-paper); }
+.nav-panel .lang { justify-self: start; }
+
+/* ---------- Hero ---------- */
+.hero { --bg: #fff; --fg: var(--ink); --fg2: var(--grey-on-paper); --line: var(--line-on-paper); --focus: var(--ink); background: #fff; color: var(--ink); overflow: hidden; padding-bottom: var(--s9); }
+.hero-top { position: relative; padding: var(--s8) var(--gutter) var(--s9); }
+.hero-copy { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: var(--s2); margin-bottom: var(--s5); font-size: var(--t-small); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.eyebrow::before { content: ""; width: 8px; height: 8px; background: var(--gold); flex: none; }
+.eyebrow[data-state="closed"]::before { background: transparent; border: 2px solid var(--ink); }
+.hero-title { font-weight: 700; font-size: clamp(2.75rem, 6.4vw, 6.25rem); line-height: 0.95; margin-bottom: var(--s5); }
+.hero-lead { max-width: 44ch; margin-bottom: var(--s6); text-wrap: balance; }
+
+/* The "prompt box" of the reference, carrying our booking */
+.book-card { width: 100%; max-width: 640px; text-align: left; background: #fff; border: 1px solid var(--line-on-paper); border-radius: var(--radius); box-shadow: 0 16px 40px -16px rgba(12, 12, 11, 0.22); padding: var(--s5); min-height: 172px; display: flex; flex-direction: column; justify-content: space-between; gap: var(--s6); }
+.bc-label { color: var(--grey-on-paper); }
+.bc-row { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--s3); flex-wrap: wrap; }
+.chips { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.chip { display: inline-flex; align-items: center; gap: var(--s2); min-height: 44px; padding: 0 var(--s3); border: 1px solid var(--line-on-paper); border-radius: var(--radius); font-size: var(--t-small); font-weight: 600; text-decoration: none; background: #fff; transition: border-color 160ms var(--ease), background 160ms var(--ease), transform 160ms var(--ease); }
+.chip b { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--grey-on-paper); }
+.chip:hover { border-color: var(--ink); background: #f6f6f3; transform: translateY(-1px); }
+.bc-cta { min-width: 128px; }
+.try { margin-top: var(--s4); min-height: 44px; display: inline-flex; align-items: center; gap: var(--s2); font-weight: 600; text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.try:hover { text-decoration-color: var(--ink); }
+
+/* Flat gold tile-grids in the two corners (the reference has 3D cubes; ours nod to the shop's tiled floor) */
+.hero-tiles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.tile {
+  position: absolute; bottom: 0; transform: translateY(40%); display: block; width: clamp(120px, 15vw, 232px); height: clamp(150px, 19vw, 290px); background-color: var(--gold);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M28 0V28H0' fill='none' stroke='%230c0c0b' stroke-opacity='.5'/%3E%3C/svg%3E");
+}
+.tile::after { content: ""; position: absolute; top: 0; width: 50%; height: 36%; background: var(--ink); }
+.tile-l { left: 0; }
+.tile-l::after { right: 0; }
+.tile-r { right: 0; margin-bottom: var(--s6); }
+.tile-r::after { left: 0; top: auto; bottom: 0; height: 28%; }
+
+/* Framed hero image (the reference's large pink-framed mock-up) */
+.hero-frame {
+  position: relative; z-index: 2; width: min(100% - 2 * var(--gutter), 1280px); margin: 0 auto; padding: clamp(12px, 4.4vw, 56px); border-radius: var(--radius); background-color: var(--gold);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cpath d='M18 0V18H0' fill='none' stroke='%230c0c0b' stroke-opacity='.16'/%3E%3C/svg%3E");
+}
+.frame-inner { position: relative; overflow: hidden; border-radius: var(--radius); background: var(--ink); }
+.frame-inner picture { display: block; aspect-ratio: 4 / 3; }
+.frame-inner img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
+.frame-copy { --bg: var(--ink); --fg: #fff; --fg2: #cfcec9; --line: #3a3936; --focus: var(--gold); background: var(--ink); color: #fff; padding: var(--s5); }
+.frame-title { font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 0.95; margin-bottom: var(--s3); }
+.frame-text { color: #cfcec9; margin-bottom: var(--s5); max-width: 44ch; }
+.btn-ghost-light { background: transparent; color: #fff; border-color: #fff; }
+.btn-ghost-light:hover { background: #fff; color: var(--ink); }
+
+/* Ticker of our real prices (the reference shows a logo row; we have no client logos and invent none) */
+.brands { width: min(100% - 2 * var(--gutter), 1280px); margin: var(--s7) auto 0; border: 1px solid var(--line-on-paper); border-radius: var(--radius); padding: var(--s4) var(--s5); display: grid; grid-template-columns: auto 1fr; gap: var(--s5); align-items: center; overflow: hidden; }
+.brands-label { font-size: var(--t-small); font-weight: 600; color: var(--grey-on-paper); max-width: 18ch; line-height: 1.4; }
+.marquee { overflow: hidden; min-width: 0; }
+.track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+.marquee:hover .track { animation-play-state: paused; }
+.set { display: flex; flex: none; }
+.set li { display: flex; align-items: baseline; gap: var(--s2); white-space: nowrap; font-family: var(--display); font-weight: 800; font-size: 1.75rem; line-height: 1; }
+.set li::after { content: ""; width: 8px; height: 8px; background: var(--gold); align-self: center; margin: 0 var(--s6); }
+.b-price { font-variant-numeric: tabular-nums; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .nav-bar { grid-template-columns: 1fr auto; }
+  .nav-links, .nav-actions .lang { display: none; }
+  .nav-toggle { display: block; }
+}
+@media (min-width: 861px) { .nav-panel { display: none !important; } }
+@media (min-width: 768px) {
+  .frame-inner picture { aspect-ratio: 16 / 9; }
+  .frame-inner img { position: absolute; inset: 0; }
+  .frame-copy { position: absolute; left: var(--s6); bottom: var(--s6); max-width: 440px; padding: var(--s6); }
+}
+@media (max-width: 767px) {
+  :root { --header-h: 56px; }
+  .nav-cta { display: none; }
+  .eyebrow { flex-direction: column; gap: var(--s2); text-align: center; }
+  .logo { font-size: 1.625rem; }
+  .logo small { display: none; }
+  .hero-top { padding: var(--s7) var(--gutter) var(--s8); }
+  .hero-lead { margin-bottom: var(--s5); }
+  .book-card { padding: var(--s4); min-height: 0; gap: var(--s5); }
+  .bc-cta { width: 100%; }
+  .tile { display: none; }
+  .brands { grid-template-columns: 1fr; gap: var(--s3); padding: var(--s4); }
+  .brands-label { max-width: none; }
+  .set li { font-size: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; }
+  .marquee { overflow-x: auto; }
+  .set[aria-hidden="true"] { display: none; }
+}
