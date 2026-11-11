@@ -1,0 +1,135 @@
+# B&W Barber · hand-off
+
+Site for B&W Barber, Emombo Auberge, Yaoundé. Opening Monday 16 November 2026, 9:00.
+Static pages + two small serverless functions. No framework, no build step, no tracking.
+
+## What works today (without any account setup)
+
+- One page: header with a permanent **Réserver** button, hero, **Tarifs** (the 6 formules from the price sheet), **Le barbier**, **Galerie**, **Réservation**, **Infos pratiques**, footer. FR by default, EN toggle.
+- Phone: fixed bottom bar with Réserver + WhatsApp (it hides while the booking form is on screen).
+- **Booking in 4 steps**, from a price row or the header: formule, day and time (next 14 days), name and phone, confirmation.
+  **Right now it runs in WhatsApp mode**: the visitor gets a summary and a one-tap "Envoyer sur WhatsApp" button with the message already written. Nothing is saved and no payment is taken, because no database is connected yet.
+- `/admin`, `404.html`, `robots.txt`, `sitemap.xml`, JSON-LD (`BarberShop` with the 6 prices), Open Graph image.
+
+## What needs an account (nothing below is done yet)
+
+| Feature | Needs | Until then |
+|---|---|---|
+| Real availability, taken slots, `/admin` | Supabase project | Slots are indicative; booking goes by WhatsApp |
+| Deposit by MTN MoMo / Orange Money | Approved Notch Pay account + Vercel env vars | Step 4 is "Confirmer par WhatsApp" |
+| Email to the barber on each paid booking | Resend account (free) | The booking shows on `/admin` |
+
+Nothing was created in anyone's Supabase, Notch Pay or Resend account. The existing Supabase project in the organisation ("Examina Global") belongs to another product and was deliberately **not** used.
+
+## Every TODO (all live in `js/config.js` unless noted)
+
+Run `npm run check` any time: it lists them and verifies that prices, durations, deposit and hours agree across `config.js`, `index.html`, the JSON-LD and `supabase/schema.sql`.
+
+| # | TODO | Where | Default now |
+|---|---|---|---|
+| 1 | **Closing time** | `HOURS.close` and `shop_settings.close_min` | 19:00 (a guess) |
+| 2 | **Open days** | `HOURS.days` and `shop_settings.open_days` | Mon to Sat (a guess) |
+| 3 | When 1 and 2 are confirmed, set `HOURS.confirmed: true` | `HOURS.confirmed` | `false`: the site shows only "Dès 9h" and never claims "closed" |
+| 4 | **Duration of each formule** | `FORMULES[].duration` and `formules.duration_min` | Classique 30, Soignée 45, Premium 60, Couleur 90, Pédicure 45, Enfant 20 |
+| 5 | **Deposit amount** | `DEPOSIT_XAF` and `shop_settings.deposit_xaf` | 500 FCFA |
+| 6 | **Landmark near the shop** | `LANDMARK.fr / .en` | empty: hidden |
+| 7 | **One real sentence from Rudiger** | `BARBER_QUOTE.fr / .en` | empty: hidden. Do not invent one, and no years of experience |
+| 8 | **Spelling: Camanda or Camada Jackson?** | `BARBER`, and the text in the "Le barbier" section of `index.html` | "Camanda" |
+| 9 | **The real logo file** (B&W BARBER with the pole) | header in `index.html`, favicon in `images/` | A text stand-in with the gold "&" (the logo file was not in the upload) |
+| 10 | Final domain | `canonical`, `og:url`, `og:image`, JSON-LD image in `index.html`; `robots.txt`; `sitemap.xml` | `bw-barbershop.vercel.app` |
+| 11 | Opening hours in the JSON-LD | `index.html` | not included until 1 and 2 are confirmed |
+| 12 | The barber's login email | `supabase/schema.sql`, `admins` table | none |
+
+When you change hours, deposit or durations after the database is live, change them in the Supabase table `shop_settings` / `formules` too (the site reads the database first when it is connected).
+
+## Photos to request from the barber
+
+Daylight, iPhone camera in **photo** mode (not video stills, which is why the current photos are only ~600 px wide):
+
+1. 6 to 10 close-ups of **finished cuts**: side and back, one per formule if possible.
+2. The **shop front with its sign**.
+3. A **portrait of Rudiger** (the current "Le barbier" photo is a video still).
+4. Wide shot of the interior at full resolution, for the hero.
+
+The gallery already has a designed "coming soon" tile, so the page is complete without them. The black letterbox bars the brief mentioned are not in these photos (a 4 px strip was trimmed from one).
+
+## Turn on the database (Supabase)
+
+1. Create a Supabase project for the shop (free tier). Suggested name: `bw-barbershop`.
+2. SQL editor, paste `supabase/schema.sql`, Run. It is safe to run twice.
+3. In the same editor add the barber's login: `insert into public.admins (email) values ('his-email@…');`
+4. Authentication, Users, add that email with a password.
+5. Project settings, API: copy the **Project URL** and the **anon public key** into `SUPABASE_URL` and `SUPABASE_ANON_KEY` in `js/config.js`. Commit and push.
+6. Copy the **service_role key** into Vercel (see below). It must never go in `config.js` or the repo.
+
+How it is protected (tested, 34 checks): the public has no access to any table. It can only read the list of taken time ranges (no names, no phones) and call `create_booking`, which validates everything and can only create a *pending* booking. Only the barber (logged in, email in `admins`) can read bookings. Only the server can mark one *paid*.
+
+## Turn on payments (Notch Pay + Vercel)
+
+**The barber does this part, in his own name** (the account holds his money):
+
+1. Create an account on Notch Pay (business dashboard) as a business, in Cameroon.
+2. Complete the verification they ask for (identity document and business details). Approval can take days, so start now.
+3. Make sure **Mobile Money Cameroon** (MTN and Orange, XAF) is enabled on the account.
+4. Stay in **test mode** first. Copy the **test public key** (starts `pk_test…`).
+5. In the dashboard, add a webhook pointing to `https://<the-site>/api/notchpay-webhook`. Copy the **webhook hash key** it gives you.
+6. When tests pass, repeat with the **live** key and switch the account to live.
+
+**Whoever manages Vercel** (Project, Settings, Environment Variables), for Production:
+
+| Name | Value |
+|---|---|
+| `PAYMENTS_ENABLED` | `true` when ready (leave unset or `false` until then) |
+| `NOTCHPAY_API_KEY` | the Notch Pay key from step 4 or 6 |
+| `NOTCHPAY_HASH_KEY` | the webhook hash key from step 5 |
+| `SUPABASE_URL` | the Supabase Project URL |
+| `SUPABASE_SERVICE_ROLE_KEY` | the Supabase service_role key |
+| `SITE_URL` | `https://<the-site>` |
+| `RESEND_API_KEY`, `BARBER_EMAIL` | optional: email on each paid booking |
+| `NOTIFY_FROM` | optional, e.g. `B&W Barber <no-reply@your-domain>`; the default only works for testing |
+
+Then set `PAYMENTS_ENABLED: true` in `js/config.js` (this switches step 4 from WhatsApp to MTN/Orange), push, redeploy.
+
+### Before the first real payment (important)
+
+The Notch Pay documentation site could not be reached while this was built, so `api/_lib/notchpay.js` follows the public docs from search results and **has not been run against Notch Pay**. Do this once:
+
+```bash
+NOTCHPAY_API_KEY=pk_test_xxx npm run smoke:notchpay
+```
+
+It creates a test payment and prints Notch Pay's real replies. Check that a reference comes back, that reading it back returns a status, and that the status words are what `mapStatus()` expects. Then pay a real 500 FCFA test booking from your own phone and check that it turns to **Payé** in `/admin`. Things most likely to need a small fix: the auth header name, the "charge mobile" call, and the webhook signature encoding (both hex and base64 are accepted already).
+
+Safety built in regardless: the amount always comes from the database, a webhook is never trusted on its own (the payment is re-read from Notch Pay), an underpayment never confirms, and a payment that arrives after the 15-minute hold only confirms if nobody took the slot. If someone did, the barber gets an email titled **À REMBOURSER** and the booking shows a badge in `/admin`.
+
+## Notifications: what was chosen
+
+1. **`/admin`** (always): the list refreshes every 30 s and the tab title changes on a new paid booking.
+2. **Email via Resend** (optional): one email per paid booking with a tap-to-send WhatsApp greeting for the client.
+3. In WhatsApp mode the client's own message lands in the shop's WhatsApp.
+
+No SMS or push, on purpose: simplest reliable first.
+
+## The barber's day-to-day (`/admin`)
+
+Sign in with his email and password. He sees today's and upcoming bookings by day, with **Terminé**, **Absent**, **Annuler**, **Confirmer** (for WhatsApp requests), WhatsApp and Call buttons. **Bloquer un jour** closes a day for bookings (holiday, power cut).
+
+## Google Business Profile (do this, it matters most)
+
+In Yaoundé, people find a barber on Google Maps before anywhere else. Create the shop's Google Business Profile (business.google.com), category "Barber shop", the Emombo Auberge address, phone +237 690 86 88 31, the opening hours once known, the photos above, and the website link. Add the same link in the Instagram and Facebook bios.
+
+## Tests and checks in this repo
+
+- `npm run check`: consistency of prices, hours, deposit, files, image sizes; lists TODOs.
+- `npm test`: 12 tests on the payment functions with Supabase and Notch Pay faked (signature, re-fetch, amounts, duplicates, late payment, lost slot).
+- The SQL was run in a real Postgres engine with Supabase's roles faked: 34 checks (anonymous cannot read or write tables, validation, double booking, expiry, rate limit, blocked days, admin vs non-admin).
+- The booking flow and `/admin` were driven in a real browser with the backend faked: all passing.
+- Not tested: a real Supabase project, real Notch Pay, a real phone on 3G.
+
+## Known limits
+
+- Closing time and open days are guesses until confirmed (see TODOs 1 to 3). The booking calendar already uses them.
+- The logo is a text stand-in.
+- Photos are low-resolution stills.
+- A visitor who closes the tab during a payment can resume for the rest of the 15-minute hold in the same browser only.
+- Opening-hours JSON-LD is absent on purpose until confirmed.

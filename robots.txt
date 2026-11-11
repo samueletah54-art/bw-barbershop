@@ -1,0 +1,7 @@
+# TODO(deploy): replace the domain below once the final address is known
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://bw-barbershop.vercel.app/sitemap.xml

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B&amp;W Barber · Coiffeur à Emombo, Yaoundé</title>
+  <meta name="description" content="B&W Barber, coiffeur à Emombo Auberge, Yaoundé. Dégradés, coupes afro, coupe enfant dès 500 FCFA. Réservez en ligne. Ouverture le lundi 16 novembre 2026 à 9h.">
+  <meta name="theme-color" content="#0c0c0b">
+  <!-- TODO(deploy): once the final domain is known, update this canonical, og:url, og:image, sitemap.xml and robots.txt -->
+  <link rel="canonical" href="https://bw-barbershop.vercel.app/">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_CM">
+  <meta property="og:site_name" content="B&W Barber">
+  <meta property="og:title" content="B&W Barber · Coiffeur à Emombo, Yaoundé">
+  <meta property="og:description" content="Dégradés, coupes afro et coupe enfant. Prix affichés, réservation en ligne. Ouverture lundi 16 novembre, 9h.">
+  <meta property="og:url" content="https://bw-barbershop.vercel.app/">
+  <meta property="og:image" content="https://bw-barbershop.vercel.app/images/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="B&W Barber : le salon d’Emombo Auberge, mur noir, mur blanc, deux fauteuils">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="fonts/big-shoulders.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" type="image/webp" href="images/interior-wide-800.webp" imagesrcset="images/interior-wide-480.webp 480w, images/interior-wide-800.webp 800w, images/interior-wide-1200.webp 1200w" imagesizes="(min-width: 768px) 50vw, 100vw" fetchpriority="high">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Structured data. TODO(owner): add openingHoursSpecification once closing time and open days are confirmed. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarberShop",
+    "name": "B&W Barber",
+    "description": "Coiffeur à Emombo Auberge, Yaoundé : dégradés, coupes afro, coupe enfant.",
+    "image": "https://bw-barbershop.vercel.app/images/interior-wide-1200.jpg",
+    "telephone": "+237690868831",
+    "priceRange": "500–5000 XAF",
+    "currenciesAccepted": "XAF",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Emombo Auberge",
+      "addressLocality": "Yaoundé",
+      "addressCountry": "CM"
+    },
+    "makesOffer": [
+      { "@type": "Offer", "priceCurrency": "XAF", "price": "1000", "itemOffered": { "@type": "Service", "name": "Classique : coupe simple + finition" } },
+      { "@type": "Offer", "priceCurrency": "XAF", "price": "2000", "itemOffered": { "@type": "Service", "name": "Soignée : coupe + black" } },
+      { "@type": "Offer", "priceCurrency": "XAF", "price": "3000", "itemOffered": { "@type": "Service", "name": "Premium : coupe + black + soin de visage" } },
+      { "@type": "Offer", "priceCurrency": "XAF", "price": "5000", "itemOffered": { "@type": "Service", "name": "Couleur : coupe + teinture" } },
+      { "@type": "Offer", "priceCurrency": "XAF", "price": "2500", "itemOffered": { "@type": "Service", "name": "Pédicure" } },
+      { "@type": "Offer", "priceCurrency": "XAF", "price": "500", "itemOffered": { "@type": "Service", "name": "Enfant : coupe enfant + finition" } }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main"><span lang="fr">Aller au contenu</span><span lang="en">Skip to content</span></a>
+
+  <header class="header">
+    <div class="hdr-l on-ink">
+      <!-- TODO(owner): replace this text logo with the real logo file (B&W BARBER with the pole), e.g.
+           <a class="logo" href="#top"><img src="images/logo.svg" width="120" height="36" alt="B&W Barber"></a> -->
+      <a class="logo" href="#top">B<span class="amp">&amp;</span>W<small>Barber</small></a>
+    </div>
+    <div class="hdr-r on-paper">
+      <nav class="nav" aria-label="Menu">
+        <a href="#tarifs"><span lang="fr">Tarifs</span><span lang="en">Prices</span></a>
+        <a href="#barbier"><span lang="fr">Le barbier</span><span lang="en">The barber</span></a>
+        <a href="#galerie"><span lang="fr">Galerie</span><span lang="en">Gallery</span></a>
+        <a href="#infos"><span lang="fr">Infos</span><span lang="en">Info</span></a>
+      </nav>
+      <div class="lang" role="group" aria-label="Langue / Language">
+        <button type="button" data-set-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-gold btn-sm" href="#reserver" data-book><span lang="fr">Réserver</span><span lang="en">Book</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero-text on-ink">
+        <h2 class="display">
+          <span lang="fr"><span class="ln">Coiffeur à Emombo,</span> <span class="ln">Yaoundé.</span></span>
+          <span lang="en"><span class="ln">Barber in Emombo,</span> <span class="ln">Yaoundé.</span></span>
+        </h2>
+        <div class="hero-foot">
+          <p class="lead">
+            <span lang="fr">Dégradés nets, coupes afro, coupe enfant à partir de 500 FCFA.</span>
+            <span lang="en">Clean fades, afro cuts, children’s cuts from 500 FCFA.</span>
+          </p>
+          <p class="status" id="status" role="status"><span id="status-text"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span></p>
+          <div class="actions">
+            <a class="btn btn-gold" href="#reserver" data-book><span lang="fr">Réserver</span><span lang="en">Book</span></a>
+            <a class="btn btn-ghost" data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831"><span lang="fr">WhatsApp</span><span lang="en">WhatsApp</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <picture>
+          <source type="image/webp" srcset="images/interior-wide-480.webp 480w, images/interior-wide-800.webp 800w, images/interior-wide-1200.webp 1200w" sizes="(min-width: 768px) 50vw, 100vw">
+          <img src="images/interior-wide-800.jpg" width="1200" height="630" fetchpriority="high"
+               alt="Le salon B&W Barber : deux fauteuils de barbier noirs devant un mur noir, mur blanc, carrelage crème">
+        </picture>
+      </div>
+
+      <div class="hero-mark">
+        <h1 class="mark" aria-label="B&W Barber">
+          <span class="mark-layer mark-light" aria-hidden="true"><span class="b">B</span><span class="amp">&amp;</span><span class="w">W</span></span>
+          <span class="mark-layer mark-dark" aria-hidden="true"><span class="b">B</span><span class="amp">&amp;</span><span class="w">W</span></span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- ============ TARIFS ============ -->
+    <section class="section on-paper" id="tarifs" aria-labelledby="tarifs-title">
+      <div class="wrap">
+        <div class="head">
+          <h2 class="display" id="tarifs-title"><span lang="fr">Les prix, sans surprise.</span><span lang="en">Prices, no surprises.</span></h2>
+          <p><span lang="fr">Votre style, notre savoir-faire. Voici la grille officielle du salon.</span><span lang="en">Your style, our know-how. This is the shop’s official price sheet.</span></p>
+        </div>
+
+        <ul class="prices">
+          <li class="price-row">
+            <div class="pr-main"><h3><span class="pr-n">1</span> Classique</h3><p><span lang="fr">Coupe simple + finition</span><span lang="en">Simple cut + finish</span></p></div>
+            <p class="pr-price"><span class="num">1&nbsp;000</span> <abbr title="Francs CFA">FCFA</abbr></p>
+            <a class="pr-book" href="#reserver" data-formule="classique"><span lang="fr">Réserver<span class="sr"> la formule Classique</span></span><span lang="en">Book<span class="sr"> the Classic</span></span></a>
+          </li>
+          <li class="price-row">
+            <div class="pr-main"><h3><span class="pr-n">2</span> <span lang="fr">Soignée</span><span lang="en">Neat</span></h3><p><span lang="fr">Coupe + black</span><span lang="en">Cut + black</span></p></div>
+            <p class="pr-price"><span class="num">2&nbsp;000</span> <abbr title="Francs CFA">FCFA</abbr></p>
+            <a class="pr-book" href="#reserver" data-formule="soignee"><span lang="fr">Réserver<span class="sr"> la formule Soignée</span></span><span lang="en">Book<span class="sr"> the Neat</span></span></a>
+          </li>
+          <li class="price-row">
+            <div class="pr-main"><h3><span class="pr-n">3</span> Premium</h3><p><span lang="fr">Coupe + black + soin de visage</span><span lang="en">Cut + black + facial care</span></p></div>
+            <p class="pr-price"><span class="num">3&nbsp;000</span> <abbr title="Francs CFA">FCFA</abbr></p>
+            <a class="pr-book" href="#reserver" data-formule="premium"><span lang="fr">Réserver<span class="sr"> la formule Premium</span></span><span lang="en">Book<span class="sr"> the Premium</span></span></a>
+          </li>
+          <li class="price-row">
+            <div class="pr-main"><h3><span class="pr-n">4</span> <span lang="fr">Couleur</span><span lang="en">Colour</span></h3><p><span lang="fr">Coupe + teinture</span><span lang="en">Cut + dye</span></p></div>
+            <p class="pr-price"><span class="num">5&nbsp;000</span> <abbr title="Francs CFA">FCFA</abbr></p>
+            <a class="pr-book" href="#reserver" data-formule="couleur"><span lang="fr">Réserver<span class="sr"> la formule Couleur</span></span><span lang="en">Book<span class="sr"> the Colour</span></span></a>
+          </li>
+          <li class="price-row">
+            <div class="pr-main"><h3><span class="pr-n">5</span> <span lang="fr">Pédicure</span><span lang="en">Pedicure</span></h3><p><span lang="fr">Pédicure</span><span lang="en">Pedicure</span></p></div>
+            <p class="pr-price"><span class="num">2&nbsp;500</span> <abbr title="Francs CFA">FCFA</abbr></p>
+            <a class="pr-book" href="#reserver" data-formule="pedicure"><span lang="fr">Réserver<span class="sr"> la pédicure</span></span><span lang="en">Book<span class="sr"> the pedicure</span></span></a>
+          </li>
+          <li class="price-row">
+            <div class="pr-main"><h3><span class="pr-n"></span> <span lang="fr">Enfant</span><span lang="en">Child</span></h3><p><span lang="fr">Coupe enfant + finition</span><span lang="en">Child’s cut + finish</span></p></div>
+            <p class="pr-price"><span class="num">500</span> <abbr title="Francs CFA">FCFA</abbr></p>
+            <a class="pr-book" href="#reserver" data-formule="enfant"><span lang="fr">Réserver<span class="sr"> la coupe enfant</span></span><span lang="en">Book<span class="sr"> the child’s cut</span></span></a>
+          </li>
+        </ul>
+
+        <p class="conditions">
+          <span lang="fr">Prix en FCFA. Dites au barbier le service voulu avant le début de la coupe.</span>
+          <span lang="en">Prices in FCFA. Tell the barber which service you want before the cut starts.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ LE BARBIER ============ -->
+    <section class="section on-ink" id="barbier" aria-labelledby="barbier-title">
+      <div class="wrap barber">
+        <figure class="barber-photo">
+          <picture>
+            <source type="image/webp" srcset="images/barber-at-work-400.webp 400w, images/barber-at-work-602.webp 602w" sizes="(min-width: 768px) 360px, 80vw">
+            <img src="images/barber-at-work-602.jpg" width="602" height="1069" loading="lazy"
+                 alt="Le barbier du salon trace le contour d’un client barbu, sous le plafond en bois">
+          </picture>
+          <figcaption class="caption"><span lang="fr">Le contour, à la main.</span><span lang="en">The line-up, by hand.</span></figcaption>
+        </figure>
+        <div class="barber-text">
+          <h2 class="display" id="barbier-title">Rudiger</h2>
+          <p class="who"><span lang="fr">Camanda Jackson, connu sous le nom de Rudiger, est le barbier du salon d’Emombo Auberge.</span><span lang="en">Camanda Jackson, known as Rudiger, is the barber at the Emombo Auberge shop.</span></p>
+          <!-- TODO(owner): one real sentence from Rudiger goes in BW_CONFIG.BARBER_QUOTE. It appears here automatically. Do not invent one. -->
+          <blockquote class="quote" id="barber-quote" hidden></blockquote>
+          <p class="actions-inline"><a class="btn btn-gold" href="#reserver" data-book><span lang="fr">Réserver chez Rudiger</span><span lang="en">Book with Rudiger</span></a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALERIE ============ -->
+    <section class="section gallery on-ink" id="galerie" aria-labelledby="galerie-title">
+      <div class="wrap">
+        <div class="head">
+          <h2 class="display" id="galerie-title"><span lang="fr">Le salon, en vrai.</span><span lang="en">The shop, for real.</span></h2>
+          <p><span lang="fr">Des photos prises au salon, sans retouche.</span><span lang="en">Photos taken in the shop, untouched.</span></p>
+        </div>
+      </div>
+      <ul class="strip" tabindex="0" aria-label="Galerie photo / Photo gallery">
+        <li>
+          <figure>
+            <picture>
+              <source type="image/webp" srcset="images/interior-tall-400.webp 400w, images/interior-tall-608.webp 608w" sizes="260px">
+              <img src="images/interior-tall-608.jpg" width="608" height="1080" loading="lazy"
+                   alt="Vue du salon dans la longueur : plafond en bois verni, mur blanc à gauche, mur noir et miroirs à droite, deux fauteuils">
+            </picture>
+            <figcaption class="caption"><span lang="fr">Du plafond en bois au carrelage.</span><span lang="en">From wooden ceiling to tiled floor.</span></figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <picture>
+              <source type="image/webp" srcset="images/barber-smile-340.webp 340w, images/barber-smile-499.webp 499w" sizes="260px">
+              <img src="images/barber-smile-499.jpg" width="499" height="888" loading="lazy"
+                   alt="Un jeune client sourit pendant que le barbier passe la tondeuse">
+            </picture>
+            <figcaption class="caption"><span lang="fr">On repart avec le sourire.</span><span lang="en">Leaving with a smile.</span></figcaption>
+          </figure>
+        </li>
+        <li class="strip-empty">
+          <!-- TODO(owner): 6 to 10 close-ups of finished cuts (side + back), the shop front with its sign, a portrait of Rudiger. Daylight, iPhone camera in photo mode, not video. -->
+          <p><span lang="fr">Les coupes terminées arrivent ici, dès les premières semaines d’ouverture.</span><span lang="en">Finished cuts will appear here in the first weeks after opening.</span></p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ RESERVATION ============ -->
+    <section class="section on-paper booking" id="reserver" aria-labelledby="book-title">
+      <div class="wrap">
+        <div class="head">
+          <h2 class="display" id="book-title"><span lang="fr">Réserver.</span><span lang="en">Book.</span></h2>
+          <p id="book-intro"><span lang="fr">Quatre étapes, depuis votre téléphone.</span><span lang="en">Four steps, from your phone.</span></p>
+        </div>
+        <div id="booking" class="booking-box">
+          <noscript>
+            <p class="notice"><span lang="fr">La réservation en ligne a besoin de JavaScript. Écrivez-nous plutôt sur WhatsApp :</span><span lang="en">Online booking needs JavaScript. Message us on WhatsApp instead:</span>
+              <a href="https://wa.me/237690868831">+237 690 86 88 31</a></p>
+          </noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INFOS PRATIQUES ============ -->
+    <section class="section on-ink" id="infos" aria-labelledby="infos-title">
+      <div class="wrap">
+        <div class="head">
+          <h2 class="display" id="infos-title"><span lang="fr">Passez nous voir.</span><span lang="en">Come through.</span></h2>
+        </div>
+        <dl class="info">
+          <div>
+            <dt><span lang="fr">Adresse</span><span lang="en">Address</span></dt>
+            <dd>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Emombo+Auberge+Yaound%C3%A9" target="_blank" rel="noopener">Emombo Auberge, Yaoundé</a>
+              <small id="landmark" hidden></small>
+              <small><span lang="fr">Ouvrir dans Google Maps</span><span lang="en">Open in Google Maps</span></small>
+            </dd>
+          </div>
+          <div>
+            <dt><span lang="fr">Horaires</span><span lang="en">Hours</span></dt>
+            <dd id="hours-dd">
+              <span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span>
+              <small><span lang="fr">Ouverture le lundi 16 novembre 2026.</span><span lang="en">Opening Monday 16 November 2026.</span></small>
+            </dd>
+          </div>
+          <div>
+            <dt><span lang="fr">Téléphone et WhatsApp</span><span lang="en">Phone and WhatsApp</span></dt>
+            <dd>
+              <a href="tel:+237690868831">+237 690 86 88 31</a>
+              <small><a data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831"><span lang="fr">Écrire sur WhatsApp</span><span lang="en">Message on WhatsApp</span></a></small>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="fine">
+          <div>
+            <h3><span lang="fr">Conditions</span><span lang="en">Terms</span></h3>
+            <ul>
+              <li><span lang="fr">Prix en FCFA.</span><span lang="en">Prices in FCFA.</span></li>
+              <li><span lang="fr">Dites au barbier le service voulu avant le début de la coupe.</span><span lang="en">Tell the barber which service you want before the cut starts.</span></li>
+              <li id="deposit-term"><span lang="fr">Un acompte confirme la réservation en ligne. Il est déduit du prix de la coupe.</span><span lang="en">A deposit confirms an online booking. It is deducted from the price of the cut.</span></li>
+            </ul>
+          </div>
+          <div id="confidentialite">
+            <h3><span lang="fr">Vos données</span><span lang="en">Your data</span></h3>
+            <p><span lang="fr">Le salon utilise votre nom et votre numéro de téléphone uniquement pour gérer votre rendez-vous. Rien n’est vendu, et il n’y a ni publicité ni traceur sur ce site. Si vous payez l’acompte en ligne, votre numéro est transmis à Notch Pay pour le paiement. Pour faire effacer vos données, écrivez-nous sur WhatsApp.</span><span lang="en">The shop uses your name and phone number only to manage your appointment. Nothing is sold, and there are no ads or trackers on this site. If you pay the deposit online, your number is passed to Notch Pay to process the payment. To have your data erased, message us on WhatsApp.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="on-ink">
+      <p class="foot-name">B&amp;W Barber</p>
+      <p class="muted">Emombo Auberge, Yaoundé<br><a href="tel:+237690868831">+237 690 86 88 31</a> · <a data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831">WhatsApp</a></p>
+    </div>
+    <div class="on-paper">
+      <p class="muted"><a href="#confidentialite"><span lang="fr">Vos données</span><span lang="en">Your data</span></a></p>
+      <p class="muted"><span lang="fr">Site :</span><span lang="en">Site:</span> Samuel ETAH</p>
+    </div>
+  </footer>
+
+  <nav class="callbar on-ink" aria-label="Actions rapides / Quick actions">
+    <a class="btn btn-gold" href="#reserver" data-book><span lang="fr">Réserver</span><span lang="en">Book</span></a>
+    <a class="btn btn-ghost" data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831">WhatsApp</a>
+  </nav>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

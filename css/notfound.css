@@ -1,0 +1,8 @@
+/* 404: the seam again, one wall each */
+.nf { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.nf-l, .nf-r { padding: var(--s6) var(--gutter); display: flex; flex-direction: column; justify-content: space-between; gap: var(--s7); }
+.nf-r { justify-content: center; }
+.nf-code { font-size: clamp(9rem, 30vw, 26rem); line-height: 0.74; font-weight: 900; color: var(--gold); margin-bottom: -0.04em; }
+.nf-r h1 { font-size: var(--t-h2); }
+.nf-r p { max-width: 38ch; color: var(--fg2); }
+@media (max-width: 767px) { .nf { grid-template-columns: 1fr; } .nf-l { min-height: 50vh; } }

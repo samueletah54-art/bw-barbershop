@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0c0c0b">
+  <title>Réservations · B&amp;W Barber</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+  <link rel="preload" href="../fonts/big-shoulders.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin on-paper">
+  <a class="skip" href="#app">Aller au contenu</a>
+  <header class="admin-head on-ink">
+    <span class="logo">B<span class="amp">&amp;</span>W<small>Réservations</small></span>
+    <div class="admin-tools" id="tools" hidden>
+      <span class="muted" id="who"></span>
+      <button type="button" class="btn btn-ghost btn-sm" id="refresh">Actualiser</button>
+      <button type="button" class="btn btn-ghost btn-sm" id="logout">Déconnexion</button>
+    </div>
+  </header>
+
+  <main id="app" class="admin-main">
+    <section id="login" hidden>
+      <h1 class="display step-title">Connexion</h1>
+      <form id="login-form" novalidate>
+        <div class="field"><label for="email">E-mail</label><input id="email" type="email" autocomplete="username" required></div>
+        <div class="field"><label for="password">Mot de passe</label><input id="password" type="password" autocomplete="current-password" required></div>
+        <div id="login-err" aria-live="polite"></div>
+        <button class="btn btn-dark" type="submit">Se connecter</button>
+      </form>
+    </section>
+
+    <section id="unconfigured" hidden>
+      <h1 class="display step-title">Base de données non configurée</h1>
+      <p>Renseignez <code>SUPABASE_URL</code> et <code>SUPABASE_ANON_KEY</code> dans <code>js/config.js</code>, puis exécutez <code>supabase/schema.sql</code>. Voir HANDOFF.md.</p>
+    </section>
+
+    <section id="dash" hidden>
+      <div id="banner" aria-live="polite"></div>
+      <div class="admin-cols">
+        <div>
+          <h1 class="display step-title">Rendez-vous</h1>
+          <div id="list" aria-live="polite"></div>
+        </div>
+        <aside>
+          <h2 class="display step-title">Bloquer un jour</h2>
+          <form id="block-form" novalidate>
+            <div class="field"><label for="block-date">Jour</label><input id="block-date" type="date" required></div>
+            <div class="field"><label for="block-reason">Raison (facultatif)</label><input id="block-reason" type="text" maxlength="80" placeholder="Fermé, congé…"></div>
+            <div id="block-err" aria-live="polite"></div>
+            <button class="btn btn-dark" type="submit">Bloquer ce jour</button>
+          </form>
+          <h3 class="legend blocked-title">Jours bloqués</h3>
+          <ul id="blocked" class="blocked"></ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>
