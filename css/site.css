@@ -264,7 +264,7 @@ html.lenis, html.lenis body { height: auto; }
 
 /* logo: bars rise one after another, then the tools fade in. transform and opacity only. */
 .plogo { margin-bottom: var(--s4); }
-.plogo svg { display: block; width: auto; height: clamp(260px, 30vw, 340px); aspect-ratio: 200 / 260; }
+.plogo svg { display: block; width: auto; height: clamp(260px, 30vw, 360px); aspect-ratio: 641 / 1019; }
 .ps, .pt { transform-box: fill-box; transform-origin: 50% 100%; }
 @keyframes bar-up { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @media (prefers-reduced-motion: no-preference) {
