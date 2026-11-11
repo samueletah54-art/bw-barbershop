@@ -220,7 +220,7 @@ html.lenis, html.lenis body { height: auto; }
 @media (max-width: 767px) {
   .sec { padding-block: var(--s9); }
   .nav-cta { display: none; }
-  .logo svg { height: 28px; }
+  .logo svg { height: 34px; }
   .hero-inner { padding-bottom: calc(var(--s7) + 72px); }
   .hero-title { margin-bottom: var(--s5); }
   .hero-lead { font-size: var(--text-body); }
