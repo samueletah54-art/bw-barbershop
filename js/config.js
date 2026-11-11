@@ -93,6 +93,6 @@ window.BW_CONFIG = {
 
   // Public Supabase values (the anon key is meant to be public; RLS protects the data).
   // Empty = no database: the booking flow still works and sends the request by WhatsApp.
-  SUPABASE_URL: '',                    // https://xxxx.supabase.co
-  SUPABASE_ANON_KEY: '',
+  SUPABASE_URL: 'https://nzbxcimeoxcyrtklsmad.supabase.co',
+  SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im56YnhjaW1lb3hjeXJ0a2xzbWFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ0MzI5NTYsImV4cCI6MjExMDAwODk1Nn0.xI8hjIbtL-ZdfoOo3I4TIsJAQGhyhWvtFidFPnZrQco',   // public anon key: safe in the browser, the database only lets it call 3 functions
 };
