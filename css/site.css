@@ -167,6 +167,16 @@ body::after { content: ""; position: fixed; inset: 0; z-index: var(--z-modal); p
 .tel { display: inline-block; margin-bottom: var(--s5); font-family: var(--font-display); font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1; text-decoration: none; letter-spacing: var(--tracking-display); }
 .visit .actions { margin-bottom: var(--s7); }
 .map { position: relative; aspect-ratio: 4 / 5; display: grid; place-content: center; justify-items: center; gap: var(--s3); padding: var(--s5); text-align: center; background: var(--color-paper-2); overflow: clip; }
+.pin { position: relative; display: grid; place-items: center; width: 72px; height: 72px; color: var(--color-accent); }
+.pin .ico { width: 32px; height: 32px; position: relative; }
+.pin i { position: absolute; inset: 14px; border: 2px solid var(--color-accent); border-radius: 50%; opacity: 0; }
+.map-place { font-family: var(--font-display); font-size: var(--text-row); text-transform: uppercase; line-height: 1; }
+.map-tel { font-size: var(--text-price); font-family: var(--font-display); color: var(--color-accent); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .pin i { animation: ping 2.4s var(--ease) infinite; }
+  .pin i + i { animation-delay: 1.2s; }
+}
+@keyframes ping { 0% { transform: scale(0.4); opacity: 0.9; } 100% { transform: scale(2.2); opacity: 0; } }
 .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(1) contrast(1.1); }
 .map-load { white-space: nowrap; display: inline-flex; align-items: center; gap: var(--s2); min-height: 52px; padding: 0 var(--s5); font-weight: 600; color: var(--color-ink); background: transparent; border: 1px solid var(--color-ink); border-radius: var(--radius); cursor: pointer; transition: background var(--dur-micro) var(--ease), color var(--dur-micro) var(--ease); }
 .map-load:hover { background: var(--color-ink); color: var(--color-paper); }

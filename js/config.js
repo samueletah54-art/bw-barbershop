@@ -40,6 +40,10 @@ window.BW_CONFIG = {
   // Drop files in images/cuts/ and list them here, e.g. { classique: 'images/cuts/classique.jpg' }. Empty = the star shows "Photo bientôt".
   CUT_PHOTOS: {},                      // TODO(owner): one finished-cut photo per service
 
+  // The exact spot. Put the shop's GPS point here as 'latitude,longitude' (Google Maps: long-press the shop, copy the numbers).
+  // Empty = the map searches the landmark name below, which is only approximate.
+  MAP: { coords: '', query: 'Emombo Auberge, Yaoundé' },   // TODO(owner): exact coords
+
   // Exact landmark near the shop ("en face de…", "derrière…"). Empty = hidden.
   LANDMARK: { fr: '', en: '' },        // TODO(owner)
 

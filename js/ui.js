@@ -118,6 +118,9 @@
   /* ---------- Map: loads only when asked (faster, and no Google cookies until then) ---------- */
   function initMap() {
     var box = $('#map'), btn = $('#map-load');
+    var M = C.MAP || {}, q = encodeURIComponent(M.coords || M.query || 'Emombo Yaoundé');
+    box.setAttribute('data-src', 'https://www.google.com/maps?q=' + q + '&output=embed&hl=' + (doc.getAttribute('data-lang') === 'en' ? 'en' : 'fr') + '&z=17');
+    var dir = $('a[href*="maps/dir"]'); if (dir) dir.href = 'https://www.google.com/maps/dir/?api=1&destination=' + q;
     btn.addEventListener('click', function () {
       var f = document.createElement('iframe');
       f.src = box.getAttribute('data-src'); f.loading = 'lazy'; f.title = 'Emombo Auberge, Yaoundé';
