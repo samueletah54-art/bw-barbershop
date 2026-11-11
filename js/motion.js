@@ -101,5 +101,9 @@
     board.addEventListener('pointerleave', function () { current = null; shown = false; gsap.to(star, { opacity: 0, scale: 0.8, duration: 0.2, ease: 'power3.in', overwrite: 'auto' }); });
   }
 
+  /* ---------- Footer logo: bars rise when it scrolls into view ---------- */
+  var pl = $('.plogo');
+  if (pl) { if ('IntersectionObserver' in window) { var io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { pl.classList.add('is-in'); io.disconnect(); } }, { threshold: 0.35 }); io.observe(pl); } else pl.classList.add('is-in'); }
+
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });
 })();

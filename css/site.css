@@ -261,3 +261,16 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 .flip { transform: scaleX(-1); }
+
+/* logo: bars rise one after another, then the tools fade in. transform and opacity only. */
+.plogo { margin-bottom: var(--s4); }
+.plogo svg { display: block; width: auto; height: clamp(220px, 26vw, 300px); aspect-ratio: 120 / 172; }
+.ps, .pt { transform-box: fill-box; transform-origin: 50% 100%; }
+@keyframes bar-up { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: no-preference) {
+  .logo .ps { animation: bar-up 700ms var(--ease) calc(150ms + var(--i) * 70ms) both; }
+  .js-motion .plogo:not(.is-in) .ps { transform: scaleY(0); }
+  .js-motion .plogo:not(.is-in) .pt { opacity: 0; }
+  .plogo.is-in .ps { animation: bar-up 800ms var(--ease) calc(var(--i) * 80ms) both; }
+  .plogo.is-in .pt { animation: fade-in 600ms var(--ease) 650ms both; }
+}
