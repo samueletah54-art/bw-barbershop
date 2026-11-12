@@ -105,5 +105,85 @@
   var pl = $('.plogo');
   if (pl) { if ('IntersectionObserver' in window) { var io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { pl.classList.add('is-in'); io.disconnect(); } }, { threshold: 0.35 }); io.observe(pl); } else pl.classList.add('is-in'); }
 
+  /* ---------- Scroll progress: a gold hairline across the top ---------- */
+  var bar = document.createElement('div');
+  bar.className = 'progress'; bar.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(bar);
+  gsap.to(bar, { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.2 } });
+
+  /* ---------- Section titles: a curtain lifts while the title rises ---------- */
+  $$('.sec-title').forEach(function (t) {
+    gsap.fromTo(t, { clipPath: 'inset(-20% -5% 110% -5%)', yPercent: 22 }, { clipPath: 'inset(-20% -5% -20% -5%)', yPercent: 0, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: t, start: 'top 90%', once: true } });
+  });
+
+  /* ---------- Jackson: each letter climbs out of its own mask ---------- */
+  var bt = $('#barbier-title');
+  if (bt && !bt.querySelector('.ch')) {
+    var word = bt.textContent, letters = [];
+    bt.setAttribute('aria-label', word); bt.textContent = '';
+    word.split('').forEach(function (c) {
+      var m = document.createElement('span'), i = document.createElement('span');
+      m.className = 'ch'; m.setAttribute('aria-hidden', 'true'); i.textContent = c;
+      m.appendChild(i); bt.appendChild(m); letters.push(i);
+    });
+    gsap.from(letters, { yPercent: 115, rotate: phone ? 0 : 6, duration: 1, ease: 'power4.out', stagger: 0.06, scrollTrigger: { trigger: bt, start: 'top 88%', once: true } });
+  }
+
+  /* ---------- The barber's photo is drawn from the top down ---------- */
+  var bframe = $('#barber-frame');
+  if (bframe) gsap.fromTo(bframe, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.3, ease: 'power3.inOut', scrollTrigger: { trigger: bframe, start: 'top 85%', once: true } });
+
+  /* ---------- Gallery: photos settle from a zoom as each one is wiped in ---------- */
+  if (wipes.length) gsap.from($$('.shot-wipe .bw, .shot-wipe .colour'), { scale: 1.25, duration: 1.6, ease: 'power3.out', stagger: 0.06, clearProps: 'transform', scrollTrigger: { trigger: '#gallery', start: 'top 80%', once: true } });
+
+  /* ---------- Opening hours: the days appear one after the other ---------- */
+  var hrs = $$('.hours tr');
+  if (hrs.length) gsap.from(hrs, { opacity: 0, x: -14, duration: 0.6, ease: 'power3.out', stagger: 0.06, scrollTrigger: { trigger: '.hours', start: 'top 88%', once: true } });
+
+  /* ---------- Band: a loop that speeds up, and turns round, with the scroll ---------- */
+  var track = $('.band-track');
+  if (track) {
+    var loop = gsap.to(track, { xPercent: -50, duration: phone ? 22 : 36, ease: 'none', repeat: -1 });
+    var dir = 1;
+    ST.create({ start: 0, end: 'max', onUpdate: function (self) {
+      if (self.direction) dir = self.direction;
+      var boost = Math.min(Math.abs(self.getVelocity()) / 250, 8);
+      gsap.to(loop, { timeScale: dir * (1 + boost), duration: 0.25, ease: 'power2.out', overwrite: true });
+      gsap.to(loop, { timeScale: dir, duration: 1.2, ease: 'power2.out', delay: 0.25, overwrite: false });
+    } });
+  }
+
+  /* ---------- Top ticker: leans into the scroll too ---------- */
+  var tick = $('.ticker');
+  if (tick && tick.getAnimations) {
+    var ta = tick.getAnimations()[0], rate = { v: 1 };
+    if (ta) ST.create({ start: 0, end: 'max', onUpdate: function (self) {
+      var target = 1 + Math.min(Math.abs(self.getVelocity()) / 400, 5);
+      gsap.to(rate, { v: target, duration: 0.2, overwrite: true, onUpdate: function () { ta.playbackRate = rate.v; } });
+      gsap.to(rate, { v: 1, duration: 1, delay: 0.2, overwrite: false, onUpdate: function () { ta.playbackRate = rate.v; } });
+    } });
+  }
+
+  /* ---------- Hero: scroll cue, scroll-out and depth under the pointer (desktop) ---------- */
+  var hero = $('.hero');
+  if (hero && !phone) {
+    var cue = document.createElement('div');
+    cue.className = 'cue'; cue.setAttribute('aria-hidden', 'true');
+    var cueText = document.createElement('span');
+    [['fr', 'Défiler'], ['en', 'Scroll']].forEach(function (l) {
+      var s = document.createElement('span'); s.lang = l[0]; s.textContent = l[1]; cueText.appendChild(s);
+    });
+    cue.appendChild(cueText); cue.appendChild(document.createElement('i'));
+    hero.appendChild(cue);
+    gsap.to(cue, { opacity: 0, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: '12% top', scrub: true } });
+    gsap.to('.hero-inner', { yPercent: -10, opacity: 0.1, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom 25%', scrub: true } });
+  }
+  if (hero && fine) {
+    var hbg = $('.hero-bg');
+    gsap.set(hbg, { scale: 1.07 });
+    var hx = gsap.quickTo(hbg, 'x', { duration: 1.2, ease: 'power3.out' }), hy = gsap.quickTo(hbg, 'y', { duration: 1.2, ease: 'power3.out' });
+    hero.addEventListener('pointermove', function (e) { hx((e.clientX / window.innerWidth - 0.5) * -26); hy((e.clientY / window.innerHeight - 0.5) * -18); });
+  }
+
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });
 })();
