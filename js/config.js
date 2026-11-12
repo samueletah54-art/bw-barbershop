@@ -51,8 +51,8 @@ window.BW_CONFIG = {
   // Do NOT invent one, and do NOT invent his years of experience.
   BARBER_QUOTE: { fr: '', en: '' },    // TODO(owner)
 
-  // Confirm the spelling on his ID: "Camanda" or "Camada".
-  BARBER: { legalName: 'Camanda Jackson', nickname: 'Jackson', speciality: '', years: '' },   // TODO(owner): speciality (e.g. 'Dégradés') and years of experience. Empty = hidden. Never guess.
+  // The page uses one name only: Jackson.
+  BARBER: { legalName: 'Jackson', nickname: 'Jackson', speciality: '', years: '' },   // TODO(owner): speciality (e.g. 'Dégradés') and years of experience. Empty = hidden. Never guess.
 
   /* ---------- Price sheet (FCFA), straight from the official sheet ----------
      Durations are DEFAULTS. TODO(owner): confirm each one.

@@ -36,7 +36,7 @@ Run `npm run check` any time: it lists them and verifies that prices, durations,
 | 5 | **Deposit amount** | `DEPOSIT_XAF` and `shop_settings.deposit_xaf` | 500 FCFA |
 | 6 | **Landmark near the shop** | `LANDMARK.fr / .en` | empty: hidden |
 | 7 | **One real sentence from Jackson** | `BARBER_QUOTE.fr / .en` | empty: hidden. Do not invent one, and no years of experience |
-| 8 | **Spelling: Camanda or Camada Jackson?** | `BARBER`, and the text in the "Le barbier" section of `index.html` | "Camanda" |
+| 8 | **Barber's name** | `BARBER`, and the text in the "Le barbier" section of `index.html` | "Jackson" only (no first name, no nickname) |
 | 9 | **The real logo file** (BW BARBER SHOP with the pole) | header in `index.html`, favicon in `images/` | A text stand-in with the gold "&" (the logo file was not in the upload) |
 | 10 | Final domain | `canonical`, `og:url`, `og:image`, JSON-LD image in `index.html`; `robots.txt`; `sitemap.xml` | `bw-barbershop.vercel.app` |
 | 11 | Opening hours in the JSON-LD | `index.html` | not included until 1 and 2 are confirmed |
