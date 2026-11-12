@@ -128,9 +128,11 @@ body::after { content: ""; position: fixed; inset: 0; z-index: var(--z-modal); p
 .shot picture, .shot img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .shot img { object-fit: cover; }
 .shot .bw img { filter: grayscale(1) contrast(1.15); }
-.shot .colour { opacity: 0; transition: opacity 360ms var(--ease); }
+.shot .colour { opacity: 0; transition: opacity 360ms var(--ease), transform 900ms var(--ease); }
+.shot .bw { transition: transform 900ms var(--ease); }
 .shot:focus-visible .colour { opacity: 1; }
 @media (hover: hover) and (pointer: fine) { .shot:hover .colour { opacity: 1; } }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) { .shot:hover .bw, .shot:hover .colour { transform: scale(1.06); } }
 .g1 { grid-column: 1 / 6; grid-row: 1 / 6; }
 .g2 { grid-column: 6 / 13; grid-row: 1 / 4; }
 .g3 { grid-column: 6 / 9; grid-row: 4 / 6; }
@@ -274,3 +276,52 @@ html.lenis, html.lenis body { height: auto; }
   .plogo.is-in .ps { animation: bar-up 800ms var(--ease) calc(var(--i) * 80ms) both; }
   .plogo.is-in .pt { animation: fade-in 600ms var(--ease) 650ms both; }
 }
+
+/* =====================================================================
+   MOTION · round two. Transform, opacity and clip-path only.
+   ===================================================================== */
+
+/* scroll progress: a gold hairline across the top, scaled by the script */
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: calc(var(--z-header) + 1); background: var(--color-accent); transform: scaleX(0); transform-origin: left; pointer-events: none; }
+
+/* buttons: a light sweep crosses the face on hover */
+@media (prefers-reduced-motion: no-preference) {
+  .btn { position: relative; overflow: clip; isolation: isolate; }
+  .btn-gold::after, .btn-dark::after { content: ""; position: absolute; inset: 0 auto 0 0; width: 45%; z-index: -1; background: linear-gradient(100deg, transparent, rgb(255 255 255 / 0.38), transparent); transform: translateX(-130%) skewX(-18deg); pointer-events: none; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .btn-gold:hover::after, .btn-dark:hover::after { transform: translateX(330%) skewX(-18deg); transition: transform 800ms var(--ease); }
+}
+
+/* price rows: a gold bar grows on the left and the text steps in */
+@media (prefers-reduced-motion: no-preference) {
+  .row { position: relative; }
+  .row::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--color-accent); transform: scaleY(0); transform-origin: 50% 100%; transition: transform var(--dur-short) var(--ease); }
+  .row-text { transition: transform var(--dur-short) var(--ease); }
+  .row:focus-visible::before { transform: scaleY(1); }
+  .row:focus-visible .row-text { transform: translateX(var(--s3)); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .row:hover::before { transform: scaleY(1); }
+  .row:hover .row-text { transform: translateX(var(--s3)); }
+}
+
+/* Jackson, letter by letter (the script splits the word and lifts each letter out of its mask) */
+.ch { display: inline-block; overflow: clip; padding: 0.1em 0 0.02em; margin: -0.1em 0 -0.02em; vertical-align: top; }
+.ch > span { display: inline-block; }
+
+/* the band between the barber and the gallery */
+.band { overflow: clip; padding-block: var(--s6); border-block: 1px solid var(--line); user-select: none; }
+.band-track { display: flex; flex: none; width: max-content; will-change: transform; }
+.band-set { display: flex; flex: none; align-items: center; }
+.band-set > span { display: inline-flex; align-items: center; font-family: var(--font-display); font-size: clamp(4rem, 12vw, 11rem); line-height: 0.95; text-transform: uppercase; letter-spacing: var(--tracking-display); white-space: nowrap; color: var(--color-ink); }
+.band-set > span.is-out { color: transparent; -webkit-text-stroke: 2px var(--color-ink); }
+.band-set > span::after { content: ""; flex: none; width: 0.42em; height: 0.42em; margin-inline: 0.5em; background: var(--color-accent); clip-path: polygon(50% 0, 66% 34%, 100% 50%, 66% 66%, 50% 100%, 34% 66%, 0 50%, 34% 34%); }
+@media (max-width: 767px) { .band { padding-block: var(--s4); } .band-set > span.is-out { -webkit-text-stroke-width: 1.5px; } }
+
+/* hero: a thin gold line that keeps falling, nudging the visitor to scroll */
+.cue { position: absolute; right: var(--gutter); bottom: var(--s7); z-index: 1; display: flex; flex-direction: column; align-items: center; gap: var(--s3); color: var(--color-accent); font-size: var(--text-small); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; writing-mode: vertical-rl; pointer-events: none; }
+.cue i { display: block; width: 1px; height: 72px; background: currentColor; transform-origin: top; animation: cue 2.2s var(--ease) infinite; }
+@keyframes cue { 0% { transform: scaleY(0); transform-origin: top; } 45% { transform: scaleY(1); transform-origin: top; } 55% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+@media (max-width: 1023px) { .cue { display: none; } }
+@media (prefers-reduced-motion: reduce) { .cue { display: none; } }
