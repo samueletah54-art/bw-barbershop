@@ -47,7 +47,7 @@ create table if not exists public.shop_settings (
   deposit_xaf       int  not null default 500,            -- TODO(owner): acompte per booking
   slot_step_min     int  not null default 30,
   lead_min          int  not null default 15,
-  horizon_days      int  not null default 30,
+  horizon_days      int  not null default 60,
   hold_online_min   int  not null default 15,             -- unpaid online booking frees its slot after 15 min
   hold_whatsapp_min int  not null default 120,            -- WhatsApp request holds the slot 2 h
   first_open_date   date not null default '2026-11-16'
@@ -132,13 +132,13 @@ returns table ("date" date, start_time time, end_time time)
 language sql stable security definer set search_path = public as $$
   select b."date", b.start_time, b.end_time
     from public.bookings b
-   where b."date" between p_from and least(p_to, p_from + 31)
+   where b."date" between p_from and least(p_to, p_from + 70)
      and (b.status in ('paid','confirmed','done','no_show')
           or (b.status = 'pending' and b.hold_until > now()))
   union all
   select s."date", coalesce(s.start_time, time '00:00'), coalesce(s.end_time, time '23:59:59')
     from public.blocked_slots s
-   where s."date" between p_from and least(p_to, p_from + 31);
+   where s."date" between p_from and least(p_to, p_from + 70);
 $$;
 
 create or replace function public.create_booking(

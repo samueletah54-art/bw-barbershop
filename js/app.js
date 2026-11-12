@@ -357,11 +357,32 @@
 
   function step2() {
     var f = formule(S.formule), days = bookingDays();
-    var dayHtml = days.map(function (d) {
+    /* Month view: one month at a time with arrows. Same radio inputs as before, so choosing a day works exactly as it did. */
+    var keys = [];
+    days.forEach(function (d) { var k = d.date.slice(0, 7); if (keys.indexOf(k) < 0) keys.push(k); });
+    if (S.month == null) S.month = Math.max(0, keys.indexOf((S.date || days[0].date).slice(0, 7)));
+    S.month = Math.min(Math.max(S.month, 0), keys.length - 1);
+    var mk = keys[S.month], byDate = {};
+    days.forEach(function (d) { byDate[d.date] = d; });
+    var first = mk + '-01', parts = first.split('-'), y = +parts[0], mo = +parts[1];
+    var dim = new Date(Date.UTC(y, mo, 0)).getUTCDate();
+    function dowIdx(n2) { return (new Date(Date.UTC(y, mo - 1, n2)).getUTCDay() + 6) % 7; }
+    var fa = 1; while (fa < dim && !byDate[mk + '-' + (fa < 10 ? '0' + fa : fa)]) fa++;
+    var startN = Math.max(1, fa - dowIdx(fa)), lead = startN === 1 ? dowIdx(1) : 0;   // skip whole weeks before the first open day
+    var dow = '';
+    for (var w = 0; w < 7; w++) dow += '<span class="dow">' + esc(fmtDate('2026-11-' + (16 + w), { weekday: 'short' })) + '</span>';
+    var dayHtml = dow + new Array(lead + 1).join('<span></span>');
+    for (var n = startN; n <= dim; n++) {
+      var ds = mk + '-' + (n < 10 ? '0' + n : n), d = byDate[ds];
+      if (!d) { dayHtml += '<span class="day-off" aria-hidden="true">' + n + '</span>'; continue; }
       var id = 'd-' + d.date;
-      return '<input class="vh" type="radio" name="date" id="' + id + '" value="' + d.date + '"' + (S.date === d.date ? ' checked' : '') + (d.closed ? ' disabled' : '') + '>' +
-        '<label class="day" for="' + id + '"><span>' + esc(fmtDate(d.date, { weekday: 'short' })) + '</span><b>' + fmtDate(d.date, { day: 'numeric' }) + '</b><span>' + esc(d.closed ? t('closed') : fmtDate(d.date, { month: 'short' })) + '</span></label>';
-    }).join('');
+      dayHtml += '<input class="vh" type="radio" name="date" id="' + id + '" value="' + d.date + '"' + (S.date === d.date ? ' checked' : '') + (d.closed ? ' disabled' : '') + '>' +
+        '<label class="day" for="' + id + '"><span class="sr">' + esc(fmtDate(d.date, { weekday: 'long', month: 'long' })) + (d.closed ? ' · ' + esc(t('closed')) : '') + '</span><b aria-hidden="true">' + n + '</b></label>';
+    }
+    var arrows = lang === 'fr' ? ['Mois précédent', 'Mois suivant'] : ['Previous month', 'Next month'];
+    var monthHead = '<div class="month-head"><button type="button" class="month-btn" data-act="month" data-dir="-1" aria-label="' + arrows[0] + '"' + (S.month === 0 ? ' disabled' : '') + '>‹</button>' +
+      '<p class="month-name" aria-live="polite">' + esc(fmtDate(first, { month: 'long', year: 'numeric' })) + '</p>' +
+      '<button type="button" class="month-btn" data-act="month" data-dir="1" aria-label="' + arrows[1] + '"' + (S.month === keys.length - 1 ? ' disabled' : '') + '>›</button></div>';
 
     var slotHtml;
     if (!S.date) {
@@ -385,7 +406,7 @@
     }
     return '<h3 class="step-title" tabindex="-1" data-focus="title">' + esc(t('t2')) + '</h3>' +
       '<p class="step-sub">' + esc(fName(f)) + ' · ' + xaf(f.price) + ' ' + t('fcfa') + '</p>' +
-      '<fieldset><legend class="sr">' + esc(t('day')) + '</legend><div class="days">' + dayHtml + '</div></fieldset>' +
+      '<fieldset><legend class="sr">' + esc(t('day')) + '</legend>' + monthHead + '<div class="days is-month">' + dayHtml + '</div></fieldset>' +
       '<div id="slots-area">' + slotHtml + '</div>' +
       (S.errors.date ? err('err-date', t('err_date')) : '') + (S.errors.time ? err('err-time', t('err_time')) : '') +
       (S.banner ? S.banner : '') +
@@ -634,7 +655,8 @@
     else if (act === 'back') go(S.step - 1);
     else if (act === 'goto') go(+b.getAttribute('data-step'));
     else if (act === 'reload-taken') loadTaken();
-    else if (act === 'next-free') { S.date = b.getAttribute('data-date'); S.time = null; render(); }
+    else if (act === 'month') { S.month = (S.month || 0) + (+b.getAttribute('data-dir')); render(); }
+    else if (act === 'next-free') { S.date = b.getAttribute('data-date'); S.month = null; S.time = null; render(); }
     else if (act === 'confirm-wa') confirmWhatsApp();
     else if (act === 'pay') startPayment();
     else if (act === 'cancel-pay') { stopTimers(); S.view = 'form'; S.step = 4; S.booking = null; clearSaved(); S.focus = 'title'; render(); }
