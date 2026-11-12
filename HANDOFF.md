@@ -35,7 +35,7 @@ Run `npm run check` any time: it lists them and verifies that prices, durations,
 | 4 | **Duration of each formule** | `FORMULES[].duration` and `formules.duration_min` | Classique 30, Soignée 45, Premium 60, Couleur 90, Pédicure 45, Enfant 20 |
 | 5 | **Deposit amount** | `DEPOSIT_XAF` and `shop_settings.deposit_xaf` | 500 FCFA |
 | 6 | **Landmark near the shop** | `LANDMARK.fr / .en` | empty: hidden |
-| 7 | **One real sentence from Rudiger** | `BARBER_QUOTE.fr / .en` | empty: hidden. Do not invent one, and no years of experience |
+| 7 | **One real sentence from Jackson** | `BARBER_QUOTE.fr / .en` | empty: hidden. Do not invent one, and no years of experience |
 | 8 | **Spelling: Camanda or Camada Jackson?** | `BARBER`, and the text in the "Le barbier" section of `index.html` | "Camanda" |
 | 9 | **The real logo file** (BW BARBER SHOP with the pole) | header in `index.html`, favicon in `images/` | A text stand-in with the gold "&" (the logo file was not in the upload) |
 | 10 | Final domain | `canonical`, `og:url`, `og:image`, JSON-LD image in `index.html`; `robots.txt`; `sitemap.xml` | `bw-barbershop.vercel.app` |
@@ -56,7 +56,7 @@ Daylight, iPhone camera in **photo** mode (not video stills, which is why the cu
 
 1. 6 to 10 close-ups of **finished cuts**: side and back, one per formule if possible.
 2. The **shop front with its sign**.
-3. A **portrait of Rudiger** (the current "Le barbier" photo is a video still).
+3. A **portrait of Jackson** (the current "Le barbier" photo is a video still).
 4. Wide shot of the interior at full resolution, for the hero.
 
 The gallery already has a designed "coming soon" tile, so the page is complete without them. The black letterbox bars the brief mentioned are not in these photos (a 4 px strip was trimmed from one).
