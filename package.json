@@ -4,11 +4,17 @@
   "private": true,
   "description": "B&W Barber, Emombo Auberge, Yaoundé. Static site + booking + Notch Pay deposit.",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "python3 -m http.server 8080",
+    "qr": "node scripts/make-qr.mjs",
     "check": "node scripts/check.mjs",
     "test": "node --test tests/*.test.mjs",
     "smoke:notchpay": "node scripts/notchpay-smoke.mjs"
+  },
+  "devDependencies": {
+    "qrcode": "^1.5.4"
   }
 }

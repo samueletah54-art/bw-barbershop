@@ -1,0 +1,37 @@
+/* /qr : the counter sign. Sizes use cqw (percent of the sheet width) so the same layout fits A4 and A5. */
+@font-face { font-family: "Anton"; src: url("../fonts/anton.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Instrument Sans"; src: url("../fonts/instrument-sans.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+:root { --ink: #0b0b0b; --paper: #f4f1ea; --gold: #d4a72c; --muted: #57544c; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #161615; color: var(--paper); font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif; line-height: 1.4; }
+[lang="en"] { display: none; }
+html[data-ui="en"] [lang="fr"] { display: none; }
+html[data-ui="en"] [lang="en"] { display: inline; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; padding: 16px clamp(16px, 4vw, 40px); }
+.back { color: var(--paper); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.back:hover { color: var(--gold); }
+.tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.tools button, .tools a { min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; font: 600 0.9375rem "Instrument Sans", sans-serif; color: var(--ink); background: var(--gold); border: 0; border-radius: 2px; text-decoration: none; cursor: pointer; transition: transform 150ms; }
+.tools a { background: transparent; color: var(--paper); border: 1px solid #55534d; }
+.tools button:hover, .tools a:hover { transform: translateY(-2px); }
+
+main { display: grid; place-items: center; padding: 8px clamp(16px, 4vw, 40px) 48px; }
+.sheet { container-type: inline-size; width: min(100%, 520px); aspect-ratio: 210 / 297; background: var(--paper); color: var(--ink); display: flex; flex-direction: column; align-items: center; text-align: center; padding: 7cqw 8cqw; border-top: 2.2cqw solid var(--gold); }
+html[data-size="A5"] .sheet { aspect-ratio: 148 / 210; }
+.logo { width: 44cqw; height: auto; background: var(--ink); padding: 2.2cqw 3.5cqw; border-radius: 1.2cqw; }
+h1 { font: 400 11.5cqw/1 "Anton", Impact, "Arial Narrow", sans-serif; text-transform: uppercase; margin: 4.5cqw 0 0; letter-spacing: .005em; }
+.en { margin: 2cqw 0 0; font-size: 3.4cqw; color: var(--muted); font-style: italic; }
+.code { width: 68cqw; height: auto; margin: 4.5cqw 0 0; }
+.facts { list-style: none; margin: auto 0 0; padding: 4cqw 0 0; font-size: 3.1cqw; line-height: 1.5; width: 100%; border-top: .3cqw solid var(--ink); }
+.facts li { margin: .4cqw 0; }
+.facts b { font-weight: 700; margin-right: 1.2cqw; }
+.facts a { color: inherit; text-decoration: none; font-weight: 600; }
+
+@media print {
+  html, body { background: #fff; }
+  .bar { display: none; }
+  main { display: block; padding: 0; }
+  .sheet { width: 100vw; height: 100vh; aspect-ratio: auto; border-top-width: 2.2cqw; -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+}

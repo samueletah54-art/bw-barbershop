@@ -13,6 +13,9 @@ window.BW_CONFIG = {
   PHONE_E164: '+237690868831',
   PHONE_LOCAL: '690 86 88 31',
   WHATSAPP: '237690868831',
+  // The link the shop's QR code opens. /book redirects to the booking form (vercel.json).
+  // Change it here, then run: npm run qr   (rebuilds images/qr.svg and images/qr.png)
+  QR_URL: 'https://bw-barbershop.vercel.app/book',   // TODO(deploy): final domain
   OPENING_DATE: '2026-11-16',          // Monday 16 November 2026, first day
   TZ_OFFSET_MIN: 60,                   // Cameroon is UTC+1, no daylight saving
 
