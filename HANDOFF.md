@@ -164,3 +164,11 @@ Lighthouse, mobile preset, local server: **Performance 100, Accessibility 100, B
 **Motion per section** (`js/motion.js`, loaded after page load; off under reduced motion; light on phones): ticker marquee; nav hide/show; hero CSS line reveal + slow zoom + parallax; price rows slide in with count-up; cursor-follow gold star (desktop); gallery clip-path wipe and B&W→colour hover; barber parallax; footer lettering slide; magnetic buttons; phone bar slides in on scroll.
 
 **TODO list**: cut photos in `images/cuts/` + `CUT_PHOTOS`; real reviews; confirmed hours and closing day; barber speciality, years, quote and name spelling; Instagram/Facebook URLs; landmark; enable Vercel Analytics in the dashboard; custom domain; Notch Pay account/keys; Supabase project + SQL + admin email. Hours in JSON-LD are guesses until confirmed.
+
+## QR code and /qr print page
+
+- **Link it opens:** `QR_URL` in `js/config.js` (now `https://bw-barbershop.vercel.app/book`). `/book` redirects to the booking form (`vercel.json`), so the printed QR keeps working even if the page layout changes.
+- **Change the link** (for example when the real domain is set): edit `QR_URL`, run `npm run qr`, commit `images/qr.svg` and `images/qr.png`. `npm run check` fails if the image and `QR_URL` disagree.
+- **Look:** dark modules on a cream rounded card, the shop mark in the centre, error correction level H. Decoded back to `QR_URL` from the SVG-rendered PNG and from A4 and A5 print renders (even at 40 dpi). **Still to do: scan the printed sheet once with a real phone camera.**
+- **`/qr`** (`qr.html`): counter sign with "Scannez. Réservez votre prochaine coupe." plus the English line, the QR, WhatsApp number, hours and address. Buttons print A4 or A5 (header and buttons are hidden when printing) and download the SVG or PNG. Hours and social handles come from `js/config.js` (hours show "Dès 9h" until `HOURS.confirmed` is true). Not indexed by search engines.
+- If the shop has its own official QR image, put it in `/assets/qr.png` and tell me: it gets decoded and its link checked before it replaces this one.

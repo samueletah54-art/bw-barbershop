@@ -325,3 +325,10 @@ html.lenis, html.lenis body { height: auto; }
 @keyframes cue { 0% { transform: scaleY(0); transform-origin: top; } 45% { transform: scaleY(1); transform-origin: top; } 55% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 @media (max-width: 1023px) { .cue { display: none; } }
 @media (prefers-reduced-motion: reduce) { .cue { display: none; } }
+
+/* QR card in Infos */
+.qr-card { display: flex; align-items: center; gap: var(--s6); margin: var(--s8) 0 0; padding: var(--s5); border: 1px solid var(--line); background: var(--color-paper-2); }
+.qr-card img { width: 160px; height: 160px; flex: none; border-radius: 8px; }
+.qr-card h3 { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; font-size: 1.75rem; line-height: 1.05; margin: 0 0 var(--s2); }
+.qr-card p { margin: 0 0 var(--s4); max-width: 42ch; }
+@media (max-width: 560px) { .qr-card { flex-direction: column; align-items: flex-start; } }

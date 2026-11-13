@@ -44,14 +44,17 @@ if (num(/open_min\s+int\s+not null default (\d+)/) !== toMin(C.HOURS.open) || nu
 
 // 3. referenced local files exist
 const refs = new Set();
-for (const f of ['index.html', '404.html', 'admin/index.html']) {
+for (const f of ['index.html', '404.html', 'qr.html', 'admin/index.html']) {
   for (const m of read(f).replace(/<!--[\s\S]*?-->/g, '').matchAll(/(?:src|href|srcset|imagesrcset)="([^"#?]+)"/g)) {
     for (const part of m[1].split(',')) { const u = part.trim().split(/\s+/)[0]; if (u && !/^(https?:|mailto:|tel:|data:|\/_vercel\/)/.test(u)) refs.add(path.join(path.dirname(f), u.replace(/^\//, f.startsWith('admin') || u.startsWith('/') ? '' : ''))); }
   }
 }
 let missing = 0;
-for (const r of refs) { const p = path.join(root, path.normalize(r).replace(/^\//, '')); if (!fs.existsSync(p) && !fs.existsSync(path.join(root, r.replace(/^(admin\/)?/, '')))) { bad('missing file: ' + r); missing++; } }
+for (const r of refs) { const p = path.join(root, path.normalize(r).replace(/^\//, '')); if (!fs.existsSync(p) && !fs.existsSync(p + '.html') && !fs.existsSync(path.join(root, r.replace(/^(admin\/)?/, '')))) { bad('missing file: ' + r); missing++; } }
 if (!missing) good(`${refs.size} referenced files exist`);
+
+// 3b. the QR image must point at QR_URL (run `npm run qr` after changing it)
+if (!read('images/qr.svg').includes(C.QR_URL)) bad('images/qr.svg does not match QR_URL in js/config.js: run npm run qr'); else good('images/qr.svg matches QR_URL (' + C.QR_URL + ')');
 
 // 4. images: explicit width/height on every <img>
 const imgs = [...html.matchAll(/<img\b[^>]*>/g)].map((m) => m[0]);

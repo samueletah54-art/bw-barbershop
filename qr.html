@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0b0b">
+  <title>QR code · BW Barber Shop</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="preload" href="/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/qr.css">
+</head>
+<body>
+  <header class="bar">
+    <a class="back" href="/">← <span lang="fr">Retour au site</span><span lang="en">Back to the site</span></a>
+    <div class="tools">
+      <button type="button" data-print="A4"><span lang="fr">Imprimer A4</span><span lang="en">Print A4</span></button>
+      <button type="button" data-print="A5"><span lang="fr">Imprimer A5</span><span lang="en">Print A5</span></button>
+      <a href="/images/qr.svg" download="bw-barber-shop-qr.svg"><span lang="fr">Télécharger SVG</span><span lang="en">Download SVG</span></a>
+      <a href="/images/qr.png" download="bw-barber-shop-qr.png"><span lang="fr">Télécharger PNG</span><span lang="en">Download PNG</span></a>
+    </div>
+  </header>
+
+  <main>
+    <article class="sheet" id="sheet" aria-labelledby="t">
+      <img class="logo" src="/images/logo-horizontal.svg" alt="BW Barber Shop" width="420" height="112">
+      <h1 id="t"><span class="fr">Scannez.<br>Réservez votre<br>prochaine coupe.</span></h1>
+      <p class="en">Scan to book your next cut.</p>
+      <img class="code" src="/images/qr.svg" alt="QR code pour réserver chez BW Barber Shop" width="500" height="500">
+      <ul class="facts">
+        <li><b>WhatsApp</b> <a href="https://wa.me/237690868831">+237 690 86 88 31</a></li>
+        <li id="hours"><b>Horaires · Hours</b> <span>Dès 9h · From 9am</span></li>
+        <li><b>Emombo Auberge</b> <span>Yaoundé, Cameroun</span></li>
+        <li id="social" hidden></li>
+      </ul>
+    </article>
+  </main>
+
+  <script src="/js/config.js"></script>
+  <script src="/js/qr.js"></script>
+</body>
+</html>
