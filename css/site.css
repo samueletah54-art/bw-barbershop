@@ -71,7 +71,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: var(--z-modal); p
 
 /* ---------- Section frame ---------- */
 .sec { padding-block: var(--s10); }
-.sec-title { font-size: var(--text-section); line-height: 0.92; }
+.sec-title { font-size: var(--text-section); line-height: 1.02; }   /* was 0.92: commas and accents touched the line below */
 .sec-lead { max-width: 52ch; color: var(--fg2); margin-top: var(--s5); }
 .caption { margin-top: var(--s2); font-size: var(--text-small); color: var(--fg2); }
 
@@ -111,8 +111,8 @@ body::after { content: ""; position: fixed; inset: 0; z-index: var(--z-modal); p
 .star-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1); }
 
 /* ---------- Le barbier ---------- */
-.barber { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--s8) var(--gap-columns); align-items: start; }
-.barber-photo { margin-top: var(--s9); order: 2; }   /* photo on the right on wide screens */
+.barber { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--s8) var(--gap-columns); align-items: center; }   /* bio sits level with the middle of the photo */
+.barber-photo { margin-top: 0; order: 2; }   /* photo on the right on wide screens */
 .frame { position: relative; overflow: clip; aspect-ratio: 4 / 5; background: var(--color-paper-2); }
 .frame img { position: absolute; left: 0; top: -9%; width: 100%; height: 118%; object-fit: cover; object-position: 50% 68%; filter: grayscale(1) contrast(1.15); }
 .barber-text h2 { font-size: clamp(4rem, 10.5vw, 9.5rem); line-height: 0.85; margin-bottom: var(--s6); }
@@ -137,7 +137,8 @@ body::after { content: ""; position: fixed; inset: 0; z-index: var(--z-modal); p
 .g2 { grid-column: 6 / 13; grid-row: 1 / 4; }
 .g3 { grid-column: 6 / 9; grid-row: 4 / 6; }
 .g4 { grid-column: 9 / 11; grid-row: 4 / 6; }
-.g5 { grid-column: 11 / 13; grid-row: 4 / 6; display: flex; align-items: flex-end; padding: var(--s4); border: 1px dashed var(--color-muted); color: var(--color-muted); font-size: var(--text-small); cursor: default; }
+.g5 { grid-column: 11 / 13; grid-row: 4 / 6; }
+.g5 img { object-position: 36% 50%; }
 .lightbox { width: min(92vw, 880px); max-height: 92svh; padding: 0; border: 0; background: var(--color-paper); color: var(--color-ink); }
 .lightbox::backdrop { background: var(--color-hero-shade); }
 .lightbox img { width: 100%; max-height: 82svh; object-fit: contain; background: var(--color-paper); }
@@ -183,7 +184,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: var(--z-modal); p
 .map-load { white-space: nowrap; display: inline-flex; align-items: center; gap: var(--s2); min-height: 52px; padding: 0 var(--s5); font-weight: 600; color: var(--color-ink); background: transparent; border: 1px solid var(--color-ink); border-radius: var(--radius); cursor: pointer; transition: background var(--dur-micro) var(--ease), color var(--dur-micro) var(--ease); }
 .map-load:hover { background: var(--color-ink); color: var(--color-paper); }
 .map-note { font-size: var(--text-small); color: var(--fg2); max-width: 32ch; }
-.fine { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s7) var(--gap-columns); margin-top: var(--s9); padding-top: var(--s6); border-top: 1px solid var(--line); }
+.fine { align-items: start; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s7) var(--gap-columns); margin-top: var(--s9); padding-top: var(--s6); border-top: 1px solid var(--line); }
 .fine h3 { font-family: var(--font-body); text-transform: none; font-size: var(--text-small); font-weight: 600; color: var(--color-ink); letter-spacing: 0; margin-bottom: var(--s3); }
 .fine li, .fine p { color: var(--fg2); max-width: 60ch; font-size: var(--text-small); margin-bottom: var(--s2); }
 
@@ -346,3 +347,6 @@ html.lenis, html.lenis body { height: auto; }
 }
 .fine > div { padding: var(--s5); }
 .map iframe { border-radius: 18px; }
+
+/* Infos: "Dès 9h" and the opening note were running together on one line */
+#hours-dd small { display: block; margin-top: var(--s1); font-size: var(--text-small); }
