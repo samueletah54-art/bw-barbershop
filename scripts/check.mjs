@@ -19,11 +19,10 @@ const C = ctx.window.BW_CONFIG;
 
 // 1. prices: config vs index.html rows vs JSON-LD vs SQL seed
 const html = read('index.html');
-const menu = html.slice(html.indexOf('<ol class="board"'), html.indexOf('</ol>', html.indexOf('<ol class="board"')));
-const rows = [...menu.matchAll(/data-formule="(\w+)"[\s\S]*?<span class="num"[^>]*>([\d&;nbsp\s]+)<\/span>/g)].map((m) => [m[1], Number(m[2].replace(/\D/g, ''))]);
-const durs = [...menu.matchAll(/data-formule="(\w+)"[\s\S]*?<span class="dur">(\d+)<\/span>/g)].map((m) => [m[1], Number(m[2])]);
+const rows = [...html.matchAll(/data-service="(\w+)" data-price="(\d+)" data-min="(\d+)"/g)].map((m) => [m[1], Number(m[2])]);
+const durs = [...html.matchAll(/data-service="(\w+)" data-price="(\d+)" data-min="(\d+)"/g)].map((m) => [m[1], Number(m[3])]);
 const ld = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
-const ldPrices = ld.makesOffer.map((o) => Number(o.price));
+const ldPrices = C.FORMULES.map((f) => { const i = ld.makesOffer.findIndex((o) => o.itemOffered.name.toLowerCase().startsWith(f.fr.name.toLowerCase())); return i < 0 ? NaN : Number(ld.makesOffer[i].price); });
 const sql = read('supabase/schema.sql');
 const seed = [...sql.matchAll(/\('(\w+)',\s*\d+,\s*'[^']*',\s*'[^']*',\s*(\d+),\s*(\d+)\)/g)].map((m) => ({ id: m[1], price: Number(m[2]), duration: Number(m[3]) }));
 C.FORMULES.forEach((f, i) => {

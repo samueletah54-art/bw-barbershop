@@ -42,7 +42,7 @@ on conflict (id) do nothing;
 create table if not exists public.shop_settings (
   id                boolean primary key default true check (id),
   open_min          int  not null default 540,            -- 09:00 (confirmed)
-  close_min         int  not null default 1140,           -- 19:00  TODO(owner): confirm closing time
+  close_min         int  not null default 1200,           -- 20:00  TODO(owner): confirm closing time
   open_days         int[] not null default '{1,2,3,4,5,6}', -- ISO: 1 = Monday … 7 = Sunday. TODO(owner): confirm
   deposit_xaf       int  not null default 500,            -- TODO(owner): acompte per booking
   slot_step_min     int  not null default 30,

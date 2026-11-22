@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BW Barber Shop · Coiffeur à Emombo, Yaoundé</title>
-  <meta name="description" content="BW Barber Shop, coiffeur à Emombo Auberge, Yaoundé. Dégradés, coupes afro, coupe enfant dès 500 FCFA. Réservez en ligne. Ouverture le lundi 16 novembre 2026 à 9h.">
+  <title>Barbier à Emombo, Yaoundé · Dégradé propre, sans attente | BW Barber Shop</title>
+  <meta name="description" content="BW Barber Shop, barbier et coiffeur à Emombo, Yaoundé. Dégradés, coupes afro, coupe enfant dès 500 FCFA. Salon climatisé, vrais fauteuils de barbier, sans attente. Réservez sur WhatsApp.">
   <meta name="theme-color" content="#0b0b0b">
-  <!-- EN title + description are swapped in by js/ui.js when the visitor picks EN:
-       "BW Barber Shop · Barber in Emombo, Yaoundé" -->
+  <!-- EN title + description are swapped in by js/site.js when the visitor picks EN. -->
 
   <!-- TODO(deploy): when a custom domain is added, update canonical, hreflang, og:url, og:image, JSON-LD, sitemap.xml, robots.txt -->
   <link rel="canonical" href="https://bw-barbershop.vercel.app/">
@@ -22,8 +21,8 @@
   <meta property="og:locale" content="fr_CM">
   <meta property="og:locale:alternate" content="en_GB">
   <meta property="og:site_name" content="BW Barber Shop">
-  <meta property="og:title" content="BW Barber Shop · Coiffeur à Emombo, Yaoundé">
-  <meta property="og:description" content="Dégradés, coupes afro et coupe enfant. Prix affichés, réservation en ligne. Ouverture lundi 16 novembre, 9h.">
+  <meta property="og:title" content="BW Barber Shop · Barbier à Emombo, Yaoundé">
+  <meta property="og:description" content="Dégradés, coupes afro et coupe enfant dès 500 FCFA. Salon climatisé, sans attente. Réservez sur WhatsApp.">
   <meta property="og:url" content="https://bw-barbershop.vercel.app/">
   <meta property="og:image" content="https://bw-barbershop.vercel.app/images/og.jpg">
   <meta property="og:image:width" content="1200">
@@ -35,124 +34,66 @@
   <link rel="preload" href="fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" type="image/avif" href="images/interior-wide-800.avif" imagesrcset="images/interior-wide-480.avif 480w, images/interior-wide-800.avif 800w, images/interior-wide-1200.avif 1200w" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">
-  <link rel="preload" as="image" type="image/avif" href="images/interior-tall-608.avif" imagesrcset="images/interior-tall-400.avif 400w, images/interior-tall-608.avif 608w" imagesizes="100vw" media="(max-width: 767px)" fetchpriority="high">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/site.css">
+  <link rel="preload" as="image" type="image/avif" href="images/interior-tall-400.avif" imagesrcset="images/interior-tall-400.avif 400w, images/interior-tall-608.avif 608w" imagesizes="100vw" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="stylesheet" href="css/main.css">
 
-  <!-- Structured data. TODO(owner): hours below are the defaults in js/config.js (closing time and days are NOT confirmed yet). -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": ["HairSalon", "BarberShop"],
     "name": "BW Barber Shop",
-    "description": "Coiffeur à Emombo Auberge, Yaoundé : dégradés, coupes afro, coupe enfant.",
+    "description": "Barbier à Emombo Auberge, Yaoundé : dégradés, coupes afro, coupe enfant dès 500 FCFA. Salon climatisé.",
     "url": "https://bw-barbershop.vercel.app/",
-    "image": "https://bw-barbershop.vercel.app/images/interior-wide-1200.jpg",
+    "image": "https://bw-barbershop.vercel.app/images/og.jpg",
     "logo": "https://bw-barbershop.vercel.app/images/logo.svg",
     "telephone": "+237690868831",
     "priceRange": "500–5000 FCFA",
     "currenciesAccepted": "XAF",
-    "paymentAccepted": "MTN Mobile Money, Orange Money",
     "areaServed": "Yaoundé",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Emombo Auberge",
-      "addressLocality": "Yaoundé",
-      "addressCountry": "CM"
-    },
-    "openingHoursSpecification": [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      "opens": "09:00",
-      "closes": "19:00",
-      "validFrom": "2026-11-16"
-    }],
+    "address": { "@type": "PostalAddress", "streetAddress": "Emombo Auberge", "addressLocality": "Yaoundé", "addressCountry": "CM" },
+    "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "20:00" }],
     "makesOffer": [
       { "@type": "Offer", "priceCurrency": "XAF", "price": "1000", "itemOffered": { "@type": "Service", "name": "Classique : coupe simple + finition" } },
       { "@type": "Offer", "priceCurrency": "XAF", "price": "2000", "itemOffered": { "@type": "Service", "name": "Soignée : coupe + black" } },
       { "@type": "Offer", "priceCurrency": "XAF", "price": "3000", "itemOffered": { "@type": "Service", "name": "Premium : coupe + black + soin de visage" } },
+      { "@type": "Offer", "priceCurrency": "XAF", "price": "500", "itemOffered": { "@type": "Service", "name": "Enfant : coupe enfant + finition" } },
       { "@type": "Offer", "priceCurrency": "XAF", "price": "5000", "itemOffered": { "@type": "Service", "name": "Couleur : coupe + teinture" } },
-      { "@type": "Offer", "priceCurrency": "XAF", "price": "2500", "itemOffered": { "@type": "Service", "name": "Pédicure" } },
-      { "@type": "Offer", "priceCurrency": "XAF", "price": "500", "itemOffered": { "@type": "Service", "name": "Enfant : coupe enfant + finition" } }
+      { "@type": "Offer", "priceCurrency": "XAF", "price": "2500", "itemOffered": { "@type": "Service", "name": "Pédicure : pédicure" } }
     ]
   }
   </script>
 </head>
 <body>
-  <!-- One icon family: 24px grid, 2px stroke, square joins. The logo lockup is set from the Anton letterforms. -->
   <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
     <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.7-5A9 9 0 1 1 8.2 19.4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.5c.2 3.4 2.6 5.9 6.3 6.6l1.2-1.6-2.1-1-.9.8c-1-.4-1.9-1.3-2.4-2.4l.8-.9-1-2.1z" fill="currentColor"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><rect x="16.4" y="6" width="2" height="2" fill="currentColor"/></symbol>
-    <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M3 12h18M14 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="miter"/></symbol>
   </svg>
 
   <a class="skip" href="#main"><span lang="fr">Aller au contenu</span><span lang="en">Skip to content</span></a>
 
-  <!-- ============ 1 + 2 · TOP STRIP AND NAV (one fixed block, hides on scroll down) ============ -->
-  <header class="site-header" id="site-header">
-    <div class="topstrip" id="status" role="status">
-      <div class="ticker">
-        <div class="ticker-set">
-          <span id="status-text"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
-          <span class="tk" aria-hidden="true"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
-          <span class="tk" aria-hidden="true"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
-          <span class="tk" aria-hidden="true"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
-          <span class="tk" aria-hidden="true"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
-          <span class="tk" aria-hidden="true"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
-        </div>
-        <div class="ticker-set" aria-hidden="true">
-          <span class="tk"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
-          <span class="tk"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
-          <span class="tk"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
-          <span class="tk"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
-          <span class="tk"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
-          <span class="tk"><span lang="fr">Ouverture lundi 16 novembre à 9h</span><span lang="en">Opening Monday 16 November at 9 AM</span></span>
-        </div>
-      </div>
-    </div>
-    <div class="nav-bar">
-      <!-- Logo: the shaved head with the shop's name on the clean patch (after the owner's STAY SHARP photo). The red and blue silhouette version is kept in references/logo-alternatives/. -->
-      <a class="logo" href="#top" aria-label="BW Barber Shop"><svg viewBox="0 0 210.6 56" aria-hidden="true"><g transform="translate(0 3) scale(0.05753739930955121) translate(-47 -54)"><rect x="47" y="54" width="641" height="869" rx="42" fill="#F4F1EA"/><path class="ps" style="--i:0" fill-rule="evenodd" d="M513.2 921.2C491.8 921.1 481.0 920.6 481.0 919.9C481.0 919.0 488.0 915.4 497.0 911.7C501.6 909.8 512.0 901.2 512.0 899.2C512.0 898.3 513.0 896.5 514.2 895.2C517.2 892.1 517.2 878.6 514.3 870.2C512.3 864.1 503.0 854.5 495.5 850.8C490.6 848.4 470.3 841.0 467.4 840.5C466.2 840.3 464.4 839.8 463.4 839.2C462.3 838.7 459.0 837.7 456.0 837.0C453.0 836.3 449.6 835.2 448.4 834.5C447.3 833.8 444.4 832.6 442.1 831.9C437.0 830.4 436.0 828.4 436.0 819.6C436.0 814.7 435.5 812.7 433.7 810.3C428.6 803.4 426.6 797.4 427.9 793.3C428.6 790.9 429.0 784.5 428.8 775.7C428.5 760.5 428.8 761.2 420.1 755.0C416.9 752.7 416.2 738.1 419.1 735.4C421.0 733.7 421.3 733.7 427.3 736.8C433.3 739.8 451.7 747.0 453.3 747.0C453.8 747.0 456.5 748.1 459.3 749.4C462.2 750.7 466.3 752.3 468.5 752.9C473.0 754.3 474.3 754.8 482.0 758.3C488.9 761.4 489.2 761.8 491.5 770.5C492.5 774.4 494.3 779.9 495.6 782.8C496.9 785.7 498.0 789.0 498.0 790.1C498.0 791.3 499.1 794.3 500.4 796.9C504.2 804.4 506.0 808.9 506.0 810.9C506.0 812.0 507.8 816.2 510.0 820.4C512.2 824.5 515.0 830.5 516.1 833.7C518.3 839.7 521.1 843.6 523.9 844.5C524.8 844.8 526.4 846.3 527.4 847.9C529.6 851.2 533.9 853.5 539.6 854.6C541.8 854.9 544.0 855.7 544.7 856.2C545.3 856.7 550.7 857.1 556.7 857.0C562.6 856.9 569.6 857.1 572.2 857.5C575.5 858.0 577.4 857.9 578.5 857.0C579.7 856.0 588.3 856.0 620.6 857.0C650.9 857.9 662.6 858.0 666.4 857.1C669.2 856.5 672.6 855.9 674.0 855.8C678.2 855.3 679.5 850.8 679.5 836.8C679.5 818.8 679.0 818.2 658.7 809.9C648.6 805.8 647.0 804.3 650.2 801.9C651.4 800.9 653.9 800.0 655.7 800.0C659.8 800.0 668.8 795.3 670.9 792.1C673.1 788.6 673.1 776.4 670.8 772.8C668.4 769.1 661.9 767.8 650.0 768.6L640.3 769.3 L636.1 765.2C633.7 762.9 631.0 760.8 629.9 760.5C628.9 760.1 628.0 759.5 628.0 759.0C628.0 758.5 625.8 756.7 623.0 754.9C620.2 753.1 618.0 751.3 618.0 751.0C618.0 749.3 620.9 748.1 625.5 747.8C630.5 747.5 630.5 747.5 630.8 743.7C631.0 741.6 630.1 736.0 628.9 731.2C627.0 724.1 626.6 719.5 626.5 706.0C626.4 696.9 626.2 684.1 626.1 677.5C625.9 661.7 625.9 663.6 625.9 646.8L625.9 632.1 L633.5 624.8C637.7 620.8 642.5 616.9 644.1 616.3C650.8 613.4 652.7 602.6 648.2 593.0C644.4 585.0 637.2 572.0 635.4 570.0C634.7 569.1 632.9 565.8 631.5 562.6C630.1 559.4 627.0 554.0 624.6 550.6C622.3 547.2 618.8 541.4 617.0 537.6C615.1 533.8 612.4 529.5 611.0 528.1C609.6 526.7 607.7 524.3 606.8 522.9C605.9 521.4 602.4 518.3 599.0 515.9C595.6 513.5 590.9 510.0 588.4 508.2C586.0 506.5 583.2 505.0 582.2 505.0C581.2 505.0 580.0 504.6 579.4 504.1C578.9 503.6 575.6 502.9 572.0 502.6C562.6 501.8 560.8 501.5 557.5 500.1C555.9 499.5 552.8 498.3 550.8 497.5C543.2 494.5 539.3 493.1 530.5 490.0C525.5 488.2 520.8 486.4 520.0 485.9C518.2 484.8 517.5 484.5 508.2 480.9C504.2 479.3 497.9 475.9 494.2 473.3C490.5 470.7 485.9 467.6 484.0 466.4C482.1 465.1 479.3 463.2 477.8 462.1C476.4 460.9 474.9 460.0 474.5 460.0C474.2 460.0 470.7 457.9 466.7 455.3C452.7 446.3 448.5 443.5 447.5 442.7C446.9 442.3 443.4 439.9 439.5 437.4C435.6 434.8 430.5 431.1 428.0 429.0C425.5 427.0 422.1 424.6 420.5 423.8C418.8 422.9 416.6 421.3 415.6 420.1C414.5 418.9 413.2 418.0 412.5 418.0C411.8 418.0 408.7 415.8 405.6 413.0C402.5 410.3 399.5 408.0 399.1 408.0C398.0 408.0 381.8 392.0 357.0 366.3C344.6 353.5 334.1 343.0 333.7 343.0C332.9 343.0 323.3 338.7 319.5 336.7C318.4 336.1 316.3 335.0 314.8 334.3C309.5 331.6 309.9 327.8 315.8 325.9C320.3 324.4 324.0 322.1 324.0 320.8C324.0 320.2 325.7 318.1 327.8 316.1C331.4 312.6 334.0 305.1 334.0 298.2C334.0 297.0 334.9 294.6 336.0 292.8C338.1 289.3 338.6 284.5 337.0 283.5C335.3 282.4 335.9 275.9 338.1 272.3C340.6 268.3 341.6 245.8 339.7 236.5C337.7 226.6 325.6 215.8 314.9 214.4C311.9 214.0 307.9 213.1 306.0 212.3C294.6 207.5 273.3 212.5 266.3 221.7C264.8 223.7 262.0 227.1 260.1 229.2C254.8 235.3 251.3 255.7 254.0 265.0C254.6 266.9 255.1 272.7 255.1 277.8C255.2 286.8 255.1 287.3 252.3 290.3C250.7 292.1 247.8 295.6 246.0 298.1C242.6 302.6 240.2 304.5 233.0 308.2C226.8 311.5 224.9 308.3 222.6 290.3C222.4 288.5 220.8 280.3 219.0 272.0L215.9 257.0 L222.9 245.2C226.7 238.8 231.6 231.3 233.7 228.5C238.1 222.8 240.0 218.8 240.0 215.1C240.0 213.5 241.1 211.5 242.8 209.9C244.3 208.6 246.5 206.3 247.7 205.0C248.9 203.6 251.3 201.5 252.9 200.2C254.6 198.9 256.0 197.2 256.0 196.4C256.0 194.9 263.1 190.0 265.5 190.0C266.3 190.0 267.6 191.5 268.4 193.3C271.9 201.5 278.8 205.0 285.4 202.0C287.9 200.9 290.5 200.0 291.3 200.0C292.1 200.0 293.8 199.2 295.0 198.2C297.2 196.4 297.2 196.4 294.6 189.1C293.1 184.9 292.0 179.8 292.0 176.8C292.0 173.6 291.3 170.6 290.1 168.6C289.1 166.9 288.0 163.5 287.6 161.1C286.5 154.1 283.9 146.6 281.9 145.0C279.4 143.0 272.6 129.7 270.7 123.0C268.6 116.0 266.5 113.0 263.6 113.0C260.8 113.0 251.0 115.9 249.2 117.3C247.1 118.9 247.9 126.9 251.2 138.4C252.4 142.2 252.4 142.2 245.8 148.4C242.2 151.7 237.5 156.9 235.5 159.9C233.4 162.9 230.4 166.5 228.7 167.9C227.0 169.3 225.3 170.9 224.8 171.5C224.4 172.1 222.2 174.5 219.9 177.0C217.7 179.5 215.2 182.7 214.4 184.2C213.2 186.5 212.3 187.0 209.4 187.0C204.6 187.0 202.4 188.3 199.5 193.1C197.3 196.5 196.7 196.9 195.0 196.0C192.8 194.8 192.2 189.9 194.0 187.7C194.5 187.0 197.2 183.9 199.9 180.7C208.1 171.1 218.6 146.5 220.7 132.0C221.0 130.1 221.7 128.0 222.2 127.3C222.7 126.6 222.9 125.2 222.5 124.1C222.2 123.1 222.4 121.9 223.0 121.5C223.6 121.1 223.8 120.0 223.5 118.9C223.1 117.8 223.6 114.8 224.5 112.1C226.3 106.7 226.1 87.9 224.2 83.0C223.0 79.9 218.8 76.7 213.7 75.1C211.6 74.4 208.4 72.6 206.7 71.1C203.1 68.1 202.2 67.6 192.4 62.0C188.5 59.8 184.8 58.0 184.2 58.0C182.7 58.0 181.9 55.0 183.3 54.4C184.0 54.2 291.4 54.1 422.0 54.2L659.5 54.5 L667.3 58.4C675.6 62.5 678.2 65.2 684.1 75.5L687.5 81.5 L687.5 488.0L687.5 894.5 L685.0 899.2C679.1 910.3 671.1 917.3 661.0 920.3C657.5 921.3 582.5 921.8 513.2 921.2Z" fill="#0A3AA8"/><path class="ps" style="--i:1" fill-rule="evenodd" d="M70.3 919.9C59.8 915.9 50.7 904.4 48.0 892.0C47.2 887.9 47.0 786.1 47.2 484.0L47.5 81.5 L50.2 75.8C53.9 67.8 60.3 61.3 68.0 57.6L74.5 54.5 L111.2 54.2C146.6 53.9 152.3 54.3 146.2 56.8C137.2 60.4 128.0 69.8 125.0 78.2C123.1 83.8 120.6 99.5 121.4 100.8C122.8 103.0 119.8 121.6 116.4 132.0C113.5 141.0 112.9 144.1 113.4 147.8C115.3 162.3 115.3 162.4 113.0 165.2C111.8 166.8 110.2 168.0 109.4 168.0C108.5 168.0 106.0 169.3 103.7 170.9C93.2 178.1 87.7 186.1 83.4 199.9C77.5 219.4 76.9 228.3 80.0 255.2C81.1 264.7 82.2 276.8 82.4 282.0C84.1 320.8 88.8 354.6 94.5 368.1C98.4 377.4 99.0 383.6 96.4 388.5C94.0 393.1 90.1 403.5 88.9 408.7C87.7 414.5 89.7 420.8 93.8 424.1C96.4 426.1 96.5 426.6 97.1 439.3C97.8 453.9 100.5 472.9 102.0 474.4C102.6 475.0 103.0 477.2 103.0 479.5C103.0 481.7 103.7 485.8 104.6 488.5C105.7 491.7 106.4 498.1 106.6 506.0C106.8 512.9 107.4 525.0 107.9 533.0C108.4 541.0 108.4 548.2 107.9 549.1C106.9 551.0 106.8 563.1 107.5 580.2C108.1 592.9 108.1 593.0 105.0 599.7C101.8 606.5 101.8 606.5 102.5 624.5C103.3 650.3 103.2 655.1 101.6 656.9C100.2 658.5 100.9 679.4 102.4 681.9C103.1 683.0 99.7 690.5 98.0 691.5C97.1 692.1 96.9 695.8 97.0 718.0C97.0 720.5 97.5 724.1 98.0 726.0C99.8 732.3 99.2 742.4 96.8 747.7C93.3 755.5 93.4 767.7 96.9 778.3C99.6 786.3 100.0 791.3 97.9 792.6C97.4 792.9 97.0 797.7 97.0 803.3C96.9 810.3 96.5 814.3 95.5 816.0C92.7 820.9 93.5 837.5 96.9 843.4C99.0 847.3 100.0 850.9 100.9 858.5C102.1 868.2 104.2 873.0 107.3 873.0C107.8 873.0 109.4 873.8 110.8 874.9C112.3 875.9 114.8 877.0 116.5 877.4C120.5 878.4 122.0 879.8 122.0 882.4C122.0 885.1 127.1 890.1 132.7 892.9C138.9 896.0 162.1 896.0 171.2 892.9C179.2 890.1 186.0 885.5 186.0 882.9C186.0 881.8 187.0 879.1 188.2 877.0C190.5 873.1 190.5 873.1 188.4 870.8C183.0 864.9 172.8 850.6 171.3 846.7C170.4 844.4 169.0 841.7 168.2 840.7C165.9 838.1 168.2 833.5 171.3 834.5C172.5 834.9 182.1 835.4 192.5 835.7C213.7 836.2 216.9 835.3 223.4 826.7C229.3 819.0 220.5 806.5 206.8 803.1C200.6 801.6 181.0 782.2 179.7 776.2C177.9 768.3 179.4 745.4 182.0 741.0C183.2 739.0 183.5 733.6 183.5 714.0L183.5 689.5 L188.8 680.0C194.9 669.1 195.6 666.5 196.5 652.0C196.9 646.2 198.1 639.0 199.1 636.0C202.5 626.1 203.6 623.0 204.3 622.4C204.7 622.0 205.0 618.5 205.0 614.6C205.1 610.3 205.6 606.5 206.5 605.0C207.6 603.1 207.9 598.3 208.0 585.0C208.0 569.3 208.2 567.2 210.0 564.2C212.7 559.8 214.0 560.9 214.0 567.9C214.0 572.7 214.4 574.0 216.5 576.0C217.8 577.2 220.7 581.9 222.8 586.4C226.1 593.1 228.2 595.8 235.1 602.3C243.5 610.1 243.5 610.1 245.7 618.8C246.9 623.6 247.9 628.5 248.0 629.7C248.0 630.9 249.1 635.4 250.5 639.6C251.9 643.8 253.0 649.0 253.0 651.1C253.0 653.2 253.7 656.7 254.5 658.7C255.3 660.8 256.8 667.5 257.9 673.6C260.1 686.9 261.9 691.1 268.4 697.2C275.6 704.2 281.3 703.5 292.6 694.5C299.8 688.8 302.5 687.3 310.5 684.6C328.2 678.6 331.3 678.5 337.9 684.4C340.7 686.9 345.1 690.1 347.7 691.6C374.9 707.3 380.0 712.2 371.8 714.5C362.6 717.1 358.6 724.2 357.0 741.0C356.3 747.9 355.4 754.5 354.9 755.8C354.4 757.1 354.0 760.0 354.0 762.2C354.0 764.4 353.6 767.9 353.1 769.9C352.6 771.9 351.4 777.1 350.5 781.5C348.0 793.4 346.3 797.6 342.1 801.2C337.3 805.4 333.9 812.7 333.1 820.9C332.4 828.7 333.9 827.8 311.5 833.1C286.5 839.0 280.1 841.5 270.5 848.7C262.0 855.1 252.1 865.0 251.9 867.2C251.3 874.3 252.4 884.9 254.1 888.1C259.3 898.3 287.7 915.5 304.2 918.5C306.5 918.9 308.0 919.8 308.0 920.6C308.0 923.2 77.1 922.5 70.3 919.9Z" fill="#E2231A"/></g><g transform="translate(46.9 6)"><path fill="#F4F1EA" d="M2 44V0H13.9Q18.7 0 20.9 2.3Q23.1 4.7 23.1 10V12Q23.1 15.1 21.9 17Q20.8 18.9 18.6 19.5Q21.5 20.3 22.5 23Q23.6 25.8 23.6 29.8Q23.6 34 22.8 37.2Q22 40.5 19.9 42.2Q17.8 44 13.9 44ZM10.6 16.6H12.4Q13.6 16.6 13.9 15.6Q14.3 14.7 14.3 13.3V8.9Q14.3 6.8 12.4 6.8H10.6ZM11.4 36.2Q14.9 36.2 14.9 33V27.5Q14.9 25.6 14.3 24.5Q13.7 23.4 12.2 23.4H10.6V36.2Q11.1 36.2 11.4 36.2Z M30.8 44 26.1 0H34.7L37.1 27.8L39.6 0H47.8L50.1 27.8L52.5 0H61.2L56.4 44H45.8L43.6 22.8L41.5 44Z M86.6 19V0H91.7Q93.8 0 94.7 1Q95.7 2 95.7 4.3V5.2Q95.7 6.5 95.2 7.3Q94.7 8.2 93.7 8.4Q95 8.8 95.4 9.9Q95.9 11.1 95.9 12.9Q95.9 14.7 95.5 16.1Q95.2 17.5 94.3 18.2Q93.4 19 91.7 19ZM90.3 7.2H91Q91.6 7.2 91.7 6.7Q91.9 6.3 91.9 5.8V3.9Q91.9 2.9 91.1 2.9H90.3ZM90.6 15.7Q92.1 15.7 92.1 14.2V11.9Q92.1 11.1 91.9 10.6Q91.6 10.1 91 10.1H90.3V15.6Q90.5 15.7 90.6 15.7Z M99.3 19 101.1 0H107.6L109.4 19H105.8L105.5 15.9H103.2L103 19ZM103.5 12.9H105.2L104.4 3.2H104.2Z M113.2 19V0H119Q120.5 0 121.2 0.7Q122 1.3 122.2 2.5Q122.5 3.7 122.5 5.3Q122.5 6.9 122.1 7.8Q121.7 8.7 120.6 9.1Q121.5 9.3 121.8 10Q122.2 10.7 122.2 11.8V19H118.5V11.6Q118.5 10.7 118.1 10.5Q117.8 10.3 117 10.3V19ZM117 7H118Q118.8 7 118.8 5.3Q118.8 4.2 118.6 3.9Q118.4 3.5 117.9 3.5H117Z M126.4 19V0H131.5Q133.6 0 134.5 1Q135.5 2 135.5 4.3V5.2Q135.5 6.5 135 7.3Q134.5 8.2 133.5 8.4Q134.8 8.8 135.3 9.9Q135.7 11.1 135.7 12.9Q135.7 14.7 135.4 16.1Q135 17.5 134.1 18.2Q133.2 19 131.5 19ZM130.1 7.2H130.9Q131.4 7.2 131.5 6.7Q131.7 6.3 131.7 5.8V3.9Q131.7 2.9 130.9 2.9H130.1ZM130.5 15.7Q131.9 15.7 131.9 14.2V11.9Q131.9 11.1 131.7 10.6Q131.5 10.1 130.8 10.1H130.1V15.6Q130.3 15.7 130.5 15.7Z M139.6 19V0H147.2V3.7H143.5V7.4H147.1V10.9H143.5V15.3H147.5V19Z M151.4 19V0H157.2Q158.7 0 159.4 0.7Q160.2 1.3 160.4 2.5Q160.7 3.7 160.7 5.3Q160.7 6.9 160.3 7.8Q159.9 8.7 158.8 9.1Q159.7 9.3 160 10Q160.4 10.7 160.4 11.8V19H156.7V11.6Q156.7 10.7 156.3 10.5Q156 10.3 155.2 10.3V19ZM155.2 7H156.2Q156.9 7 156.9 5.3Q156.9 4.2 156.8 3.9Q156.6 3.5 156.1 3.5H155.2Z M91.1 44.2Q88.5 44.2 87.3 42.9Q86.2 41.6 86.2 38.8V36.9H89.9V39.3Q89.9 39.9 90.1 40.3Q90.3 40.7 90.8 40.7Q91.3 40.7 91.5 40.4Q91.7 40.1 91.7 39.4Q91.7 38.5 91.6 37.9Q91.4 37.3 91 36.8Q90.5 36.3 89.8 35.5L88.1 33.9Q86.2 32.1 86.2 29.8Q86.2 27.4 87.3 26.1Q88.4 24.8 90.6 24.8Q93.2 24.8 94.3 26.2Q95.4 27.6 95.4 30.5H91.5V29.1Q91.5 28.8 91.3 28.5Q91.1 28.3 90.7 28.3Q90.2 28.3 90 28.6Q89.8 28.8 89.8 29.2Q89.8 29.6 90 30.1Q90.2 30.6 90.9 31.2L93.1 33.3Q93.7 33.9 94.3 34.6Q94.8 35.3 95.2 36.2Q95.5 37.1 95.5 38.5Q95.5 41.1 94.5 42.7Q93.5 44.2 91.1 44.2Z M99.4 44V25H103.2V31.8H105V25H108.8V44H105V35.4H103.2V44Z M117.6 44.2Q115.4 44.2 114.2 42.8Q113 41.4 113 38.8V29.8Q113 27.4 114.1 26.1Q115.3 24.8 117.6 24.8Q119.9 24.8 121.1 26.1Q122.3 27.4 122.3 29.8V38.8Q122.3 41.4 121.1 42.8Q119.9 44.2 117.6 44.2ZM117.7 40.7Q118.5 40.7 118.5 39V29.7Q118.5 28.3 117.7 28.3Q116.7 28.3 116.7 29.8V39Q116.7 39.9 117 40.3Q117.2 40.7 117.7 40.7Z M126.5 44V25H131.5Q133.1 25 134 25.7Q135 26.4 135.4 27.7Q135.8 29 135.8 30.8Q135.8 32.5 135.4 33.8Q135.1 35.1 134.2 35.8Q133.4 36.5 131.8 36.5H130.3V44ZM130.3 33.1H130.5Q131.5 33.1 131.8 32.5Q132 31.9 132 30.7Q132 29.6 131.8 29.1Q131.5 28.5 130.7 28.5H130.3Z"/><rect x="72.7" y="0" width="3" height="44" fill="#D4A72C"/></g></svg></a>
-      <nav class="nav-links" aria-label="Menu">
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="#top" aria-label="BW Barber Shop"><img src="images/logo-horizontal.svg" width="140" height="37" alt="BW Barber Shop"></a>
+      <nav class="nav" aria-label="Navigation principale">
         <a href="#tarifs"><span lang="fr">Tarifs</span><span lang="en">Prices</span></a>
-        <a href="#barbier"><span lang="fr">Le barbier</span><span lang="en">The barber</span></a>
         <a href="#galerie"><span lang="fr">Galerie</span><span lang="en">Gallery</span></a>
-        <a href="#avis" id="nav-avis" hidden><span lang="fr">Avis</span><span lang="en">Reviews</span></a>
-        <a href="#infos"><span lang="fr">Infos</span><span lang="en">Info</span></a>
+        <a href="#barbier"><span lang="fr">Le barbier</span><span lang="en">The barber</span></a>
+        <a href="#infos">Infos</a>
       </nav>
-      <div class="nav-actions">
+      <div class="bar-end">
         <div class="lang" role="group" aria-label="Langue / Language">
           <button type="button" data-set-lang="fr" aria-pressed="true">FR</button>
           <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
         </div>
-        <a class="btn btn-gold btn-sm nav-cta" href="#reserver" data-book><span lang="fr">Réserver</span><span lang="en">Book</span></a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">
-          <span class="sr">Menu</span>
-          <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
-        </button>
-      </div>
-    </div>
-    <div class="nav-panel" id="nav-panel" hidden>
-      <nav aria-label="Menu mobile / Mobile menu">
-        <a href="#tarifs"><span lang="fr">Tarifs</span><span lang="en">Prices</span></a>
-        <a href="#barbier"><span lang="fr">Le barbier</span><span lang="en">The barber</span></a>
-        <a href="#galerie"><span lang="fr">Galerie</span><span lang="en">Gallery</span></a>
-        <a href="#avis" id="panel-avis" hidden><span lang="fr">Avis</span><span lang="en">Reviews</span></a>
-        <a href="#reserver"><span lang="fr">Réserver</span><span lang="en">Book</span></a>
-        <a href="#infos"><span lang="fr">Infos</span><span lang="en">Info</span></a>
-      </nav>
-      <div class="lang" role="group" aria-label="Langue / Language">
-        <button type="button" data-set-lang="fr" aria-pressed="true">FR</button>
-        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        <a class="btn btn-gold btn-sm bar-cta" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20une%20coupe.%20Quel%20jour%20et%20quelle%20heure%20sont%20possibles%20%3F" data-wa data-fr="Bonjour BW Barber Shop, je veux réserver une coupe. Quel jour et quelle heure sont possibles ?" data-en="Hello BW Barber Shop, I’d like to book a cut. Which day and time work?" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="fr">Réserver</span><span lang="en">Book</span></a>
       </div>
     </div>
   </header>
 
   <main id="main">
-    <!-- ============ 3 · HERO: the shop, full screen, black and white, under a 60% black layer ============ -->
+
+    <!-- ============ 1 · HERO ============ -->
     <section class="hero" id="top" aria-labelledby="hero-title">
       <picture class="hero-bg">
         <source media="(max-width: 767px)" type="image/avif" srcset="images/interior-tall-400.avif 400w, images/interior-tall-608.avif 608w" sizes="100vw">
@@ -160,322 +101,117 @@
         <source type="image/avif" srcset="images/interior-wide-480.avif 480w, images/interior-wide-800.avif 800w, images/interior-wide-1200.avif 1200w" sizes="100vw">
         <source type="image/webp" srcset="images/interior-wide-480.webp 480w, images/interior-wide-800.webp 800w, images/interior-wide-1200.webp 1200w" sizes="100vw">
         <img src="images/interior-wide-1200.jpg" width="1200" height="630" decoding="async" fetchpriority="high"
-             alt="Le salon BW Barber Shop : deux fauteuils de barbier devant un mur noir, mur blanc, plafond en bois">
+             alt="Le salon BW Barber Shop : deux fauteuils de barbier devant un mur noir, mur blanc, plafond en bois" data-alt-en="BW Barber Shop inside: two barber chairs in front of a black wall, a white wall and a wooden ceiling">
       </picture>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="wrap hero-inner">
-        <p class="hero-label"><span lang="fr">Barbier · Emombo, Yaoundé</span><span lang="en">Barber · Emombo, Yaoundé</span></p>
-        <h1 class="hero-title" id="hero-title">
-          <span class="sr">BW Barber Shop · </span>
-          <span lang="fr"><span class="line"><span>Dégradé propre.</span></span><span class="line"><span>Sans attente.</span></span></span>
-          <span lang="en"><span class="line"><span>Clean fades.</span></span><span class="line"><span>No waiting.</span></span></span>
-        </h1>
-        <p class="hero-lead">
-          <span lang="fr">Dégradés nets, coupes afro, coupe enfant à partir de 500 FCFA.</span>
-          <span lang="en">Clean fades, afro cuts, children’s cuts from 500 FCFA.</span>
+        <p class="status" id="status" data-open="9" data-close="20" data-days="1,2,3,4,5,6">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span class="status-text"><span lang="fr">Lun–Sam · dès 9h</span><span lang="en">Mon–Sat · from 9am</span></span>
         </p>
-        <div class="actions">
-          <a class="btn btn-gold" href="#reserver" data-book><span lang="fr">Réserver</span><span lang="en">Book</span></a>
-          <a class="btn btn-ghost-light" data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20une%20coupe."><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
-        </div>
+        <h1 class="hero-title" id="hero-title"><span lang="fr">Dégradé propre.<br>Sans attente.</span><span lang="en">Clean fade.<br>No waiting.</span></h1>
+        <p class="hero-lead"><span lang="fr">Salon climatisé, vrais fauteuils, sans attente.</span><span lang="en">Air-conditioned, proper chairs, no waiting.</span></p>
+        <p class="hero-cta">
+          <a class="btn btn-gold btn-lg" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20une%20coupe.%20Quel%20jour%20et%20quelle%20heure%20sont%20possibles%20%3F" data-wa data-fr="Bonjour BW Barber Shop, je veux réserver une coupe. Quel jour et quelle heure sont possibles ?" data-en="Hello BW Barber Shop, I’d like to book a cut. Which day and time work?" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="fr">Réserver sur WhatsApp</span><span lang="en">Book on WhatsApp</span></a>
+          <a class="btn btn-ghost btn-lg" href="#tarifs"><span lang="fr">Voir les prix</span><span lang="en">See prices</span></a>
+        </p>
+        <ul class="proof" aria-label="En bref">
+          <li><span lang="fr">Climatisé</span><span lang="en">Air-conditioned</span></li>
+          <li><span lang="fr">Enfants dès 500 FCFA</span><span lang="en">Kids from 500 FCFA</span></li>
+          <li>Emombo Auberge, Yaoundé</li>
+        </ul>
+        <!-- No rating or review count here until real Google reviews exist (see TODO.md). -->
       </div>
     </section>
 
-    <!-- ============ 4 · TARIFS: the price board (layout from the Standfast board, our six real services) ============ -->
-    <section class="sec" id="tarifs" data-sec aria-labelledby="tarifs-title">
+    <!-- ============ 2 · PRIX ============ -->
+    <section class="sec" id="tarifs" aria-labelledby="tarifs-title">
       <div class="wrap">
-        <div class="board-head" data-reveal>
-          <h2 class="sec-title" id="tarifs-title"><span lang="fr">Les prix,<br>sans surprise.</span><span lang="en">Prices,<br>no surprises.</span></h2>
-          <p class="sec-lead"><span lang="fr">Votre style, notre savoir-faire. Voici la grille officielle du salon.</span><span lang="en">Your style, our know-how. This is the shop’s official price sheet.</span></p>
-        </div>
+        <h2 class="sec-title" id="tarifs-title"><span lang="fr">Les prix,<br>sans surprise.</span><span lang="en">Prices,<br>no surprises.</span></h2>
+        <p class="sec-lead"><span lang="fr">Le prix affiché est le prix payé, en FCFA. Touchez « Réserver » : votre message WhatsApp est déjà écrit.</span><span lang="en">The price you see is the price you pay, in FCFA. Tap “Book”: your WhatsApp message is already written.</span></p>
 
-        <div class="board-grid">
-          <div>
-            <!-- Each row opens the booking with that service chosen. Hover: the cut's photo in a gold star (photos: images/cuts/, set in BW_CONFIG.CUT_PHOTOS). -->
-            <ol class="board" id="board">
-              <li><a class="row" href="#reserver" data-formule="classique">
-                <span class="row-thumb" aria-hidden="true"></span>
-                <span class="row-text"><span class="row-name">Classique</span><span class="row-meta"><span class="dur">30</span> min</span></span>
-                <span class="row-price"><span class="sr">1 000 FCFA</span><span class="num" aria-hidden="true">1&nbsp;000</span><small aria-hidden="true">FCFA</small></span>
-                <span class="row-go"><span lang="fr">Réserver</span><span lang="en">Book</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-              </a></li>
-              <li><a class="row" href="#reserver" data-formule="soignee">
-                <span class="row-thumb" aria-hidden="true"></span>
-                <span class="row-text"><span class="row-name"><span lang="fr">Soignée</span><span lang="en">Neat</span></span><span class="row-meta"><span class="dur">45</span> min</span></span>
-                <span class="row-price"><span class="sr">2 000 FCFA</span><span class="num" aria-hidden="true">2&nbsp;000</span><small aria-hidden="true">FCFA</small></span>
-                <span class="row-go"><span lang="fr">Réserver</span><span lang="en">Book</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-              </a></li>
-              <li><a class="row" href="#reserver" data-formule="premium">
-                <span class="row-thumb" aria-hidden="true"></span>
-                <span class="row-text"><span class="row-name">Premium</span><span class="row-meta"><span class="dur">60</span> min</span></span>
-                <span class="row-price"><span class="sr">3 000 FCFA</span><span class="num" aria-hidden="true">3&nbsp;000</span><small aria-hidden="true">FCFA</small></span>
-                <span class="row-go"><span lang="fr">Réserver</span><span lang="en">Book</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-              </a></li>
-              <li><a class="row" href="#reserver" data-formule="couleur">
-                <span class="row-thumb" aria-hidden="true"></span>
-                <span class="row-text"><span class="row-name"><span lang="fr">Couleur</span><span lang="en">Colour</span></span><span class="row-meta"><span class="dur">90</span> min</span></span>
-                <span class="row-price"><span class="sr">5 000 FCFA</span><span class="num" aria-hidden="true">5&nbsp;000</span><small aria-hidden="true">FCFA</small></span>
-                <span class="row-go"><span lang="fr">Réserver</span><span lang="en">Book</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-              </a></li>
-              <li><a class="row" href="#reserver" data-formule="pedicure">
-                <span class="row-thumb" aria-hidden="true"></span>
-                <span class="row-text"><span class="row-name"><span lang="fr">Pédicure</span><span lang="en">Pedicure</span></span><span class="row-meta"><span class="dur">45</span> min</span></span>
-                <span class="row-price"><span class="sr">2 500 FCFA</span><span class="num" aria-hidden="true">2&nbsp;500</span><small aria-hidden="true">FCFA</small></span>
-                <span class="row-go"><span lang="fr">Réserver</span><span lang="en">Book</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-              </a></li>
-              <li><a class="row" href="#reserver" data-formule="enfant">
-                <span class="row-thumb" aria-hidden="true"></span>
-                <span class="row-text"><span class="row-name"><span lang="fr">Enfant</span><span lang="en">Child</span></span><span class="row-meta"><span class="dur">20</span> min</span></span>
-                <span class="row-price"><span class="sr">500 FCFA</span><span class="num" aria-hidden="true">500</span><small aria-hidden="true">FCFA</small></span>
-                <span class="row-go"><span lang="fr">Réserver</span><span lang="en">Book</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-              </a></li>
-            </ol>
-            <div class="board-actions">
-              <a class="btn btn-ghost-light" href="#reserver" data-book><span lang="fr">Voir tous les services</span><span lang="en">See all services</span></a>
-              <a class="btn btn-gold" href="#reserver" data-book><span lang="fr">Réserver</span><span lang="en">Book</span></a>
+        <div class="group">
+          <h3 class="group-title"><span lang="fr">Coupes</span><span lang="en">Cuts</span></h3>
+          <ul class="svc-list">
+          <li class="svc" data-service="classique" data-price="1000" data-min="30">
+            <div class="svc-main">
+              <h4 class="svc-name"><span lang="fr">Classique</span><span lang="en">Classic</span><span class="badge"><span lang="fr">Le plus demandé</span><span lang="en">Most requested</span></span></h4>
+              <p class="svc-inc"><span lang="fr">Coupe simple + finition</span><span lang="en">Simple cut + finish</span> <span class="dot" aria-hidden="true">·</span> <span class="svc-min">30 min</span></p>
             </div>
-          </div>
-
-          <aside class="board-aside" data-reveal>
-            <div>
-              <h3><span lang="fr">Horaires</span><span lang="en">Hours</span></h3>
-              <table class="hours">
-                <caption class="sr"><span lang="fr">Horaires d’ouverture</span><span lang="en">Opening hours</span></caption>
-                <tbody>
-                  <tr data-dow="1"><th scope="row"><span lang="fr">Lundi</span><span lang="en">Monday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                  <tr data-dow="2"><th scope="row"><span lang="fr">Mardi</span><span lang="en">Tuesday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                  <tr data-dow="3"><th scope="row"><span lang="fr">Mercredi</span><span lang="en">Wednesday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                  <tr data-dow="4"><th scope="row"><span lang="fr">Jeudi</span><span lang="en">Thursday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                  <tr data-dow="5"><th scope="row"><span lang="fr">Vendredi</span><span lang="en">Friday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                  <tr data-dow="6"><th scope="row"><span lang="fr">Samedi</span><span lang="en">Saturday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                  <tr data-dow="7"><th scope="row"><span lang="fr">Dimanche</span><span lang="en">Sunday</span></th><td><span lang="fr">À confirmer</span><span lang="en">To be confirmed</span></td></tr>
-                </tbody>
-              </table>
+            <p class="svc-price"><span class="num">1 000</span> <span class="cur">FCFA</span></p>
+            <a class="btn btn-sm btn-line svc-book" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20%3A%20Classique%20%281%20000%20FCFA%29.%20Quel%20jour%20et%20quelle%20heure%20sont%20possibles%20%3F" data-wa data-fr="Bonjour BW Barber Shop, je veux réserver : Classique (1 000 FCFA). Quel jour et quelle heure sont possibles ?" data-en="Hello BW Barber Shop, I’d like to book: Classic (1 000 FCFA). Which day and time work?" target="_blank" rel="noopener"><span lang="fr">Réserver<span class="sr"> Classique</span></span><span lang="en">Book<span class="sr"> Classic</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </li>
+          <li class="svc" data-service="soignee" data-price="2000" data-min="45">
+            <div class="svc-main">
+              <h4 class="svc-name"><span lang="fr">Soignée</span><span lang="en">Neat</span></h4>
+              <p class="svc-inc"><span lang="fr">Coupe + black</span><span lang="en">Cut + black</span> <span class="dot" aria-hidden="true">·</span> <span class="svc-min">45 min</span></p>
             </div>
-            <div class="note">
-              <h3><span lang="fr">Prix en FCFA.</span><span lang="en">Prices in FCFA.</span></h3>
-              <p><span lang="fr">Dites au barbier le service voulu avant le début de la coupe.</span><span lang="en">Tell the barber which service you want before the cut starts.</span></p>
+            <p class="svc-price"><span class="num">2 000</span> <span class="cur">FCFA</span></p>
+            <a class="btn btn-sm btn-line svc-book" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20%3A%20Soign%C3%A9e%20%282%20000%20FCFA%29.%20Quel%20jour%20et%20quelle%20heure%20sont%20possibles%20%3F" data-wa data-fr="Bonjour BW Barber Shop, je veux réserver : Soignée (2 000 FCFA). Quel jour et quelle heure sont possibles ?" data-en="Hello BW Barber Shop, I’d like to book: Neat (2 000 FCFA). Which day and time work?" target="_blank" rel="noopener"><span lang="fr">Réserver<span class="sr"> Soignée</span></span><span lang="en">Book<span class="sr"> Neat</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </li>
+          <li class="svc" data-service="premium" data-price="3000" data-min="60">
+            <div class="svc-main">
+              <h4 class="svc-name"><span lang="fr">Premium</span><span lang="en">Premium</span></h4>
+              <p class="svc-inc"><span lang="fr">Coupe + black + soin de visage</span><span lang="en">Cut + black + facial care</span> <span class="dot" aria-hidden="true">·</span> <span class="svc-min">60 min</span></p>
             </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 5 · LE BARBIER ============ -->
-    <section class="sec" id="barbier" data-sec aria-labelledby="barbier-title">
-      <div class="wrap barber">
-        <figure class="barber-photo" data-reveal>
-          <div class="frame" id="barber-frame">
-            <picture>
-              <source type="image/avif" srcset="images/jackson-480.avif 480w, images/jackson-960.avif 960w" sizes="(min-width: 1024px) 480px, calc(100vw - 32px)">
-              <source type="image/webp" srcset="images/jackson-480.webp 480w, images/jackson-960.webp 960w" sizes="(min-width: 1024px) 480px, calc(100vw - 32px)">
-              <img src="images/jackson-960.jpg" width="960" height="1280" loading="lazy" decoding="async"
-                   alt="Jackson, le barbier du salon, devant le mur noir et le plafond en bois">
-            </picture>
-          </div>
-          <figcaption class="caption"><span lang="fr">Jackson, au salon.</span><span lang="en">Jackson, at the shop.</span></figcaption>
-        </figure>
-        <div class="barber-text" data-reveal>
-          <h2 id="barbier-title">Jackson</h2>
-          <p class="who"><span lang="fr">Jackson est le barbier du salon d’Emombo Auberge.</span><span lang="en">Jackson is the barber at the Emombo Auberge shop.</span></p>
-          <!-- TODO(owner): speciality, years of experience, and one real sentence from Jackson go in BW_CONFIG.BARBER (speciality, years) and BARBER_QUOTE. They appear here when filled. Never invent them. -->
-          <dl class="facts" id="barber-facts" hidden></dl>
-          <blockquote class="quote" id="barber-quote" hidden></blockquote>
-          <p><a class="btn btn-gold" href="#reserver" data-book><span lang="fr">Réserver avec lui</span><span lang="en">Book with him</span></a></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- decorative band: moves with the scroll (js/motion.js), static otherwise -->
-    <div class="band" aria-hidden="true">
-      <div class="band-track">
-        <div class="band-set">
-          <span><span lang="fr">Dégradé</span><span lang="en">Fade</span></span><span class="is-out"><span lang="fr">Coupe afro</span><span lang="en">Afro cut</span></span><span><span lang="fr">Contour</span><span lang="en">Line-up</span></span><span class="is-out"><span lang="fr">Enfant</span><span lang="en">Kids</span></span>
-        </div>
-        <div class="band-set">
-          <span><span lang="fr">Dégradé</span><span lang="en">Fade</span></span><span class="is-out"><span lang="fr">Coupe afro</span><span lang="en">Afro cut</span></span><span><span lang="fr">Contour</span><span lang="en">Line-up</span></span><span class="is-out"><span lang="fr">Enfant</span><span lang="en">Kids</span></span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ============ 6 · GALERIE: uneven grid, black and white, colour on hover, click to enlarge ============ -->
-    <section class="sec" id="galerie" data-sec aria-labelledby="galerie-title">
-      <div class="wrap">
-        <div data-reveal>
-          <h2 class="sec-title" id="galerie-title"><span lang="fr">Le salon,<br>en vrai.</span><span lang="en">The shop,<br>for real.</span></h2>
-          <p class="sec-lead"><span lang="fr">Noir, blanc, et le bois au plafond. Un salon neuf et climatisé, avec de vrais fauteuils de barbier et un coin pour attendre.</span><span lang="en">Black, white, and wood overhead. A new, air-conditioned shop with proper barber chairs and a place to wait.</span></p>
-        </div>
-        <div class="gallery" id="gallery">
-          <button class="shot g1 shot-wipe" type="button" data-full="images/interior-tall-608.jpg" data-alt="Vue du salon dans la longueur : plafond en bois verni, mur blanc à gauche, mur noir et miroirs à droite, deux fauteuils" aria-label="Agrandir la photo : le salon dans la longueur">
-            <span class="bw"><picture><source type="image/avif" srcset="images/interior-tall-400.avif 400w, images/interior-tall-608.avif 608w" sizes="(min-width: 1024px) 420px, 50vw"><source type="image/webp" srcset="images/interior-tall-400.webp 400w, images/interior-tall-608.webp 608w" sizes="(min-width: 1024px) 420px, 50vw"><img src="images/interior-tall-608.jpg" width="608" height="1080" loading="lazy" decoding="async" alt=""></picture></span>
-            <span class="colour" aria-hidden="true"><picture><source type="image/avif" srcset="images/interior-tall-400.avif 400w, images/interior-tall-608.avif 608w" sizes="(min-width: 1024px) 420px, 50vw"><source type="image/webp" srcset="images/interior-tall-400.webp 400w, images/interior-tall-608.webp 608w" sizes="(min-width: 1024px) 420px, 50vw"><img src="images/interior-tall-608.jpg" width="608" height="1080" loading="lazy" decoding="async" alt=""></picture></span>
-          </button>
-          <button class="shot g2 shot-wipe" type="button" data-full="images/interior-wide-1200.jpg" data-alt="Deux fauteuils de barbier noirs devant un mur noir, miroirs, carrelage crème" aria-label="Agrandir la photo : les deux fauteuils">
-            <span class="bw"><picture><source type="image/avif" srcset="images/interior-wide-480.avif 480w, images/interior-wide-800.avif 800w" sizes="(min-width: 1024px) 640px, 100vw"><source type="image/webp" srcset="images/interior-wide-480.webp 480w, images/interior-wide-800.webp 800w" sizes="(min-width: 1024px) 640px, 100vw"><img src="images/interior-wide-800.jpg" width="1200" height="630" loading="lazy" decoding="async" alt=""></picture></span>
-            <span class="colour" aria-hidden="true"><picture><source type="image/avif" srcset="images/interior-wide-480.avif 480w, images/interior-wide-800.avif 800w" sizes="(min-width: 1024px) 640px, 100vw"><source type="image/webp" srcset="images/interior-wide-480.webp 480w, images/interior-wide-800.webp 800w" sizes="(min-width: 1024px) 640px, 100vw"><img src="images/interior-wide-800.jpg" width="1200" height="630" loading="lazy" decoding="async" alt=""></picture></span>
-          </button>
-          <button class="shot g3 shot-wipe" type="button" data-full="images/barber-smile-499.jpg" data-alt="Un jeune client sourit pendant que le barbier passe la tondeuse" aria-label="Agrandir la photo : un client sourit">
-            <span class="bw"><picture><source type="image/avif" srcset="images/barber-smile-340.avif 340w, images/barber-smile-499.avif 499w" sizes="(min-width: 1024px) 300px, 50vw"><source type="image/webp" srcset="images/barber-smile-340.webp 340w, images/barber-smile-499.webp 499w" sizes="(min-width: 1024px) 300px, 50vw"><img src="images/barber-smile-499.jpg" width="499" height="888" loading="lazy" decoding="async" alt=""></picture></span>
-            <span class="colour" aria-hidden="true"><picture><source type="image/avif" srcset="images/barber-smile-340.avif 340w, images/barber-smile-499.avif 499w" sizes="(min-width: 1024px) 300px, 50vw"><source type="image/webp" srcset="images/barber-smile-340.webp 340w, images/barber-smile-499.webp 499w" sizes="(min-width: 1024px) 300px, 50vw"><img src="images/barber-smile-499.jpg" width="499" height="888" loading="lazy" decoding="async" alt=""></picture></span>
-          </button>
-          <button class="shot g4 shot-wipe" type="button" data-full="images/barber-at-work-602.jpg" data-alt="Le barbier trace le contour d’un client barbu" aria-label="Agrandir la photo : le contour à la main">
-            <span class="bw"><picture><source type="image/avif" srcset="images/barber-at-work-400.avif 400w" sizes="(min-width: 1024px) 200px, 50vw"><source type="image/webp" srcset="images/barber-at-work-400.webp 400w" sizes="(min-width: 1024px) 200px, 50vw"><img src="images/barber-at-work-400.jpg" width="400" height="710" loading="lazy" decoding="async" alt=""></picture></span>
-            <span class="colour" aria-hidden="true"><picture><source type="image/avif" srcset="images/barber-at-work-400.avif 400w" sizes="(min-width: 1024px) 200px, 50vw"><source type="image/webp" srcset="images/barber-at-work-400.webp 400w" sizes="(min-width: 1024px) 200px, 50vw"><img src="images/barber-at-work-400.jpg" width="400" height="710" loading="lazy" decoding="async" alt=""></picture></span>
-          </button>
-          <!-- TODO(owner): more close-ups of finished cuts (side and back), the shop front with its sign. Add each as another .shot in this grid. -->
-          <button class="shot g5 shot-wipe" type="button" data-full="images/cut-fade-810.jpg" data-alt="Dégradé net vu de profil : le contour est tracé, la barbe est taillée, sous le miroir du salon" aria-label="Agrandir la photo : un dégradé terminé">
-            <span class="bw"><picture><source type="image/avif" srcset="images/cut-fade-400.avif 400w, images/cut-fade-810.avif 810w" sizes="(min-width: 1024px) 200px, 50vw"><source type="image/webp" srcset="images/cut-fade-400.webp 400w, images/cut-fade-810.webp 810w" sizes="(min-width: 1024px) 200px, 50vw"><img src="images/cut-fade-400.jpg" width="400" height="533" loading="lazy" decoding="async" alt=""></picture></span>
-            <span class="colour" aria-hidden="true"><picture><source type="image/avif" srcset="images/cut-fade-400.avif 400w, images/cut-fade-810.avif 810w" sizes="(min-width: 1024px) 200px, 50vw"><source type="image/webp" srcset="images/cut-fade-400.webp 400w, images/cut-fade-810.webp 810w" sizes="(min-width: 1024px) 200px, 50vw"><img src="images/cut-fade-400.jpg" width="400" height="533" loading="lazy" decoding="async" alt=""></picture></span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 7 · AVIS (hidden until real reviews exist; see BW_CONFIG.REVIEWS and ?preview=avis) ============ -->
-    <section class="sec" id="avis" data-sec aria-labelledby="avis-title" hidden>
-      <div class="wrap">
-        <div data-reveal>
-          <h2 class="sec-title" id="avis-title"><span lang="fr">Avis</span><span lang="en">Reviews</span></h2>
-          <p class="sec-lead" id="avis-note"></p>
-        </div>
-        <ul class="reviews" id="reviews"></ul>
-      </div>
-    </section>
-
-    <!-- ============ RESERVATION (the one light surface; logic lives in js/app.js) ============ -->
-    <section class="sec on-light booking" id="reserver" data-sec aria-labelledby="book-title">
-      <div class="wrap">
-        <h2 class="sec-title" id="book-title" data-reveal><span lang="fr">Réserver.</span><span lang="en">Book.</span></h2>
-        <div id="booking" class="booking-box">
-          <noscript>
-            <p class="notice"><span lang="fr">La réservation en ligne a besoin de JavaScript. Écrivez-nous plutôt sur WhatsApp :</span><span lang="en">Online booking needs JavaScript. Message us on WhatsApp instead:</span>
-              <a href="https://wa.me/237690868831">+237 690 86 88 31</a></p>
-          </noscript>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 8 · INFOS ============ -->
-    <section class="sec" id="infos" data-sec aria-labelledby="infos-title">
-      <div class="wrap">
-        <div class="visit">
-          <div data-reveal>
-            <h2 class="sec-title" id="infos-title"><span lang="fr">Passez<br>nous voir.</span><span lang="en">Come<br>through.</span></h2>
-            <p class="addr">
-              <a href="https://www.google.com/maps/search/?api=1&amp;query=Emombo+Auberge+Yaound%C3%A9" target="_blank" rel="noopener">Emombo Auberge, Yaoundé</a>
-              <small id="landmark" hidden></small>
-            </p>
-            <a class="tel" href="tel:+237690868831">+237 690 86 88 31</a>
-            <div class="actions">
-              <a class="btn btn-gold" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Emombo+Auberge+Yaound%C3%A9"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span lang="fr">Itinéraire</span><span lang="en">Directions</span></a>
-              <a class="btn btn-ghost-light" href="tel:+237690868831"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span lang="fr">Appeler</span><span lang="en">Call</span></a>
-              <a class="btn btn-ghost-light" data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20une%20coupe."><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+            <p class="svc-price"><span class="num">3 000</span> <span class="cur">FCFA</span></p>
+            <a class="btn btn-sm btn-line svc-book" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20%3A%20Premium%20%283%20000%20FCFA%29.%20Quel%20jour%20et%20quelle%20heure%20sont%20possibles%20%3F" data-wa data-fr="Bonjour BW Barber Shop, je veux réserver : Premium (3 000 FCFA). Quel jour et quelle heure sont possibles ?" data-en="Hello BW Barber Shop, I’d like to book: Premium (3 000 FCFA). Which day and time work?" target="_blank" rel="noopener"><span lang="fr">Réserver<span class="sr"> Premium</span></span><span lang="en">Book<span class="sr"> Premium</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </li>
+          <li class="svc" data-service="enfant" data-price="500" data-min="20">
+            <div class="svc-main">
+              <h4 class="svc-name"><span lang="fr">Enfant</span><span lang="en">Child</span></h4>
+              <p class="svc-inc"><span lang="fr">Coupe enfant + finition</span><span lang="en">Child’s cut + finish</span> <span class="dot" aria-hidden="true">·</span> <span class="svc-min">20 min</span></p>
             </div>
-            <h3 class="sr"><span lang="fr">Horaires</span><span lang="en">Hours</span></h3>
-            <p id="hours-dd" class="muted"><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></p>
-            <table class="hours" id="hours-table">
-              <caption class="sr"><span lang="fr">Horaires d’ouverture</span><span lang="en">Opening hours</span></caption>
-              <tbody>
-                <tr data-dow="1"><th scope="row"><span lang="fr">Lundi</span><span lang="en">Monday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                <tr data-dow="2"><th scope="row"><span lang="fr">Mardi</span><span lang="en">Tuesday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                <tr data-dow="3"><th scope="row"><span lang="fr">Mercredi</span><span lang="en">Wednesday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                <tr data-dow="4"><th scope="row"><span lang="fr">Jeudi</span><span lang="en">Thursday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                <tr data-dow="5"><th scope="row"><span lang="fr">Vendredi</span><span lang="en">Friday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                <tr data-dow="6"><th scope="row"><span lang="fr">Samedi</span><span lang="en">Saturday</span></th><td><span lang="fr">Dès 9h</span><span lang="en">From 9 AM</span></td></tr>
-                <tr data-dow="7"><th scope="row"><span lang="fr">Dimanche</span><span lang="en">Sunday</span></th><td><span lang="fr">À confirmer</span><span lang="en">To be confirmed</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div data-reveal>
-            <div class="map" id="map" data-src="https://www.google.com/maps?q=Emombo+Auberge+Yaound%C3%A9&amp;output=embed&amp;hl=fr">
-              <span class="pin" aria-hidden="true"><i></i><i></i><svg class="ico" viewBox="0 0 24 24"><use href="#i-pin"/></svg></span>
-              <p class="map-place">Emombo, Yaoundé</p>
-              <a class="map-tel" href="tel:+237690868831">690 86 88 31</a>
-              <button class="map-load" type="button" id="map-load"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span lang="fr">Afficher la carte</span><span lang="en">Show the map</span></button>
-              <p class="map-note"><span lang="fr">La carte Google ne se charge que si vous la demandez.</span><span lang="en">The Google map only loads if you ask for it.</span></p>
+            <p class="svc-price"><span class="num">500</span> <span class="cur">FCFA</span></p>
+            <a class="btn btn-sm btn-line svc-book" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20%3A%20Enfant%20%28500%20FCFA%29.%20Quel%20jour%20et%20quelle%20heure%20sont%20possibles%20%3F" data-wa data-fr="Bonjour BW Barber Shop, je veux réserver : Enfant (500 FCFA). Quel jour et quelle heure sont possibles ?" data-en="Hello BW Barber Shop, I’d like to book: Child (500 FCFA). Which day and time work?" target="_blank" rel="noopener"><span lang="fr">Réserver<span class="sr"> Enfant</span></span><span lang="en">Book<span class="sr"> Child</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </li>
+          </ul>
+        </div>
+
+        <div class="group">
+          <h3 class="group-title"><span lang="fr">Extras</span><span lang="en">Extras</span></h3>
+          <ul class="svc-list">
+          <li class="svc" data-service="couleur" data-price="5000" data-min="90">
+            <div class="svc-main">
+              <h4 class="svc-name"><span lang="fr">Couleur</span><span lang="en">Colour</span></h4>
+              <p class="svc-inc"><span lang="fr">Coupe + teinture</span><span lang="en">Cut + dye</span> <span class="dot" aria-hidden="true">·</span> <span class="svc-min">90 min</span></p>
             </div>
-          </div>
-        </div>
-
-        <div class="qr-card" data-reveal>
-          <img src="/images/qr.png" width="160" height="160" loading="lazy" decoding="async" alt="QR code : scannez pour réserver chez BW Barber Shop">
-          <div>
-            <h3><span lang="fr">Scannez pour réserver</span><span lang="en">Scan to book</span></h3>
-            <p class="muted"><span lang="fr">Le QR code du salon ouvre la réservation directement sur votre téléphone.</span><span lang="en">The shop’s QR code opens booking straight on your phone.</span></p>
-            <a class="btn btn-ghost-light btn-sm" href="/qr"><span lang="fr">Version à imprimer</span><span lang="en">Printable version</span></a>
-          </div>
-        </div>
-
-        <div class="fine" data-reveal>
-          <div>
-            <h3><span lang="fr">Conditions</span><span lang="en">Terms</span></h3>
-            <ul>
-              <li><span lang="fr">Prix en FCFA.</span><span lang="en">Prices in FCFA.</span></li>
-              <li><span lang="fr">Dites au barbier le service voulu avant le début de la coupe.</span><span lang="en">Tell the barber which service you want before the cut starts.</span></li>
-              <li id="deposit-term"><span lang="fr">Un acompte confirme la réservation en ligne. Il est déduit du prix de la coupe.</span><span lang="en">A deposit confirms an online booking. It is deducted from the price of the cut.</span></li>
-            </ul>
-          </div>
-          <div id="confidentialite">
-            <h3><span lang="fr">Vos données</span><span lang="en">Your data</span></h3>
-            <p><span lang="fr">Le salon utilise votre nom et votre numéro de téléphone uniquement pour gérer votre rendez-vous. Rien n’est vendu, et il n’y a ni publicité ni cookie sur ce site. Les visites sont comptées avec Vercel Analytics, sans cookie et sans donnée personnelle. Si vous payez l’acompte en ligne, votre numéro est transmis à Notch Pay pour le paiement. Si vous affichez la carte, Google la charge. Pour faire effacer vos données, écrivez-nous sur WhatsApp.</span><span lang="en">The shop uses your name and phone number only to manage your appointment. Nothing is sold, and there are no ads or cookies on this site. Visits are counted with Vercel Analytics, without cookies or personal data. If you pay the deposit online, your number is passed to Notch Pay to process the payment. If you show the map, Google loads it. To have your data erased, message us on WhatsApp.</span></p>
-          </div>
+            <p class="svc-price"><span class="num">5 000</span> <span class="cur">FCFA</span></p>
+            <a class="btn btn-sm btn-line svc-book" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20%3A%20Couleur%20%285%20000%20FCFA%29.%20Quel%20jour%20et%20quelle%20heure%20sont%20possibles%20%3F" data-wa data-fr="Bonjour BW Barber Shop, je veux réserver : Couleur (5 000 FCFA). Quel jour et quelle heure sont possibles ?" data-en="Hello BW Barber Shop, I’d like to book: Colour (5 000 FCFA). Which day and time work?" target="_blank" rel="noopener"><span lang="fr">Réserver<span class="sr"> Couleur</span></span><span lang="en">Book<span class="sr"> Colour</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </li>
+          <li class="svc" data-service="pedicure" data-price="2500" data-min="45">
+            <div class="svc-main">
+              <h4 class="svc-name"><span lang="fr">Pédicure</span><span lang="en">Pedicure</span></h4>
+              <p class="svc-inc"><span lang="fr">Pédicure</span><span lang="en">Pedicure</span> <span class="dot" aria-hidden="true">·</span> <span class="svc-min">45 min</span></p>
+            </div>
+            <p class="svc-price"><span class="num">2 500</span> <span class="cur">FCFA</span></p>
+            <a class="btn btn-sm btn-line svc-book" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20%3A%20P%C3%A9dicure%20%282%20500%20FCFA%29.%20Quel%20jour%20et%20quelle%20heure%20sont%20possibles%20%3F" data-wa data-fr="Bonjour BW Barber Shop, je veux réserver : Pédicure (2 500 FCFA). Quel jour et quelle heure sont possibles ?" data-en="Hello BW Barber Shop, I’d like to book: Pedicure (2 500 FCFA). Which day and time work?" target="_blank" rel="noopener"><span lang="fr">Réserver<span class="sr"> Pédicure</span></span><span lang="en">Book<span class="sr"> Pedicure</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </li>
+          </ul>
         </div>
       </div>
     </section>
+
+    <!-- NEXT (built after the hero and prices are approved): 3 Galerie · 4 Le barbier · 5 Comment réserver · 6 Avis · 7 Infos · 8 FAQ -->
+
   </main>
 
-  <!-- ============ 9 · FOOTER ============ -->
-  <footer class="footer">
-    <div class="wrap foot-grid">
-      <div>
-        <div class="plogo" role="img" aria-label="BW Barber Shop"><svg viewBox="0 0 641 1019" aria-hidden="true"><g transform="translate(0 0) scale(1) translate(-47 -54)"><rect x="47" y="54" width="641" height="869" rx="42" fill="#F4F1EA"/><path class="ps" style="--i:0" fill-rule="evenodd" d="M513.2 921.2C491.8 921.1 481.0 920.6 481.0 919.9C481.0 919.0 488.0 915.4 497.0 911.7C501.6 909.8 512.0 901.2 512.0 899.2C512.0 898.3 513.0 896.5 514.2 895.2C517.2 892.1 517.2 878.6 514.3 870.2C512.3 864.1 503.0 854.5 495.5 850.8C490.6 848.4 470.3 841.0 467.4 840.5C466.2 840.3 464.4 839.8 463.4 839.2C462.3 838.7 459.0 837.7 456.0 837.0C453.0 836.3 449.6 835.2 448.4 834.5C447.3 833.8 444.4 832.6 442.1 831.9C437.0 830.4 436.0 828.4 436.0 819.6C436.0 814.7 435.5 812.7 433.7 810.3C428.6 803.4 426.6 797.4 427.9 793.3C428.6 790.9 429.0 784.5 428.8 775.7C428.5 760.5 428.8 761.2 420.1 755.0C416.9 752.7 416.2 738.1 419.1 735.4C421.0 733.7 421.3 733.7 427.3 736.8C433.3 739.8 451.7 747.0 453.3 747.0C453.8 747.0 456.5 748.1 459.3 749.4C462.2 750.7 466.3 752.3 468.5 752.9C473.0 754.3 474.3 754.8 482.0 758.3C488.9 761.4 489.2 761.8 491.5 770.5C492.5 774.4 494.3 779.9 495.6 782.8C496.9 785.7 498.0 789.0 498.0 790.1C498.0 791.3 499.1 794.3 500.4 796.9C504.2 804.4 506.0 808.9 506.0 810.9C506.0 812.0 507.8 816.2 510.0 820.4C512.2 824.5 515.0 830.5 516.1 833.7C518.3 839.7 521.1 843.6 523.9 844.5C524.8 844.8 526.4 846.3 527.4 847.9C529.6 851.2 533.9 853.5 539.6 854.6C541.8 854.9 544.0 855.7 544.7 856.2C545.3 856.7 550.7 857.1 556.7 857.0C562.6 856.9 569.6 857.1 572.2 857.5C575.5 858.0 577.4 857.9 578.5 857.0C579.7 856.0 588.3 856.0 620.6 857.0C650.9 857.9 662.6 858.0 666.4 857.1C669.2 856.5 672.6 855.9 674.0 855.8C678.2 855.3 679.5 850.8 679.5 836.8C679.5 818.8 679.0 818.2 658.7 809.9C648.6 805.8 647.0 804.3 650.2 801.9C651.4 800.9 653.9 800.0 655.7 800.0C659.8 800.0 668.8 795.3 670.9 792.1C673.1 788.6 673.1 776.4 670.8 772.8C668.4 769.1 661.9 767.8 650.0 768.6L640.3 769.3 L636.1 765.2C633.7 762.9 631.0 760.8 629.9 760.5C628.9 760.1 628.0 759.5 628.0 759.0C628.0 758.5 625.8 756.7 623.0 754.9C620.2 753.1 618.0 751.3 618.0 751.0C618.0 749.3 620.9 748.1 625.5 747.8C630.5 747.5 630.5 747.5 630.8 743.7C631.0 741.6 630.1 736.0 628.9 731.2C627.0 724.1 626.6 719.5 626.5 706.0C626.4 696.9 626.2 684.1 626.1 677.5C625.9 661.7 625.9 663.6 625.9 646.8L625.9 632.1 L633.5 624.8C637.7 620.8 642.5 616.9 644.1 616.3C650.8 613.4 652.7 602.6 648.2 593.0C644.4 585.0 637.2 572.0 635.4 570.0C634.7 569.1 632.9 565.8 631.5 562.6C630.1 559.4 627.0 554.0 624.6 550.6C622.3 547.2 618.8 541.4 617.0 537.6C615.1 533.8 612.4 529.5 611.0 528.1C609.6 526.7 607.7 524.3 606.8 522.9C605.9 521.4 602.4 518.3 599.0 515.9C595.6 513.5 590.9 510.0 588.4 508.2C586.0 506.5 583.2 505.0 582.2 505.0C581.2 505.0 580.0 504.6 579.4 504.1C578.9 503.6 575.6 502.9 572.0 502.6C562.6 501.8 560.8 501.5 557.5 500.1C555.9 499.5 552.8 498.3 550.8 497.5C543.2 494.5 539.3 493.1 530.5 490.0C525.5 488.2 520.8 486.4 520.0 485.9C518.2 484.8 517.5 484.5 508.2 480.9C504.2 479.3 497.9 475.9 494.2 473.3C490.5 470.7 485.9 467.6 484.0 466.4C482.1 465.1 479.3 463.2 477.8 462.1C476.4 460.9 474.9 460.0 474.5 460.0C474.2 460.0 470.7 457.9 466.7 455.3C452.7 446.3 448.5 443.5 447.5 442.7C446.9 442.3 443.4 439.9 439.5 437.4C435.6 434.8 430.5 431.1 428.0 429.0C425.5 427.0 422.1 424.6 420.5 423.8C418.8 422.9 416.6 421.3 415.6 420.1C414.5 418.9 413.2 418.0 412.5 418.0C411.8 418.0 408.7 415.8 405.6 413.0C402.5 410.3 399.5 408.0 399.1 408.0C398.0 408.0 381.8 392.0 357.0 366.3C344.6 353.5 334.1 343.0 333.7 343.0C332.9 343.0 323.3 338.7 319.5 336.7C318.4 336.1 316.3 335.0 314.8 334.3C309.5 331.6 309.9 327.8 315.8 325.9C320.3 324.4 324.0 322.1 324.0 320.8C324.0 320.2 325.7 318.1 327.8 316.1C331.4 312.6 334.0 305.1 334.0 298.2C334.0 297.0 334.9 294.6 336.0 292.8C338.1 289.3 338.6 284.5 337.0 283.5C335.3 282.4 335.9 275.9 338.1 272.3C340.6 268.3 341.6 245.8 339.7 236.5C337.7 226.6 325.6 215.8 314.9 214.4C311.9 214.0 307.9 213.1 306.0 212.3C294.6 207.5 273.3 212.5 266.3 221.7C264.8 223.7 262.0 227.1 260.1 229.2C254.8 235.3 251.3 255.7 254.0 265.0C254.6 266.9 255.1 272.7 255.1 277.8C255.2 286.8 255.1 287.3 252.3 290.3C250.7 292.1 247.8 295.6 246.0 298.1C242.6 302.6 240.2 304.5 233.0 308.2C226.8 311.5 224.9 308.3 222.6 290.3C222.4 288.5 220.8 280.3 219.0 272.0L215.9 257.0 L222.9 245.2C226.7 238.8 231.6 231.3 233.7 228.5C238.1 222.8 240.0 218.8 240.0 215.1C240.0 213.5 241.1 211.5 242.8 209.9C244.3 208.6 246.5 206.3 247.7 205.0C248.9 203.6 251.3 201.5 252.9 200.2C254.6 198.9 256.0 197.2 256.0 196.4C256.0 194.9 263.1 190.0 265.5 190.0C266.3 190.0 267.6 191.5 268.4 193.3C271.9 201.5 278.8 205.0 285.4 202.0C287.9 200.9 290.5 200.0 291.3 200.0C292.1 200.0 293.8 199.2 295.0 198.2C297.2 196.4 297.2 196.4 294.6 189.1C293.1 184.9 292.0 179.8 292.0 176.8C292.0 173.6 291.3 170.6 290.1 168.6C289.1 166.9 288.0 163.5 287.6 161.1C286.5 154.1 283.9 146.6 281.9 145.0C279.4 143.0 272.6 129.7 270.7 123.0C268.6 116.0 266.5 113.0 263.6 113.0C260.8 113.0 251.0 115.9 249.2 117.3C247.1 118.9 247.9 126.9 251.2 138.4C252.4 142.2 252.4 142.2 245.8 148.4C242.2 151.7 237.5 156.9 235.5 159.9C233.4 162.9 230.4 166.5 228.7 167.9C227.0 169.3 225.3 170.9 224.8 171.5C224.4 172.1 222.2 174.5 219.9 177.0C217.7 179.5 215.2 182.7 214.4 184.2C213.2 186.5 212.3 187.0 209.4 187.0C204.6 187.0 202.4 188.3 199.5 193.1C197.3 196.5 196.7 196.9 195.0 196.0C192.8 194.8 192.2 189.9 194.0 187.7C194.5 187.0 197.2 183.9 199.9 180.7C208.1 171.1 218.6 146.5 220.7 132.0C221.0 130.1 221.7 128.0 222.2 127.3C222.7 126.6 222.9 125.2 222.5 124.1C222.2 123.1 222.4 121.9 223.0 121.5C223.6 121.1 223.8 120.0 223.5 118.9C223.1 117.8 223.6 114.8 224.5 112.1C226.3 106.7 226.1 87.9 224.2 83.0C223.0 79.9 218.8 76.7 213.7 75.1C211.6 74.4 208.4 72.6 206.7 71.1C203.1 68.1 202.2 67.6 192.4 62.0C188.5 59.8 184.8 58.0 184.2 58.0C182.7 58.0 181.9 55.0 183.3 54.4C184.0 54.2 291.4 54.1 422.0 54.2L659.5 54.5 L667.3 58.4C675.6 62.5 678.2 65.2 684.1 75.5L687.5 81.5 L687.5 488.0L687.5 894.5 L685.0 899.2C679.1 910.3 671.1 917.3 661.0 920.3C657.5 921.3 582.5 921.8 513.2 921.2Z" fill="#0A3AA8"/><path class="ps" style="--i:1" fill-rule="evenodd" d="M70.3 919.9C59.8 915.9 50.7 904.4 48.0 892.0C47.2 887.9 47.0 786.1 47.2 484.0L47.5 81.5 L50.2 75.8C53.9 67.8 60.3 61.3 68.0 57.6L74.5 54.5 L111.2 54.2C146.6 53.9 152.3 54.3 146.2 56.8C137.2 60.4 128.0 69.8 125.0 78.2C123.1 83.8 120.6 99.5 121.4 100.8C122.8 103.0 119.8 121.6 116.4 132.0C113.5 141.0 112.9 144.1 113.4 147.8C115.3 162.3 115.3 162.4 113.0 165.2C111.8 166.8 110.2 168.0 109.4 168.0C108.5 168.0 106.0 169.3 103.7 170.9C93.2 178.1 87.7 186.1 83.4 199.9C77.5 219.4 76.9 228.3 80.0 255.2C81.1 264.7 82.2 276.8 82.4 282.0C84.1 320.8 88.8 354.6 94.5 368.1C98.4 377.4 99.0 383.6 96.4 388.5C94.0 393.1 90.1 403.5 88.9 408.7C87.7 414.5 89.7 420.8 93.8 424.1C96.4 426.1 96.5 426.6 97.1 439.3C97.8 453.9 100.5 472.9 102.0 474.4C102.6 475.0 103.0 477.2 103.0 479.5C103.0 481.7 103.7 485.8 104.6 488.5C105.7 491.7 106.4 498.1 106.6 506.0C106.8 512.9 107.4 525.0 107.9 533.0C108.4 541.0 108.4 548.2 107.9 549.1C106.9 551.0 106.8 563.1 107.5 580.2C108.1 592.9 108.1 593.0 105.0 599.7C101.8 606.5 101.8 606.5 102.5 624.5C103.3 650.3 103.2 655.1 101.6 656.9C100.2 658.5 100.9 679.4 102.4 681.9C103.1 683.0 99.7 690.5 98.0 691.5C97.1 692.1 96.9 695.8 97.0 718.0C97.0 720.5 97.5 724.1 98.0 726.0C99.8 732.3 99.2 742.4 96.8 747.7C93.3 755.5 93.4 767.7 96.9 778.3C99.6 786.3 100.0 791.3 97.9 792.6C97.4 792.9 97.0 797.7 97.0 803.3C96.9 810.3 96.5 814.3 95.5 816.0C92.7 820.9 93.5 837.5 96.9 843.4C99.0 847.3 100.0 850.9 100.9 858.5C102.1 868.2 104.2 873.0 107.3 873.0C107.8 873.0 109.4 873.8 110.8 874.9C112.3 875.9 114.8 877.0 116.5 877.4C120.5 878.4 122.0 879.8 122.0 882.4C122.0 885.1 127.1 890.1 132.7 892.9C138.9 896.0 162.1 896.0 171.2 892.9C179.2 890.1 186.0 885.5 186.0 882.9C186.0 881.8 187.0 879.1 188.2 877.0C190.5 873.1 190.5 873.1 188.4 870.8C183.0 864.9 172.8 850.6 171.3 846.7C170.4 844.4 169.0 841.7 168.2 840.7C165.9 838.1 168.2 833.5 171.3 834.5C172.5 834.9 182.1 835.4 192.5 835.7C213.7 836.2 216.9 835.3 223.4 826.7C229.3 819.0 220.5 806.5 206.8 803.1C200.6 801.6 181.0 782.2 179.7 776.2C177.9 768.3 179.4 745.4 182.0 741.0C183.2 739.0 183.5 733.6 183.5 714.0L183.5 689.5 L188.8 680.0C194.9 669.1 195.6 666.5 196.5 652.0C196.9 646.2 198.1 639.0 199.1 636.0C202.5 626.1 203.6 623.0 204.3 622.4C204.7 622.0 205.0 618.5 205.0 614.6C205.1 610.3 205.6 606.5 206.5 605.0C207.6 603.1 207.9 598.3 208.0 585.0C208.0 569.3 208.2 567.2 210.0 564.2C212.7 559.8 214.0 560.9 214.0 567.9C214.0 572.7 214.4 574.0 216.5 576.0C217.8 577.2 220.7 581.9 222.8 586.4C226.1 593.1 228.2 595.8 235.1 602.3C243.5 610.1 243.5 610.1 245.7 618.8C246.9 623.6 247.9 628.5 248.0 629.7C248.0 630.9 249.1 635.4 250.5 639.6C251.9 643.8 253.0 649.0 253.0 651.1C253.0 653.2 253.7 656.7 254.5 658.7C255.3 660.8 256.8 667.5 257.9 673.6C260.1 686.9 261.9 691.1 268.4 697.2C275.6 704.2 281.3 703.5 292.6 694.5C299.8 688.8 302.5 687.3 310.5 684.6C328.2 678.6 331.3 678.5 337.9 684.4C340.7 686.9 345.1 690.1 347.7 691.6C374.9 707.3 380.0 712.2 371.8 714.5C362.6 717.1 358.6 724.2 357.0 741.0C356.3 747.9 355.4 754.5 354.9 755.8C354.4 757.1 354.0 760.0 354.0 762.2C354.0 764.4 353.6 767.9 353.1 769.9C352.6 771.9 351.4 777.1 350.5 781.5C348.0 793.4 346.3 797.6 342.1 801.2C337.3 805.4 333.9 812.7 333.1 820.9C332.4 828.7 333.9 827.8 311.5 833.1C286.5 839.0 280.1 841.5 270.5 848.7C262.0 855.1 252.1 865.0 251.9 867.2C251.3 874.3 252.4 884.9 254.1 888.1C259.3 898.3 287.7 915.5 304.2 918.5C306.5 918.9 308.0 919.8 308.0 920.6C308.0 923.2 77.1 922.5 70.3 919.9Z" fill="#E2231A"/></g><g transform="translate(10.0 1005) scale(0.8137)" fill="#F4F1EA"><path transform="translate(0.00 0) scale(0.0545 -0.0545)" d="M78 0V1760H555Q747 1760 834.5 1666.5Q922 1573 922 1358V1281Q922 1157 877.5 1080.0Q833 1003 742 979Q861 949 901.5 838.5Q942 728 942 569Q942 398 910.0 270.0Q878 142 794.0 71.0Q710 0 555 0ZM422 1097H494Q543 1097 557.0 1135.0Q571 1173 571 1226V1403Q571 1488 496 1488H422ZM457 310Q594 310 594 440V660Q594 735 571.5 778.5Q549 822 487 822H422V312Q444 310 457 310Z"/><path transform="translate(57.29 0) scale(0.0545 -0.0545)" d="M216 0 27 1760H371L468 649L567 1760H895L989 649L1083 1760H1431L1239 0H817L729 847L645 0Z"/><path transform="translate(170.68 0) scale(0.0545 -0.0545)" d="M78 0V1760H555Q747 1760 834.5 1666.5Q922 1573 922 1358V1281Q922 1157 877.5 1080.0Q833 1003 742 979Q861 949 901.5 838.5Q942 728 942 569Q942 398 910.0 270.0Q878 142 794.0 71.0Q710 0 555 0ZM422 1097H494Q543 1097 557.0 1135.0Q571 1173 571 1226V1403Q571 1488 496 1488H422ZM457 310Q594 310 594 440V660Q594 735 571.5 778.5Q549 822 487 822H422V312Q444 310 457 310Z"/><path transform="translate(227.98 0) scale(0.0545 -0.0545)" d="M30 0 200 1760H797L964 0H631L606 284H394L372 0ZM419 565H579L502 1460H486Z"/><path transform="translate(286.04 0) scale(0.0545 -0.0545)" d="M78 0V1760H618Q753 1760 822.0 1698.5Q891 1637 914.5 1526.5Q938 1416 938 1267Q938 1123 901.5 1037.0Q865 951 764 918Q847 901 880.5 835.5Q914 770 914 666V0H567V689Q567 766 535.5 784.5Q504 803 434 803V0ZM436 1108H521Q594 1108 594 1267Q594 1370 578.0 1402.0Q562 1434 518 1434H436Z"/><path transform="translate(343.11 0) scale(0.0545 -0.0545)" d="M78 0V1760H555Q747 1760 834.5 1666.5Q922 1573 922 1358V1281Q922 1157 877.5 1080.0Q833 1003 742 979Q861 949 901.5 838.5Q942 728 942 569Q942 398 910.0 270.0Q878 142 794.0 71.0Q710 0 555 0ZM422 1097H494Q543 1097 557.0 1135.0Q571 1173 571 1226V1403Q571 1488 496 1488H422ZM457 310Q594 310 594 440V660Q594 735 571.5 778.5Q549 822 487 822H422V312Q444 310 457 310Z"/><path transform="translate(400.41 0) scale(0.0545 -0.0545)" d="M78 0V1760H782V1420H436V1077H768V746H436V343H805V0Z"/><path transform="translate(450.23 0) scale(0.0545 -0.0545)" d="M78 0V1760H618Q753 1760 822.0 1698.5Q891 1637 914.5 1526.5Q938 1416 938 1267Q938 1123 901.5 1037.0Q865 951 764 918Q847 901 880.5 835.5Q914 770 914 666V0H567V689Q567 766 535.5 784.5Q504 803 434 803V0ZM436 1108H521Q594 1108 594 1267Q594 1370 578.0 1402.0Q562 1434 518 1434H436Z"/><path transform="translate(537.33 0) scale(0.0545 -0.0545)" d="M496 -16Q255 -16 148.5 104.0Q42 224 42 486V658H390V438Q390 377 408.5 342.5Q427 308 473 308Q521 308 539.5 336.0Q558 364 558 428Q558 509 542.0 563.5Q526 618 486.5 667.5Q447 717 377 783L219 933Q42 1100 42 1315Q42 1540 146.5 1658.0Q251 1776 449 1776Q691 1776 792.5 1647.0Q894 1518 894 1255H536V1376Q536 1412 515.5 1432.0Q495 1452 460 1452Q418 1452 398.5 1428.5Q379 1405 379 1368Q379 1331 399.0 1288.0Q419 1245 478 1189L681 994Q742 936 793.0 871.5Q844 807 875.0 721.5Q906 636 906 513Q906 265 814.5 124.5Q723 -16 496 -16Z"/><path transform="translate(592.71 0) scale(0.0545 -0.0545)" d="M78 0V1760H428V1131H594V1760H944V0H594V798H428V0Z"/><path transform="translate(652.30 0) scale(0.0545 -0.0545)" d="M498 -16Q287 -16 175.5 111.5Q64 239 64 480V1316Q64 1542 174.5 1659.0Q285 1776 498 1776Q711 1776 821.5 1659.0Q932 1542 932 1316V480Q932 239 820.5 111.5Q709 -16 498 -16ZM501 308Q581 308 581 463V1322Q581 1452 503 1452Q415 1452 415 1319V461Q415 379 435.0 343.5Q455 308 501 308Z"/><path transform="translate(710.47 0) scale(0.0545 -0.0545)" d="M78 0V1760H543Q689 1760 774.5 1695.0Q860 1630 897.0 1510.0Q934 1390 934 1224Q934 1064 903.0 945.5Q872 827 792.5 762.0Q713 697 567 697H424V0ZM424 1013H444Q542 1013 564.0 1068.0Q586 1123 586 1230Q586 1330 564.5 1384.5Q543 1439 463 1439H424Z"/></g></svg></div>
-        <p class="muted">Emombo Auberge, Yaoundé</p>
-        <div class="links">
-          <a href="tel:+237690868831">+237 690 86 88 31</a>
-          <a data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20une%20coupe.">WhatsApp</a>
-          <!-- TODO(owner): Instagram and Facebook URLs go in BW_CONFIG.SOCIAL. The links appear here when filled. -->
-          <a id="soc-ig" target="_blank" rel="noopener" href="#" hidden>Instagram</a>
-          <a id="soc-fb" target="_blank" rel="noopener" href="#" hidden>Facebook</a>
-        </div>
-        <span id="socials" hidden></span>
-      </div>
-      <nav aria-label="Pied de page / Footer">
-        <a href="#tarifs"><span lang="fr">Tarifs</span><span lang="en">Prices</span></a>
-        <a href="#barbier"><span lang="fr">Le barbier</span><span lang="en">The barber</span></a>
-        <a href="#galerie"><span lang="fr">Galerie</span><span lang="en">Gallery</span></a>
-        <a href="#reserver"><span lang="fr">Réserver</span><span lang="en">Book</span></a>
-        <a href="#confidentialite"><span lang="fr">Vos données</span><span lang="en">Your data</span></a>
-      </nav>
-      <p class="muted foot-credit">© 2026 BW Barber Shop<br><span lang="fr">Site :</span><span lang="en">Site:</span> Samuel ETAH</p>
+  <footer class="site-footer" id="infos">
+    <div class="wrap foot">
+      <p class="foot-name">BW Barber Shop</p>
+      <p>Emombo Auberge, Yaoundé · <a href="tel:+237690868831">+237 690 86 88 31</a></p>
+      <p class="muted">© 2026 BW Barber Shop · <span lang="fr">Site :</span><span lang="en">Site:</span> Samuel ETAH</p>
     </div>
-    <div class="foot-mark" aria-hidden="true"><span id="foot-mark">BW Barber Shop</span></div>
   </footer>
 
-  <!-- Phone only: Réserver + WhatsApp + call, always under the thumb -->
-  <nav class="callbar on-black" aria-label="Actions rapides / Quick actions">
-    <a class="btn btn-gold cb-book" href="#reserver" data-book><span lang="fr">Réserver</span><span lang="en">Book</span></a>
-    <a class="btn btn-ghost cb-ico" data-wa target="_blank" rel="noopener" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20une%20coupe."><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span class="sr">WhatsApp</span></a>
-    <a class="btn btn-ghost cb-ico" href="tel:+237690868831"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span class="sr"><span lang="fr">Appeler</span><span lang="en">Call</span></span></a>
-  </nav>
+  <!-- Phone: sticky bottom bar. Both are plain links, so they work without JavaScript. -->
+  <div class="bottom-bar">
+    <a class="btn btn-gold" href="https://wa.me/237690868831?text=Bonjour%20BW%20Barber%20Shop%2C%20je%20veux%20r%C3%A9server%20une%20coupe.%20Quel%20jour%20et%20quelle%20heure%20sont%20possibles%20%3F" data-wa data-fr="Bonjour BW Barber Shop, je veux réserver une coupe. Quel jour et quelle heure sont possibles ?" data-en="Hello BW Barber Shop, I’d like to book a cut. Which day and time work?" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="fr">Réserver</span><span lang="en">Book</span></a>
+    <a class="btn btn-ghost" href="tel:+237690868831"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span lang="fr">Appeler</span><span lang="en">Call</span></a>
+  </div>
 
-  <!-- Gallery lightbox -->
-  <dialog class="lightbox" id="lightbox" aria-label="Photo">
-    <img id="lb-img" src="images/interior-tall-608.jpg" alt="" width="608" height="1080" loading="lazy">
-    <div class="lb-bar">
-      <button type="button" id="lb-prev" aria-label="Précédente / Previous"><svg class="ico flip" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-      <button type="button" id="lb-close"><span lang="fr">Fermer</span><span lang="en">Close</span></button>
-      <button type="button" id="lb-next" aria-label="Suivante / Next"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-    </div>
-  </dialog>
-
-  <!-- The cursor-follow star (price board). Decorative. -->
-  <div class="star" id="star" aria-hidden="true"><div class="star-photo" id="star-photo"><span lang="fr">Photo bientôt</span><span lang="en">Photo soon</span></div></div>
-
-  <script src="js/config.js?v=20261111"></script>
-  <script src="js/app.js?v=20261111"></script>
-  <script src="js/ui.js"></script>
-  <!-- Vercel Web Analytics: cookieless. Enable it once in the Vercel dashboard (Project, Analytics). -->
-  <script src="/js/va.js"></script>
+  <script src="js/site.js" defer></script>
+  <script src="js/va.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

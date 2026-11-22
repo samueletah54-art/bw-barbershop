@@ -1,0 +1,146 @@
+/* =====================================================================
+   BW BARBER SHOP · main stylesheet (rebuilt)
+   Dark page, ONE accent (gold), Anton for display + Instrument Sans for text,
+   8px spacing grid. Motion = short CSS transitions only, off for reduced-motion.
+   ===================================================================== */
+@font-face { font-family: "Anton"; src: url("../fonts/anton.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Instrument Sans"; src: url("../fonts/instrument-sans.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+
+:root {
+  --bg: #0b0b0b;
+  --bg-2: #151514;          /* raised surface */
+  --bg-3: #1d1d1b;
+  --ink: #f4f1ea;           /* 17:1 on --bg */
+  --ink-2: #d2cec4;
+  --muted: #a19d93;         /* 7:1 on --bg */
+  --line: #2b2a27;
+  --gold: #d4a72c;          /* the one accent: 8.5:1 on --bg */
+  --gold-ink: #0b0b0b;
+  --ok: #3ddc84;
+  --font-display: "Anton", Impact, "Arial Narrow", sans-serif;
+  --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px; --s5: 48px; --s6: 64px; --s7: 96px;
+  --gutter: clamp(16px, 5vw, 64px);
+  --max: 1160px;
+  --header-h: 64px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 56px); -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 var(--font-body); -webkit-font-smoothing: antialiased; padding-bottom: 80px; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3, h4, p, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.005em; text-wrap: balance; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.wrap { width: 100%; max-width: calc(var(--max) + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
+.muted { color: var(--muted); }
+.ico { width: 20px; height: 20px; flex: none; }
+
+/* language: both languages are in the HTML, CSS shows one */
+html[data-lang="fr"] [lang="en"], html[data-lang="en"] [lang="fr"] { display: none; }
+.lang { display: none; }
+.js .lang { display: inline-flex; }
+
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.skip { position: absolute; left: var(--s2); top: -64px; z-index: 200; background: var(--gold); color: var(--gold-ink); padding: 12px 20px; font-weight: 600; text-decoration: none; transition: top 150ms; }
+.skip:focus { top: var(--s1); }
+
+/* ---------- buttons: 48px tall, 44px minimum everywhere ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s1); min-height: 48px; padding: 0 var(--s3); font: 600 1rem/1 var(--font-body); text-decoration: none; cursor: pointer; border: 2px solid transparent; border-radius: 4px; white-space: nowrap; transition: transform 150ms var(--ease), background-color 150ms, color 150ms, border-color 150ms; }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn-gold { background: var(--gold); color: var(--gold-ink); }
+.btn-gold:hover { background: #e2b53c; }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--bg); }
+.btn-line { background: transparent; color: var(--gold); border-color: var(--gold); }
+.btn-line:hover { background: var(--gold); color: var(--gold-ink); }
+.btn-sm { min-height: 44px; padding: 0 var(--s2); }
+.btn-lg { min-height: 56px; padding: 0 var(--s4); font-size: 1.0625rem; }
+
+/* ---------- header ---------- */
+.site-header { position: sticky; top: 0; z-index: 50; background: rgb(11 11 11 / 0.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; flex-wrap: wrap; gap: 0 var(--s3); min-height: var(--header-h); }
+.logo { display: block; flex: none; padding: 8px 0; }
+.logo img { width: 140px; height: auto; }
+.nav { order: 3; width: 100%; display: flex; gap: var(--s3); overflow-x: auto; scrollbar-width: none; border-top: 1px solid var(--line); }
+.nav::-webkit-scrollbar { display: none; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; font-size: 0.9375rem; text-decoration: none; color: var(--ink-2); white-space: nowrap; transition: color 150ms; }
+.nav a:hover { color: var(--gold); }
+.bar-end { margin-left: auto; display: flex; align-items: center; gap: var(--s2); }
+.bar-cta { display: none; }
+.lang { border: 1px solid var(--ink); border-radius: 4px; overflow: hidden; }
+.lang button { min-width: 44px; min-height: 44px; border: 0; background: transparent; color: var(--ink); font: 600 0.875rem var(--font-body); cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+@media (min-width: 900px) {
+  .bar { flex-wrap: nowrap; }
+  .nav { order: 0; width: auto; border: 0; margin-left: var(--s4); }
+  .bar-cta { display: inline-flex; }
+}
+
+/* ---------- hero ---------- */
+.hero { position: relative; isolation: isolate; display: flex; align-items: flex-end; min-height: min(calc(100svh - var(--header-h)), 820px); overflow: clip; }
+.hero-bg { position: absolute; inset: 0; z-index: -2; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; filter: grayscale(1) contrast(1.1); }
+.hero-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0.62) 45%, rgb(11 11 11 / 0.92)); }
+.hero-inner { padding-top: var(--s4); padding-bottom: 96px; }   /* clears the phone bottom bar */
+@media (min-width: 900px) { .hero-inner { padding-top: var(--s6); padding-bottom: var(--s5); } }
+.status { display: inline-flex; align-items: center; gap: 10px; min-height: 36px; padding: 0 var(--s2); margin-bottom: var(--s3); border: 1px solid rgb(244 241 234 / 0.35); border-radius: 999px; background: rgb(11 11 11 / 0.55); font-size: 0.9375rem; font-weight: 600; }
+.status-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
+.status[data-state="open"] .status-dot { background: var(--ok); box-shadow: 0 0 0 4px rgb(61 220 132 / 0.25); }
+.status[data-state="closed"] .status-dot { background: var(--gold); }
+.hero-title { font-size: clamp(3rem, 12.5vw, 8.5rem); line-height: 0.98; margin-bottom: var(--s3); }
+.hero-lead { max-width: 34ch; font-size: 1.1875rem; line-height: 1.5; color: var(--ink); margin-bottom: var(--s3); }
+.hero-cta { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s2); margin-bottom: var(--s3); }
+@media (max-width: 719px) { .hero-cta .btn { flex: 1 1 100%; } .hero-title { margin-bottom: var(--s2); } }
+.proof { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); font-size: 0.9375rem; font-weight: 600; color: var(--ink-2); }
+.proof li { position: relative; padding-left: 22px; }
+.proof li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 12px; height: 2px; background: var(--gold); }
+
+/* ---------- sections ---------- */
+.sec { padding-block: var(--s6); }
+.sec-title { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 1.12; margin-bottom: var(--s2); }
+.sec-lead { max-width: 52ch; color: var(--ink-2); margin-bottom: var(--s5); }
+
+/* ---------- prices: the price is the biggest thing in each row ---------- */
+.group + .group { margin-top: var(--s5); }
+.group-title { font-size: 1.5rem; color: var(--gold); padding-bottom: var(--s1); border-bottom: 2px solid var(--gold); margin-bottom: 0; }
+.svc { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "main price" "book book"; gap: var(--s1) var(--s2); align-items: center; padding: var(--s3) 0; border-bottom: 1px solid var(--line); }
+.svc-main { grid-area: main; }
+.svc-name { font: 400 clamp(1.75rem, 5vw, 2.25rem)/1.05 var(--font-display); text-transform: uppercase; display: flex; flex-wrap: wrap; align-items: center; gap: 4px var(--s1); }
+.badge { font: 700 0.75rem/1 var(--font-body); letter-spacing: 0.06em; text-transform: uppercase; background: var(--gold); color: var(--gold-ink); padding: 6px 8px; border-radius: 3px; white-space: nowrap; }
+.svc-min { white-space: nowrap; }
+.svc-inc { margin-top: 4px; color: var(--muted); font-size: 0.9375rem; line-height: 1.4; }
+.svc-price { grid-area: price; text-align: right; white-space: nowrap; line-height: 1; }
+.svc-price .num { font: 400 clamp(2.5rem, 9vw, 3.5rem)/1 var(--font-display); color: var(--ink); letter-spacing: 0.01em; }
+.svc-price .cur { font-size: 0.875rem; font-weight: 600; color: var(--muted); }
+.svc-book { grid-area: book; justify-self: start; }
+@media (min-width: 720px) {
+  .svc { grid-template-columns: minmax(0, 1fr) auto auto; grid-template-areas: "main price book"; gap: var(--s4); padding: var(--s3) var(--s2); }
+  .svc:hover { background: var(--bg-2); }
+  .svc-price { min-width: 200px; }
+  .svc-book { justify-self: end; min-width: 148px; }
+}
+
+/* ---------- footer (full version comes with the Infos section) ---------- */
+.site-footer { padding-block: var(--s5); border-top: 1px solid var(--line); }
+.foot { display: grid; gap: var(--s1); }
+.foot-name { font: 400 1.75rem/1 var(--font-display); text-transform: uppercase; }
+.site-footer a { text-underline-offset: 3px; }
+
+/* ---------- phone bottom bar ---------- */
+.bottom-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s1); padding: var(--s1) var(--s2) calc(var(--s1) + env(safe-area-inset-bottom)); background: rgb(11 11 11 / 0.96); border-top: 1px solid var(--line); }
+.bottom-bar .btn { min-height: 52px; }
+@media (min-width: 900px) { .bottom-bar { display: none; } body { padding-bottom: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .btn:hover { transform: none; }
+}
+
+@media (max-width: 719px) { .proof li:last-child { display: none; } }

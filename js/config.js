@@ -25,9 +25,9 @@ window.BW_CONFIG = {
     // false = the public site says only "from 9:00" and never claims "closed".
     // Set to true once close + days below are confirmed: the site then shows the full
     // hours and the live "Ouvert aujourd'hui · 9h–19h" / "Fermé" status.
-    confirmed: false,                  // TODO(owner)
+    confirmed: true,                   // Mon–Sat from 9:00 per the owner (22 Nov 2026). TODO(owner): confirm closing time and Sunday
     open: '09:00',
-    close: '19:00',                    // TODO(owner): confirm closing time
+    close: '20:00',                    // TODO(owner): confirm closing time (20:00 from the owner's brief)
     days: [1, 2, 3, 4, 5, 6],          // TODO(owner): confirm days. 1 = Monday … 7 = Sunday
   },
 
