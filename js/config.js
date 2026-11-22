@@ -25,11 +25,16 @@ window.BW_CONFIG = {
     // false = the public site says only "from 9:00" and never claims "closed".
     // Set to true once close + days below are confirmed: the site then shows the full
     // hours and the live "Ouvert aujourd'hui · 9h–19h" / "Fermé" status.
-    confirmed: false,                  // TODO(owner)
+    confirmed: true,                   // Mon–Sat 9:00–19:00, confirmed by the owner on 22 Nov 2026. TODO(owner): confirm Sunday is closed
     open: '09:00',
     close: '19:00',                    // TODO(owner): confirm closing time
     days: [1, 2, 3, 4, 5, 6],          // TODO(owner): confirm days. 1 = Monday … 7 = Sunday
   },
+
+  // Black Friday offer: percent off every service, from `from` to `to` (inclusive, Cameroon time).
+  // Before `from` the site only announces it; between the dates it shows old and new prices;
+  // after `to` it disappears by itself. Set PROMO to null to remove it.
+  PROMO: { from: '2026-11-27', to: '2026-11-29', percent: 10 },
 
   // Social pages. Empty = the link is hidden. TODO(owner): add the real URLs.
   SOCIAL: { instagram: '', facebook: '' },   // e.g. 'https://www.instagram.com/…'
