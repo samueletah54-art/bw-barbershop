@@ -120,7 +120,7 @@
       cal_title: 'BW Barber Shop · {f}',
       // opening status
       st_future: 'Ouverture {d} à {h}, dans {n} jours', st_tomorrow: 'Ouverture demain à {h}', st_today_before: 'Ouverture aujourd’hui à {h}',
-      st_open: 'Ouvert aujourd’hui · {r}', st_open_from: 'Ouvert dès {h}', st_opens_today: 'Ouvre aujourd’hui à {h}',
+      st_open: 'Ouvert maintenant · ferme à {h}', st_open_from: 'Ouvert dès {h}', st_opens_today: 'Ouvre aujourd’hui à {h}',
       st_closed_now: 'Fermé · rouvre {d} à {h}', st_closed_day: 'Fermé aujourd’hui · rouvre {d} à {h}',
       to: 'au', and: 'et',
     },
@@ -178,7 +178,7 @@
       wa_note: 'Note',
       cal_title: 'BW Barber Shop · {f}',
       st_future: 'Opening {d} at {h}, in {n} days', st_tomorrow: 'Opening tomorrow at {h}', st_today_before: 'Opening today at {h}',
-      st_open: 'Open today · {r}', st_open_from: 'Open from {h}', st_opens_today: 'Opens today at {h}',
+      st_open: 'Open now · closes at {h}', st_open_from: 'Open from {h}', st_opens_today: 'Opens today at {h}',
       st_closed_now: 'Closed · reopens {d} at {h}', st_closed_day: 'Closed today · reopens {d} at {h}',
       to: 'to', and: 'and',
     },
@@ -246,17 +246,45 @@
     // Hours are unconfirmed: never claim "closed". Say what we know.
     if (!hoursConfirmed()) return { text: t('st_open_from', { h: openH }), state: 'open' };
     var openToday = C.HOURS.days.indexOf(isoDow(now.date)) > -1;
-    if (openToday && now.min >= o && now.min < c) return { text: t('st_open', { r: openH + '–' + fmtHour(c) }), state: 'open' };
+    if (openToday && now.min >= o && now.min < c) return { text: t('st_open', { h: fmtHour(c) }), state: 'open' };
     if (openToday && now.min < o) return { text: t('st_opens_today', { h: openH }), state: 'closed' };
     var nd = nextOpenDay(now.date);
     var label = daysBetween(now.date, nd) === 1 ? (lang === 'fr' ? 'demain' : 'tomorrow') : fmtDate(nd, { weekday: 'long' });
     return { text: t(openToday ? 'st_closed_now' : 'st_closed_day', { d: label, h: openH }), state: 'closed' };
   }
+  /* ---- Black Friday: announced before, priced during, gone after (Cameroon time) ---- */
+  function promoPhase() {
+    var P = C.PROMO; if (!P) return null;
+    var d = nowLocal().date;
+    if (d > P.to) return null;
+    return d < P.from ? 'soon' : 'on';
+  }
+  function price(f) { var P = C.PROMO; return promoPhase() === 'on' ? Math.round(f.price * (100 - P.percent) / 100) : f.price; }
+  function priceTxt(f) { return xaf(price(f)) + ' ' + t('fcfa') + (promoPhase() === 'on' ? ' (−' + C.PROMO.percent + ' %)' : ''); }
+  function priceHtml(f) { return promoPhase() === 'on' ? '<s>' + xaf(f.price) + '</s> ' + xaf(price(f)) + ' ' + t('fcfa') : xaf(f.price) + ' ' + t('fcfa'); }
+  function renderPromo() {
+    var ph = promoPhase(), P = C.PROMO, box = $('#promo');
+    $$('.board .row[data-formule]').forEach(function (row) {
+      var f = formule(row.getAttribute('data-formule')), cell = row.querySelector('.row-price');
+      if (!f || !cell) return;
+      if (!cell.hasAttribute('data-orig')) cell.setAttribute('data-orig', cell.innerHTML);
+      cell.innerHTML = ph === 'on'
+        ? '<span class="sr">' + xaf(price(f)) + ' ' + t('fcfa') + (lang === 'fr' ? ', au lieu de ' : ', instead of ') + xaf(f.price) + '</span><s aria-hidden="true">' + xaf(f.price) + '</s><span class="num" aria-hidden="true">' + xaf(price(f)) + '</span><small aria-hidden="true">FCFA</small>'
+        : cell.getAttribute('data-orig');
+    });
+    if (!box) return;
+    box.hidden = !ph;
+    if (!ph) return;
+    var from = fmtDate(P.from, { weekday: 'long', day: 'numeric', month: 'long' }), to = fmtDate(P.to, { weekday: 'long', day: 'numeric', month: 'long' });
+    box.textContent = lang === 'fr'
+      ? 'Black Friday : −' + P.percent + ' % sur tous les services' + (ph === 'on' ? ', jusqu’au ' + to + '.' : ', du ' + from + ' au ' + to + '.')
+      : 'Black Friday: ' + P.percent + '% off every service' + (ph === 'on' ? ', until ' + to + '.' : ', from ' + from + ' to ' + to + '.');
+  }
   function renderStatus() {
     var el = $('#status-text'), box = $('#status');
     if (!el) return;
     var s = statusText();
-    el.textContent = s.text;
+    $$('#status-text, .ticker .tk').forEach(function (n) { n.textContent = s.text; });   // the repeats in the strip too
     box.setAttribute('data-state', s.state);
   }
   function renderInfo() {
@@ -347,7 +375,7 @@
     var rows = C.FORMULES.map(function (f) {
       var id = 'f-' + f.id, sub = f[lang].includes + ' · ' + f.duration + ' ' + t('min');
       return '<input class="vh" type="radio" name="formule" id="' + id + '" value="' + f.id + '"' + (S.formule === f.id ? ' checked' : '') + '>' +
-        '<label class="choice" for="' + id + '"><span><span class="c-name">' + (f.n ? f.n + ' · ' : '') + esc(fName(f)) + '</span><span class="c-sub">' + esc(sub) + '</span></span><span class="c-price">' + xaf(f.price) + ' ' + t('fcfa') + '</span></label>';
+        '<label class="choice" for="' + id + '"><span><span class="c-name">' + (f.n ? f.n + ' · ' : '') + esc(fName(f)) + '</span><span class="c-sub">' + esc(sub) + '</span></span><span class="c-price">' + priceHtml(f) + '</span></label>';
     }).join('');
     return '<h3 class="step-title" tabindex="-1" data-focus="title">' + esc(t('t1')) + '</h3>' +
       '<fieldset><legend class="sr">' + esc(t('t1')) + '</legend><div class="choices">' + rows + '</div></fieldset>' +
@@ -405,7 +433,7 @@
       }
     }
     return '<h3 class="step-title" tabindex="-1" data-focus="title">' + esc(t('t2')) + '</h3>' +
-      '<p class="step-sub">' + esc(fName(f)) + ' · ' + xaf(f.price) + ' ' + t('fcfa') + '</p>' +
+      '<p class="step-sub">' + esc(fName(f)) + ' · ' + priceTxt(f) + '</p>' +
       '<fieldset><legend class="sr">' + esc(t('day')) + '</legend>' + monthHead + '<div class="days is-month">' + dayHtml + '</div></fieldset>' +
       '<div id="slots-area">' + slotHtml + '</div>' +
       (S.errors.date ? err('err-date', t('err_date')) : '') + (S.errors.time ? err('err-time', t('err_time')) : '') +
@@ -448,9 +476,9 @@
       [t('sum_time'), fmtSlot(S.time)],
       [t('sum_name'), S.name],
       [t('sum_phone'), phoneShow(normPhone(S.phone))],
-      [t('sum_price'), xaf(f.price) + ' ' + t('fcfa')],
+      [t('sum_price'), priceTxt(f)],
     ];
-    if (includeDeposit) { rows.push([t('sum_deposit'), xaf(C.DEPOSIT_XAF) + ' ' + t('fcfa')]); rows.push([t('sum_rest'), xaf(Math.max(0, f.price - C.DEPOSIT_XAF)) + ' ' + t('fcfa')]); }
+    if (includeDeposit) { rows.push([t('sum_deposit'), xaf(C.DEPOSIT_XAF) + ' ' + t('fcfa')]); rows.push([t('sum_rest'), xaf(Math.max(0, price(f) - C.DEPOSIT_XAF)) + ' ' + t('fcfa')]); }
     if (S.booking && S.booking.id) rows.push([t('ref'), String(S.booking.id).slice(0, 8).toUpperCase()]);
     return '<dl class="summary">' + rows.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') + '</dl>';
   }
@@ -476,7 +504,7 @@
   /* ---- final / payment views ---- */
   function waText() {
     var f = formule(S.formule);
-    var lines = [t('wa_hello'), '- ' + fName(f) + ' (' + xaf(f.price) + ' ' + t('fcfa') + ')', '- ' + fmtDate(S.date, { weekday: 'long', day: 'numeric', month: 'long' }) + ', ' + fmtSlot(S.time), '- ' + S.name + ', ' + phoneShow(normPhone(S.phone))];
+    var lines = [t('wa_hello'), '- ' + fName(f) + ' (' + priceTxt(f) + (promoPhase() === 'on' ? ', Black Friday' : '') + ')', '- ' + fmtDate(S.date, { weekday: 'long', day: 'numeric', month: 'long' }) + ', ' + fmtSlot(S.time), '- ' + S.name + ', ' + phoneShow(normPhone(S.phone))];
     if (S.note) lines.push('- ' + t('wa_note') + ' : ' + S.note);
     if (S.booking && S.booking.id) lines.push(t('ref') + ' : ' + String(S.booking.id).slice(0, 8).toUpperCase());
     return lines.join('\n');
@@ -685,7 +713,7 @@
     $$('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === l)); });
     $$('[data-wa]').forEach(function (a) { a.href = 'https://wa.me/' + C.WHATSAPP + '?text=' + encodeURIComponent(l === 'fr' ? 'Bonjour BW Barber Shop, je veux réserver une coupe.' : 'Hello BW Barber Shop, I want to book a cut.'); });
     try { localStorage.setItem('bw-lang', l); } catch (e) {}
-    renderStatus(); renderInfo(); if (S) render();
+    renderStatus(); renderPromo(); renderInfo(); if (S) render();
   }
 
   function resume() {
@@ -723,8 +751,8 @@
     var saved = null; try { saved = localStorage.getItem('bw-lang'); } catch (e) {}
     setLang(saved === 'en' ? 'en' : 'fr');
     render();
-    loadRemoteConfig().then(function () { renderStatus(); renderInfo(); render(); resume(); });
-    setInterval(renderStatus, 30000);
+    loadRemoteConfig().then(function () { renderStatus(); renderPromo(); renderInfo(); render(); resume(); });
+    setInterval(function () { renderStatus(); renderPromo(); }, 30000);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
